@@ -1,11 +1,11 @@
+A, Art Room, Card
+B, Ballroom, Card
+C, Conservatory, Card
 K, Kitchen, Card
 L, Library, Card
-C, Conservatory, Card
-B, Ballroom, Card
 M, Master Bedroom, Card
-T, Theatre, Card
-R, Trophy Room, Card
 Q, Servant Quarters, Card
-A, Art Room, Card
+R, Trophy Room, Card
+T, Theatre, Card
 X, Closet, Other
 W, Walkway, Other
