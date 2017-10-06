@@ -31,6 +31,7 @@ public class IntBoard {
 	
 	//Methods
 	public void calcAdjacencies() {
+		// Generates map of all cells and their adjacent cells and stores it in adjMtx
 		BoardCell currCell;
 		Set<BoardCell> adjSet;
 		for(int i = 0; i < GRID_WIDTH; i++) { // Iterate through all cells in grid[][]
@@ -57,6 +58,26 @@ public class IntBoard {
 	
 	public void calcTargets(BoardCell startCell, int pathLength) {
 		//Stores possible target cells in targets
+		visited.clear();
+		targets.clear();
+		Set<BoardCell> adj = getAdjList(startCell);
+		// Iterate through all adjacent cells
+		for(BoardCell c : adj) {
+			// If the cell hasn't been visited
+			if(!visited.contains(c)) {
+				// If the path is length 1, add the cell to targets.
+				if(pathLength == 1) {
+					targets.add(c);
+				}
+				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
+				// Then, after that has completed, remove the cell from visited.
+				else {
+					visited.add(c);
+					calcTargets(c, (pathLength-1));
+					visited.remove(c);
+				}
+			}
+		}
 	}
 	
 	public Set<BoardCell> getTargets() {
