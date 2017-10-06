@@ -69,9 +69,8 @@ public class IntBoard {
 	
 	public void calcTargets(BoardCell startCell, int pathLength) {
 		//Stores possible target cells in targets
-		visited.clear();
-		targets.clear();
 		Set<BoardCell> adj = getAdjList(startCell);
+		visited.add(startCell);
 		// Iterate through all adjacent cells
 		for(BoardCell c : adj) {
 			// If the cell hasn't been visited
@@ -83,7 +82,6 @@ public class IntBoard {
 				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
 				// Then, after that has completed, remove the cell from visited.
 				else {
-					visited.add(c);
 					calcTargets(c, (pathLength-1));
 					visited.remove(c);
 				}
