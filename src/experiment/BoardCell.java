@@ -6,7 +6,7 @@ public class BoardCell {
 	private int column;
 
 	public BoardCell() {
-		// TODO BoardCell constructor
+		//BoardCell constructor
 	}
 
 }

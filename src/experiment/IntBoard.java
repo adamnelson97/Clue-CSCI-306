@@ -11,7 +11,7 @@ public class IntBoard {
 	private BoardCell[][] grid;
 
 	public IntBoard() {
-		// TODO IntBoard constructor
+		//IntBoard constructor
 	}
 	
 	//Methods
