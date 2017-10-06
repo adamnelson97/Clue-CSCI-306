@@ -37,8 +37,7 @@ public class IntBoard {
 	}
 	
 	public Set<BoardCell> getAdjList(BoardCell cell) {
-		Set<BoardCell> list = adjMtx.get(cell); //Stores the adjacency list for a cell in a new list
-		return list;
+		return adjMtx.get(cell); //Stores the adjacency list for a cell in a new list
 	}
 
 }
