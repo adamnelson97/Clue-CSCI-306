@@ -21,6 +21,7 @@ public class IntBoard {
 		adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
 		visited = new HashSet<BoardCell>();
 		targets = new HashSet<BoardCell>();
+		BoardCell[][] grid = new BoardCell[GRID_WIDTH][GRID_HEIGHT];
 		
 		for (int i = 0; i < GRID_WIDTH; i++) {
 			for (int j = 0; j < GRID_HEIGHT; j++) {

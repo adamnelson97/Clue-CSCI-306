@@ -2,9 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import experiment.BoardCell;
 import experiment.IntBoard;
 
 /**
@@ -16,17 +19,23 @@ import experiment.IntBoard;
  *
  */
 public class IntBoardTests {
+	
+	private IntBoard board;
 
 	@Before
 	public void setUp() {
 		System.out.println("In @Before");
-		IntBoard board = new IntBoard();
+		board = new IntBoard();
 	}
 
 	@Test
 	public void testTopLeftCorner() {
 		//tests adjacency list for [0][0]
-		fail("Not yet implemented");
+		BoardCell cell = board.getCell(0, 0);
+		Set<BoardCell> testList = board.getAdjList(cell);
+		assertTrue(testList.contains(board.getCell(1, 0)));
+		assertTrue(testList.contains(board.getCell(0, 1)));
+		assertEquals(2, testList.size());
 	}
 
 	@Test
