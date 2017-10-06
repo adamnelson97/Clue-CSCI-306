@@ -68,12 +68,96 @@ public class IntBoardTests {
 		fail("Not yet implemented");
 	}
 
-	//Need six other test methods
-	//Template below
-
-	/*@Test
-	public void test() {
-		fail("Not yet implemented");
-	}*/
+	@Test
+	public void testTargetsMove1() {
+		// Tests proper movement options for cell 0,0 for a distance of 1
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 1;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(0,1)));
+		assertTrue(testTarg.contains(board.getCell(1, 0)));
+		assertEquals(2, testTarg.size());
+	}
+	
+	@Test
+	public void testTargetsMove2() {
+		// Tests proper movement options for cell 0,0 for a distance of 2
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 2;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(2, 0)));
+		assertTrue(testTarg.contains(board.getCell(1, 1)));
+		assertTrue(testTarg.contains(board.getCell(0, 2)));
+		assertEquals(3, testTarg.size());
+	}
+	
+	@Test
+	public void testTargetsMove3() {
+		// Tests proper movement options for cell 0,0 for a distance of 3
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 3;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(0, 1)));
+		assertTrue(testTarg.contains(board.getCell(0, 3)));
+		assertTrue(testTarg.contains(board.getCell(1, 0)));
+		assertTrue(testTarg.contains(board.getCell(1, 2)));
+		assertTrue(testTarg.contains(board.getCell(2, 1)));
+		assertTrue(testTarg.contains(board.getCell(3, 0)));
+		assertEquals(6, testTarg.size());
+	}
+	
+	@Test
+	public void testTargetsMove4() {
+		// Tests proper movement options for cell 0,0 for a distance of 4
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 4;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(0, 2)));
+		assertTrue(testTarg.contains(board.getCell(1, 1)));
+		assertTrue(testTarg.contains(board.getCell(1, 3)));
+		assertTrue(testTarg.contains(board.getCell(2, 0)));
+		assertTrue(testTarg.contains(board.getCell(2, 2)));
+		assertTrue(testTarg.contains(board.getCell(3, 1)));
+		assertEquals(6, testTarg.size());
+	}
+	
+	@Test
+	public void testTargetsMove5() {
+		// Tests proper movement options for cell 0,0 for a distance of 5
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 5;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(0, 1)));
+		assertTrue(testTarg.contains(board.getCell(0, 3)));
+		assertTrue(testTarg.contains(board.getCell(1, 0)));
+		assertTrue(testTarg.contains(board.getCell(1, 2)));
+		assertTrue(testTarg.contains(board.getCell(2, 1)));
+		assertTrue(testTarg.contains(board.getCell(2, 3)));
+		assertTrue(testTarg.contains(board.getCell(3, 0)));
+		assertTrue(testTarg.contains(board.getCell(3, 2)));
+		assertEquals(8, testTarg.size());
+	}
+	
+	@Test
+	public void testTargetsMove6() {
+		// Tests proper movement options for cell 0,0 for a distance of 6
+		BoardCell start = board.getCell(0, 0);
+		int moveDist = 6;
+		board.calcTargets(start, moveDist);
+		Set<BoardCell> testTarg = board.getTargets();
+		assertTrue(testTarg.contains(board.getCell(0, 2)));
+		assertTrue(testTarg.contains(board.getCell(1, 1)));
+		assertTrue(testTarg.contains(board.getCell(1, 3)));
+		assertTrue(testTarg.contains(board.getCell(2, 0)));
+		assertTrue(testTarg.contains(board.getCell(2, 2)));
+		assertTrue(testTarg.contains(board.getCell(3, 1)));
+		assertTrue(testTarg.contains(board.getCell(3, 3)));
+		assertEquals(7, testTarg.size());
+	}
 
 }

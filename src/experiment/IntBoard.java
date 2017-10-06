@@ -1,3 +1,13 @@
+/*
+ * Class: IntBoard
+ * 
+ * Authors: Nathaniel Fuller, Adam Nelson
+ * 
+ * Purpose: To create a grid of BoardCells, and be able to calculate adjacent cells, as well as potential cells that can be reached by moving
+ * 			N cells away without revisiting cells.
+ * 
+ */
+
 package experiment;
 
 import java.util.HashMap;
