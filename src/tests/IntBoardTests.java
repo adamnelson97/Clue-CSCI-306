@@ -19,7 +19,7 @@ import experiment.IntBoard;
  *
  */
 public class IntBoardTests {
-	
+
 	private IntBoard board;
 
 	@Before
@@ -41,7 +41,11 @@ public class IntBoardTests {
 	@Test
 	public void testBottomRightCorner() {
 		//tests adjacency list for [3][3]
-		fail("Not yet implemented");
+		BoardCell cell = board.getCell(3, 3);
+		Set<BoardCell> testList = board.getAdjList(cell);
+		assertTrue(testList.contains(board.getCell(3, 2)));
+		assertTrue(testList.contains(board.getCell(2, 3)));
+		assertEquals(2, testList.size());
 	}
 
 	@Test
