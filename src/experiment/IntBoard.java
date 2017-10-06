@@ -87,5 +87,9 @@ public class IntBoard {
 	public Set<BoardCell> getAdjList(BoardCell cell) {
 		return adjMtx.get(cell); //Stores the adjacency list for a cell in a new list
 	}
+	
+	public BoardCell getCell(int i, int j) {
+		return grid[i][j]; //returns the BoardCell stored at the specified value
+	}
 
 }
