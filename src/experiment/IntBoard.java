@@ -18,7 +18,7 @@ public class IntBoard {
 		//IntBoard constructor
 		for (int i = 0; i < gridHeight; i++) {
 			for (int j = 0; j < gridWidth; j++) {
-				grid[i][j] = BoardCell(i, j); //Creates new cell and stores it in according grid location
+				grid[i][j] = new BoardCell(i, j); //Creates new cell and stores it in according grid location
 			}
 		}
 	}
