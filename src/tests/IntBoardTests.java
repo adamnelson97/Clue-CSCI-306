@@ -1,3 +1,12 @@
+/*
+ * Class IntBoardTests
+ * 
+ * Authors: Nathaniel Fuller, Adam Nelson
+ * 
+ * Purpose: To test functionality of BoardCell and IntBoard classes and their respective functions.
+ * 
+ */
+
 package tests;
 
 import static org.junit.Assert.*;
