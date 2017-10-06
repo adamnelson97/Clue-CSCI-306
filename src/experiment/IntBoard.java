@@ -1,5 +1,7 @@
 package experiment;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +18,10 @@ public class IntBoard {
 	
 	public IntBoard() {
 		//IntBoard constructor
+		adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
+		visited = new HashSet<BoardCell>();
+		targets = new HashSet<BoardCell>();
+		
 		for (int i = 0; i < gridHeight; i++) {
 			for (int j = 0; j < gridWidth; j++) {
 				grid[i][j] = new BoardCell(i, j); //Creates new cell and stores it in according grid location
