@@ -10,14 +10,6 @@ import org.junit.Test;
 import experiment.BoardCell;
 import experiment.IntBoard;
 
-/**
- * @author AdamN
- *
- */
-/**
- * @author AdamN
- *
- */
 public class IntBoardTests {
 
 	private IntBoard board;
