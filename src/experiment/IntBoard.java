@@ -10,8 +10,17 @@ public class IntBoard {
 	private Set<BoardCell> targets;
 	private BoardCell[][] grid;
 
+	//Static Variables for Board size
+	static final int gridHeight = 4;
+	static final int gridWidth = 4;
+	
 	public IntBoard() {
 		//IntBoard constructor
+		for (int i = 0; i < gridHeight; i++) {
+			for (int j = 0; j < gridWidth; j++) {
+				grid[i][j] = BoardCell(i, j); //Creates new cell and stores it in according grid location
+			}
+		}
 	}
 	
 	//Methods
