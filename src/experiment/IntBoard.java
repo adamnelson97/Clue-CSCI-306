@@ -1,5 +1,6 @@
 package experiment;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,8 +12,8 @@ public class IntBoard {
 	private BoardCell[][] grid;
 
 	//Static Variables for Board size
-	static final int gridHeight = 4;
-	static final int gridWidth = 4;
+	static final int GRID_HEIGHT = 4;
+	static final int GRID_WIDTH = 4;
 	
 	public IntBoard() {
 		//IntBoard constructor
@@ -25,7 +26,28 @@ public class IntBoard {
 	
 	//Methods
 	public void calcAdjacencies() {
-		//Stores adjacency matrix in adjMtx
+		BoardCell currCell;
+		Set<BoardCell> adjSet;
+		for(int i = 0; i < GRID_WIDTH; i++) { // Iterate through all cells in grid[][]
+			for(int j = 0; j < GRID_HEIGHT; j++) {
+				currCell = grid[i][j];
+				adjSet = new HashSet<BoardCell>();
+				// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
+				if(i > 0) { 
+					adjSet.add(grid[i-1][j]);
+				}
+				if(i < GRID_WIDTH - 1) {
+					adjSet.add(grid[i+1][j]);
+				}
+				if(j > 0) {
+					adjSet.add(grid[i][j-1]);
+				}
+				if(j < GRID_HEIGHT - 1) {
+					adjSet.add(grid[i][j+1]);
+				}
+				adjMtx.put(currCell, adjSet);
+			}
+		}
 	}
 	
 	public void calcTargets(BoardCell startCell, int pathLength) {
