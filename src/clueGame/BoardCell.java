@@ -21,6 +21,12 @@ public class BoardCell {
 		row = 0;
 		column = 0;
 	}
+	public BoardCell(int x, int y) {
+		row = x;
+		column = 0;
+		initial = ' ';
+		door = DoorDirection.NONE;
+	}
 	public BoardCell(int x, int y, char i) { // If the csv has one character for the cell
 		row = x;
 		column = y;
