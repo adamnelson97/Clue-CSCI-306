@@ -70,7 +70,7 @@ public class Board {
 			
 			letter = temp.charAt(0); //Stores the first character as the room symbol, ex: A
 			secComma = temp.indexOf(',', 1); //Char at index should be a comma, so the next one follows the name of the room
-			name = temp.substring(3, secComma - 1);
+			name = temp.substring(3, secComma);
 			legend.put(letter, name); //Adds room to the legend
 		}
 	}
