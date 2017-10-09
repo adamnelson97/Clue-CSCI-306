@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.BoardCell;
 
 public class ClueBoardTests {
 
@@ -44,6 +45,19 @@ public class ClueBoardTests {
 		assertEquals(NUM_COLUMNS, board.getNumColumns());
 	}
 	
+	@Test //ensure there is the correct number of doors according to the layout using a hardcoded value
+	public void testNumDoors() {
+		int numDoors = 0;
+		BoardCell cell;
+		
+		for (int i = 0; i < board.getNumRows(); i++) {
+			for (int j = 0; j < board.getNumColumns(); j++) {
+				cell = board.getCellAt(i, j);
+				if (cell.isDoorway()) numDoors++;
+			}
+		}
+		assertEquals(17, numDoors); //Tests that the number of doors is correct after each cell has been checked
+	}
 	
 
 } //End of Class
