@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Map;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,6 +25,23 @@ public class ClueBoardTests {
 		board.setConfigFiles("ClueGameLayout.csv", "ClueGameLegend.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
+	}
+	
+	@Test //Test that the rooms were properly loaded according to the legend
+	public void testRooms() {
+		Map<Character, String> legend = board.getLegend();
+		assertEquals(LEGEND_SIZE, legend.size());
+		assertEquals("Art Room", legend.get('A'));
+		assertEquals("Kitchen", legend.get('K'));
+		assertEquals("Master Bedroom", legend.get('M'));
+		assertEquals("Closet", legend.get('X'));
+		assertEquals("Walkway", legend.get('W'));
+	}
+	
+	@Test //Test that the correct dimensions were loaded
+	public void testBoardDim() {
+		assertEquals(NUM_ROWS, board.getNumRows());
+		assertEquals(NUM_COLUMNS, board.getNumColumns());
 	}
 	
 	
