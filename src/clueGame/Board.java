@@ -9,6 +9,8 @@
 
 package clueGame;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 public class Board {
@@ -23,6 +25,7 @@ public class Board {
 	private Set<BoardCell> visited;
 	private String boardConfigFile;
 	private String roomConfigFile;
+	
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
 
@@ -38,15 +41,41 @@ public class Board {
 	}
 	
 	// -- Methods --
-	public void initialize() {
-		// TODO: Implement Initialize to perform necessary one-time operations on creation.
+	public void initialize() throws BadConfigFormatException {
+		// TODO: figure out how to input the file names
+		//setConfigFiles(boardCfg, roomCfg);
+		loadRoomConfig();
+		loadBoardConfig();
 	}
 	
-	public void loadRoomConfig() {
+	public void loadRoomConfig() throws BadConfigFormatException {
 		// TODO: Implement loadRoomConfig to read data from roomConfigFile.
+		FileReader roomCfg = null;
+		
+		try {
+			roomCfg = new FileReader(roomConfigFile);
+		} catch (FileNotFoundException e) {System.out.println("File not found."); }
+		
+		Scanner in = new Scanner(roomCfg);
+		char letter; //Ex: 'A'
+		String name; //Ex: 'Art Room'
+		String temp; //Entire line that will be manipulated, ex: A, Art Room, Card
+		int secComma; //Index location of second comma, i.e. follows the name of the room
+		
+		while (in.hasNextLine()) {
+			temp = in.nextLine(); //Takes in entire line, ex: A, Art Room, Card
+			if (!temp.endsWith("Card") && !temp.endsWith("Other")) {
+				throw new BadConfigFormatException("Room is not type Card or Other");
+			}
+			
+			letter = temp.charAt(0); //Stores the first character as the room symbol, ex: A
+			secComma = temp.indexOf(',', 1); //Char at index should be a comma, so the next one follows the name of the room
+			name = temp.substring(3, secComma - 1);
+			legend.put(letter, name); //Adds room to the legend
+		}
 	}
 	
-	public void loadBoardConfig() {
+	public void loadBoardConfig() throws BadConfigFormatException {
 		// TODO: Implement loadBoardConfig to read data from boardConfigFile.
 	}
 	
