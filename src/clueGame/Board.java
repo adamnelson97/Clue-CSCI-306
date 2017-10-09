@@ -41,10 +41,12 @@ public class Board {
 	}
 	
 	// -- Methods --
-	public void initialize() throws BadConfigFormatException {
+	public void initialize() {
 		// TODO: figure out how to input the file names
 		//setConfigFiles(boardCfg, roomCfg);
-		loadRoomConfig();
+		try {
+			loadRoomConfig();
+		} catch (BadConfigFormatException e) {}
 		loadBoardConfig();
 	}
 	
@@ -75,7 +77,7 @@ public class Board {
 		}
 	}
 	
-	public void loadBoardConfig() throws BadConfigFormatException {
+	public void loadBoardConfig() {
 		// TODO: Implement loadBoardConfig to read data from boardConfigFile.
 	}
 	
