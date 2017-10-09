@@ -14,6 +14,10 @@ public class BadConfigFormatException extends Exception {
 	
 	// -- Constructors --
 	public BadConfigFormatException() {
-		// TODO: Implement constructors for BadConfigFormatException
+		super("Error: Bad Configuration Files");
+	}
+	
+	public BadConfigFormatException(String s) {
+		
 	}
 }
