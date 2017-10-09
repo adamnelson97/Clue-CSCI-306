@@ -3,11 +3,8 @@ Kitchen has a door facing DOWN
 Ballroom has a door facing LEFT
 Master Bedroom has a door facing UP
 Library has a door facing RIGHT
-Then, we picked cells from the other five rooms:
-Conservatory has cells with no doors
+Then, we picked cells other rooms:
 Art Room has cells with no doors
-Trophy room has cells with no doors
-Theatre has cells with no doors
 Servant Quarters has cells with no doors
 
 Then we tested a cell from each room to check for the right initial.
