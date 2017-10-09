@@ -9,7 +9,7 @@
 
 package clueGame;
 
-class BoardCell {
+public class BoardCell {
 	// -- Variables --
 	private int row;
 	private int column;
@@ -37,5 +37,17 @@ class BoardCell {
 	public boolean isDoorway() {
 		// TODO: Implement isDoorway to return whether the BoardCell is a doorway.
 		return false;
+	}
+	
+	public DoorDirection getDoorDirection() {
+		// TODO: Implement getDoorDirection to return the direction of the door, or none if there is no door.
+		return null;
+	}
+	
+	// -- Getters & Setters
+	
+	public char getInitial() {
+		// TODO: Implement getInitial to return initial;
+		return '`';
 	}
 }

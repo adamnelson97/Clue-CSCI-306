@@ -9,7 +9,7 @@
 
 package clueGame;
 
-class BadConfigFormatException extends Exception {
+public class BadConfigFormatException extends Exception {
 	// -- Variables --
 	
 	// -- Constructors --

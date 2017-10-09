@@ -11,7 +11,7 @@ package clueGame;
 
 import java.util.*;
 
-class Board {
+public class Board {
 	// -- Variables --
 	private int numRows;
 	private int numColumns;
@@ -56,5 +56,29 @@ class Board {
 	// This method returns the only Board.
 	public static Board getInstance() {
 		return theInstance;
+	}
+	
+	public Map<Character, String> getLegend() {
+		// TODO: Implement getLegend to return legend.
+		return null;
+	}
+	
+	public int getNumRows() {
+		// TODO: Implement getNumRows to return the number of rows;
+		return -1;
+	}
+	
+	public int getNumColumns() {
+		// TODO: Implement getNumColumns to return the number of columns;
+		return -1;
+	}
+	
+	public BoardCell getCellAt(int x, int y) {
+		// TODO: Implement getCellAt to return the BoardCell at position (x,y).
+		return null;
+	}
+	
+	public static void setConfigFiles(String boardCfg, String roomCfg) {
+		// TODO: Implement setConfigFiles to update configs accordingly.
 	}
 }

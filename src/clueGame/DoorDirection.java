@@ -9,7 +9,7 @@
 
 package clueGame;
 
-enum DoorDirection {
+public enum DoorDirection {
 	UP, DOWN, LEFT, RIGHT, NONE;
 	
 	// TODO: Implement additional functionality to DoorDirection as needed.
