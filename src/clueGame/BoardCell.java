@@ -14,40 +14,79 @@ public class BoardCell {
 	private int row;
 	private int column;
 	private char initial;
+	private DoorDirection door;
 	
 	// -- Constructors --
 	public BoardCell() {
-		// TODO: Implement constructor for BoardCell
+		row = 0;
+		column = 0;
 	}
-	public BoardCell(int r, int c, char i) {
-		// TODO: Implement constructor for BoardCell
+	public BoardCell(int x, int y, char i) { // If the csv has one character for the cell
+		row = x;
+		column = y;
+		initial = i;
+		door = DoorDirection.NONE;
+	}
+	public BoardCell(int x, int y, char i, char d) { // If the csv has two characters for the cell
+		row = x;
+		column = y;
+		initial = i;
+		switch(d) {
+		case 'U':
+			door = DoorDirection.UP;
+			break;
+		case 'D':
+			door = DoorDirection.DOWN;
+			break;
+		case 'L':
+			door = DoorDirection.LEFT;
+			break;
+		case 'R':
+			door = DoorDirection.RIGHT;
+			break;
+		default:
+			door = DoorDirection.NONE;
+			break;
+		}
 	}
 	
 	// -- Methods --
 	public boolean isWalkway() {
-		// TODO: Implement isWalkway to return whether the BoardCell is a walkway.
+		if(initial == 'W') {
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean isRoom() {
-		// TODO: Implement isRoom to return whether the BoardCell is a room.
+		if(initial != 'W' && initial != 'X') {
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean isDoorway() {
-		// TODO: Implement isDoorway to return whether the BoardCell is a doorway.
-		return false;
+		if(door == DoorDirection.NONE) {
+			return false;
+		}
+		return true;
 	}
 	
 	public DoorDirection getDoorDirection() {
-		// TODO: Implement getDoorDirection to return the direction of the door, or none if there is no door.
-		return null;
+		return door;
 	}
 	
 	// -- Getters & Setters
 	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getColumn() {
+		return column;
+	}
+	
 	public char getInitial() {
-		// TODO: Implement getInitial to return initial;
-		return '`';
+		return initial;
 	}
 }
