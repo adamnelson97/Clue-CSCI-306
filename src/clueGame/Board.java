@@ -124,7 +124,9 @@ public class Board {
 
 		board = new BoardCell[numRows][numColumns];
 		
-		//TODO At this point the grid is consistent, now create the boardcells
+		//TODO At this point the grid is consistent, now go through
+		//The config file again (with a new scanner object)
+		// and create the boardcells
 	}
 
 	public void calcAdjacencies() {
