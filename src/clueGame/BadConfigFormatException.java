@@ -9,7 +9,7 @@
 
 package clueGame;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class BadConfigFormatException extends Exception {
@@ -20,10 +20,13 @@ public class BadConfigFormatException extends Exception {
 		super("Error: Bad Configuration Files");
 	}
 
-	public BadConfigFormatException(String s) throws IOException {
+	public BadConfigFormatException(String s) {
 		super(s);
-		PrintWriter writer = new PrintWriter("BadConfigErrorLog.txt");
-		writer.println(s);
-		writer.close();
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("BadConfigErrorLog.txt");
+			writer.println(s);
+			writer.close();
+		} catch (FileNotFoundException e) {}	
 	}
 }
