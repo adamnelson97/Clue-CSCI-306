@@ -145,18 +145,23 @@ public class Board {
 					tileData = lines.get(i).substring(currStrPos); // If there are no more commas, get the rest of the string.
 				}
 				// Depending on how many characters are there, call the appropriate constructor, or throw the exception.
-				if(tileData.length() == 1) {
-					board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0));
-					currIndex++;
-				}
-				else if(tileData.length() == 2) {
-					board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0), tileData.charAt(1));
-					currIndex++;
+				if(legend.containsKey(tileData.charAt(0))) {
+					if(tileData.length() == 1) {
+						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0));
+						currIndex++;
+					}
+					else if(tileData.length() == 2) {
+						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0), tileData.charAt(1));
+						currIndex++;
+					}
+					else {
+						throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + "," + Integer.toString(currIndex) + " has too many defining characters.");
+					}
+					currStrPos = nextComma + 1; // Increment the current position in the string.
 				}
 				else {
-					throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + "," + Integer.toString(currIndex) + " has too many defining characters.");
+					throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + ","  + Integer.toString(currIndex) + " has an invalid character.");
 				}
-				currStrPos = nextComma + 1; // Increment the current position in the string.
 			}
 		}
 	}
