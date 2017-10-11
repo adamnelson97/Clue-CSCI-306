@@ -136,7 +136,7 @@ public class Board {
 			currStrPos = 0;
 			currIndex = 0;
 			// As long as there are unprocessed characters in the string
-			while(currStrPos != lines.get(i).length() - 1) {
+			while(currIndex < board[i].length) {
 				nextComma = lines.get(i).indexOf(',', currStrPos);
 				if(nextComma != -1) {
 					tileData = lines.get(i).substring(currStrPos, nextComma); // Get the character(s) between commas
