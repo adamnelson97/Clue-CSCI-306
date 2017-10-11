@@ -23,8 +23,8 @@ public class Board {
 	private Map<BoardCell, Set<BoardCell>> adjMatrix;
 	private Set<BoardCell> targets;
 	private Set<BoardCell> visited;
-	private String boardConfigFile;
-	private String roomConfigFile;
+	private String boardConfigFile = "ClueGameLayout.csv";
+	private String roomConfigFile = "ClueGameLegend.txt";
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
@@ -42,8 +42,6 @@ public class Board {
 
 	// -- Methods --
 	public void initialize() {
-		// TODO: figure out how to input the file names
-		//setConfigFiles(boardCfg, roomCfg);
 		try {
 			loadRoomConfig();
 		} catch (BadConfigFormatException e) {}
@@ -53,7 +51,6 @@ public class Board {
 	}
 
 	public void loadRoomConfig() throws BadConfigFormatException {
-		// TODO: Implement loadRoomConfig to read data from roomConfigFile.
 		FileReader roomCfg = null;
 
 		try {
@@ -73,14 +70,14 @@ public class Board {
 			}
 
 			letter = temp.charAt(0); //Stores the first character as the room symbol, ex: A
-			secComma = temp.indexOf(',', 1); //Char at index should be a comma, so the next one follows the name of the room
+			secComma = temp.indexOf(',', 2); //Char at index should be a comma, so the next one follows the name of the room
 			name = temp.substring(3, secComma);
 			legend.put(letter, name); //Adds room to the legend
 		}
+		in.close();
 	}
 
 	public void loadBoardConfig() throws BadConfigFormatException {
-		// TODO: Implement loadBoardConfig to read data from boardConfigFile.
 		FileReader boardCfg = null;
 
 		try {
@@ -90,43 +87,78 @@ public class Board {
 		//First, get dimensions of csv file so the board array can be initialized
 		Scanner in = new Scanner(boardCfg);
 		int expectedCommas = 0;
-
-		//Get the num of columns in the first row. All other rows need to have this many columns
+		
+		ArrayList<String> lines = new ArrayList<String>(); // Create a data structure to store the lines from boardCfg
 		String currLine = in.nextLine();
+		// Read all lines from the file and add them to lines.
+		lines.add(currLine);
+		while(in.hasNextLine()) {
+			currLine = in.nextLine();
+			lines.add(currLine);
+		}
+
+		in.close();
+		
+		//Get the num of columns in the first row. All other rows need to have this many columns
 		int numCommas = 0;
-		for (int i = 0; i < currLine.length(); i++) {
+		for (int i = 0; i < lines.get(0).length(); i++) {
 			if (currLine.charAt(i) == ',') {
 				numCommas++; //Increments for each instance of a comma
 			}
 		}
 		expectedCommas = numCommas; //One less comma than total columns
-		numRows++; //Since a line has been read, this is the first row
 		
 		//Test all other rows to ensure they are the same size
-		while (in.hasNextLine()) {
-			currLine = in.nextLine();
+		for(int i = 0; i < lines.size(); i++) {
 			numCommas = 0;
-			for (int i = 0; i < currLine.length(); i++) {
-				if (currLine.charAt(i) == ',') {
+			for (int j = 0; j < lines.get(i).length(); j++) {
+				if (lines.get(i).charAt(j) == ',') {
 					numCommas++; //Increments for each instance of a comma
 				}
 			}
 			if (numCommas != expectedCommas) {
 				throw new BadConfigFormatException("Number of rows and columns is not consistent.");
 			}
-			else {
-				numRows++;
-			}
 		}
 		
 		//If this point is reached, the rows all have the same number of columns
 		numColumns = expectedCommas + 1; //There is one less comma then total columns
-
+		numRows = lines.size();
+		
 		board = new BoardCell[numRows][numColumns];
 		
-		//TODO At this point the grid is consistent, now go through
-		//The config file again (with a new scanner object)
-		// and create the boardcells
+		int currStrPos;
+		int currIndex;
+		int nextComma;
+		String tileData;
+		// Iterate through all read lines
+		for(int i = 0; i < lines.size(); i++) {
+			currStrPos = 0;
+			currIndex = 0;
+			// As long as there are unprocessed characters in the string
+			while(currStrPos != lines.get(i).length() - 1) {
+				nextComma = lines.get(i).indexOf(',', currStrPos);
+				if(nextComma != -1) {
+					tileData = lines.get(i).substring(currStrPos, nextComma); // Get the character(s) between commas
+				}
+				else {
+					tileData = lines.get(i).substring(currStrPos); // If there are no more commas, get the rest of the string.
+				}
+				// Depending on how many characters are there, call the appropriate constructor, or throw the exception.
+				if(tileData.length() == 1) {
+					board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0));
+					currIndex++;
+				}
+				else if(tileData.length() == 2) {
+					board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0), tileData.charAt(1));
+					currIndex++;
+				}
+				else {
+					throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + "," + Integer.toString(currIndex) + " has too many defining characters.");
+				}
+				currStrPos = nextComma + 1; // Increment the current position in the string.
+			}
+		}
 	}
 
 	public void calcAdjacencies() {
