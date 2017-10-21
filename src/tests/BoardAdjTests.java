@@ -2,9 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Set;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import clueGame.Board;
+import clueGame.BoardCell;
 
 public class BoardAdjTests {
 
@@ -29,7 +32,26 @@ public class BoardAdjTests {
 
 	@Test
 	public void testTargetsOneStep() {
+		board.calcTargets(10, 5, 1);
+		Set<BoardCell> targets = board.getTargets();
+		assertEquals(3, targets.size());
+		assertTrue(targets.contains(board.getCellAt(9, 5)));
+		assertTrue(targets.contains(board.getCellAt(11, 5)));
+		assertTrue(targets.contains(board.getCellAt(10, 6)));
 		
+		board.calcTargets(18, 19, 1);
+		targets = board.getTargets();
+		assertEquals(3, targets.size());
+		assertTrue(targets.contains(board.getCellAt(17, 19)));
+		assertTrue(targets.contains(board.getCellAt(19, 19)));
+		assertTrue(targets.contains(board.getCellAt(18, 18)));
+		
+		board.calcTargets(24, 5, 1);
+		targets = board.getTargets();
+		assertEquals(3, targets.size());
+		assertTrue(targets.contains(board.getCellAt(24, 4)));
+		assertTrue(targets.contains(board.getCellAt(24, 6)));
+		assertTrue(targets.contains(board.getCellAt(23, 5)));
 	}
 	
 	@Test
