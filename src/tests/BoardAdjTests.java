@@ -15,4 +15,38 @@ public class BoardAdjTests {
 	
 	//TODO: Implement tests for 
 
+	@Test
+	public void testTargetsOneStep() {
+		
+	}
+	
+	@Test
+	public void testTargetsThreeStep() {
+		
+	}
+	
+	@Test
+	public void testTargetsFiveStep() {
+		
+	}
+	
+	@Test
+	public void testTargetsSixStep() {
+		
+	}
+	
+	@Test
+	public void testTargetsIntoRoom() {
+		
+	}
+	
+	@Test
+	public void testTargetsIntoRoomShortcut() {
+		
+	}
+	
+	@Test
+	public void testRoomExit() {
+		
+	}
 }
