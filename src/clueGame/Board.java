@@ -213,6 +213,10 @@ public class Board {
 			}
 		}
 	}
+	
+	public void calcTargets(int cellX, int cellY, int pathLength) {
+		// TODO: Implement overloaded function
+	}
 
 	// -- Getters and Setters --
 
@@ -239,6 +243,10 @@ public class Board {
 
 	public Set<BoardCell> getAdjList(BoardCell cell) {
 		return adjMatrix.get(cell); //Stores the adjacency list for a cell in a new list
+	}
+	public Set<BoardCell> getAdjList(int cellX, int cellY) {
+		// TODO: Implement getAdjList with new parameters
+		return null;
 	}
 
 	public BoardCell getCellAt(int i, int j) {
