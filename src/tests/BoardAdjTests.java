@@ -274,7 +274,51 @@ public class BoardAdjTests {
 
 	@Test
 	public void testTargetsSixStep() {
+		board.calcTargets(10, 5, 6);
+		Set<BoardCell> targets = board.getTargets();
+		assertEquals(17, targets.size());
+		assertTrue(targets.contains(board.getCellAt(4, 5)));
+		assertTrue(targets.contains(board.getCellAt(5, 4)));
+		assertTrue(targets.contains(board.getCellAt(5, 6)));
+		assertTrue(targets.contains(board.getCellAt(6, 3)));
+		assertTrue(targets.contains(board.getCellAt(6, 5)));
+		assertTrue(targets.contains(board.getCellAt(6, 7)));
+		assertTrue(targets.contains(board.getCellAt(7, 6)));
+		assertTrue(targets.contains(board.getCellAt(8, 5)));
+		assertTrue(targets.contains(board.getCellAt(9, 6)));
+		assertTrue(targets.contains(board.getCellAt(11, 6)));
+		assertTrue(targets.contains(board.getCellAt(12, 5)));
+		assertTrue(targets.contains(board.getCellAt(13, 6)));
+		assertTrue(targets.contains(board.getCellAt(14, 3)));
+		assertTrue(targets.contains(board.getCellAt(14, 5)));
+		assertTrue(targets.contains(board.getCellAt(15, 4)));
+		assertTrue(targets.contains(board.getCellAt(15, 6)));
+		assertTrue(targets.contains(board.getCellAt(16, 5)));
 
+
+		board.calcTargets(18, 19, 6);
+		targets = board.getTargets();
+		assertEquals(9, targets.size());
+		assertTrue(targets.contains(board.getCellAt(17, 14)));
+		assertTrue(targets.contains(board.getCellAt(17, 16)));
+		assertTrue(targets.contains(board.getCellAt(17, 18)));
+		assertTrue(targets.contains(board.getCellAt(18, 13)));
+		assertTrue(targets.contains(board.getCellAt(18, 15)));
+		assertTrue(targets.contains(board.getCellAt(18, 17)));
+		assertTrue(targets.contains(board.getCellAt(19, 14)));
+		assertTrue(targets.contains(board.getCellAt(19, 16)));
+		assertTrue(targets.contains(board.getCellAt(19, 18)));
+
+		board.calcTargets(24, 5, 6);
+		targets = board.getTargets();
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCellAt(23, 4)));
+		assertTrue(targets.contains(board.getCellAt(22, 5)));
+		assertTrue(targets.contains(board.getCellAt(21, 4)));
+		assertTrue(targets.contains(board.getCellAt(20, 5)));
+		assertTrue(targets.contains(board.getCellAt(19, 4)));
+		assertTrue(targets.contains(board.getCellAt(19, 6)));
+		assertTrue(targets.contains(board.getCellAt(18, 5)));
 	}
 
 	// TODO: Implement tests for entering a room
