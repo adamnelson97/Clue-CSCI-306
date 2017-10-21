@@ -1,3 +1,8 @@
+/*
+ * 
+ * Authors: Nathaniel Fuller and Adam Nelson
+ * 
+ */
 package tests;
 
 import static org.junit.Assert.*;
