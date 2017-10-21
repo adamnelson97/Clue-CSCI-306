@@ -28,8 +28,37 @@ public class BoardAdjTests {
 		
 	}
 	
-	//TODO: Implement tests for 
+	// TODO: Implement tests for locations within rooms
+	@Test
+	public void testInsideRoom() {
+		
+	}
+	
+	// TODO: Implement tests for edges
+	@Test
+	public void testBoardEdges() {
+		
+	}
+	
+	// TODO: Implement tests for locations next to rooms
+	@Test
+	public void testRoomEdges() {
+		
+	}
+	
+	// TODO: Implement tests for locations next to doorways
+	@Test
+	public void testDoorwayEntry() {
+		
+	}
+	
+	// TODO: Implement tests for doorways
+	@Test
+	public void testDoorwayExit() {
+		
+	}
 
+	// TODO: Implement tests for movement (1,3,5,6 spaces)
 	@Test
 	public void testTargetsOneStep() {
 		board.calcTargets(10, 5, 1);
@@ -69,6 +98,7 @@ public class BoardAdjTests {
 		
 	}
 	
+	// TODO: Implement tests for entering a room
 	@Test
 	public void testTargetsIntoRoom() {
 		
@@ -79,6 +109,7 @@ public class BoardAdjTests {
 		
 	}
 	
+	// TODO: Implement tests for leaving a room
 	@Test
 	public void testRoomExit() {
 		
