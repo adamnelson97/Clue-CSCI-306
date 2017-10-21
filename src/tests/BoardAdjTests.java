@@ -371,9 +371,48 @@ public class BoardAdjTests {
 		assertTrue(targets.contains(board.getCellAt(20, 17)));
 	}
 
-	// TODO: Implement tests for leaving a room
+	// Tests for leaving a room
 	@Test
 	public void testRoomExit() {
 
+		board.calcTargets(3, 14, 2); // Test exit from Ballroom 'LEFT' door
+
+		Set<BoardCell> targets = board.getTargets();
+		
+		assertEquals(targets.size(), 3);
+
+		assertTrue(targets.contains(board.getCellAt(2, 13)));
+		assertTrue(targets.contains(board.getCellAt(3, 12)));
+		assertTrue(targets.contains(board.getCellAt(4, 13)));
+		
+		board.calcTargets(16, 1, 3); // Test exit from Library 'UP' door
+		
+		targets = board.getTargets();
+		
+		assertEquals(targets.size(), 3);
+
+		assertTrue(targets.contains(board.getCellAt(14, 0)));
+		assertTrue(targets.contains(board.getCellAt(14, 2)));
+		assertTrue(targets.contains(board.getCellAt(15, 3)));
+		
+		board.calcTargets(16, 16, 2); // Test exit from Trophy Room 'DOWN' door
+		
+		targets = board.getTargets();
+		
+		assertEquals(targets.size(), 3);
+
+		assertTrue(targets.contains(board.getCellAt(17, 15)));
+		assertTrue(targets.contains(board.getCellAt(17, 17)));
+		assertTrue(targets.contains(board.getCellAt(18, 16)));
+		
+		board.calcTargets(23, 3, 3); // Test exit from Library 'RIGHT' door
+		
+		targets = board.getTargets();
+
+		assertEquals(targets.size(), 3);
+
+		assertTrue(targets.contains(board.getCellAt(21, 4)));
+		assertTrue(targets.contains(board.getCellAt(22, 5)));
+		assertTrue(targets.contains(board.getCellAt(24, 5)));
 	}
 }
