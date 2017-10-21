@@ -55,6 +55,7 @@ public class BoardAdjTests {
 		
 	}
 
+	// TODO: Implement tests for movement (1,3,5,6 spaces)
 	@Test
 	public void testTargetsOneStep() {
 		
@@ -75,6 +76,7 @@ public class BoardAdjTests {
 		
 	}
 	
+	// TODO: Implement tests for entering a room
 	@Test
 	public void testTargetsIntoRoom() {
 		
@@ -85,6 +87,7 @@ public class BoardAdjTests {
 		
 	}
 	
+	// TODO: Implement tests for leaving a room
 	@Test
 	public void testRoomExit() {
 		
