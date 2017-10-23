@@ -65,7 +65,7 @@ public class BoardAdjTests {
 		assertEquals(adj.size(), 2);
 
 		assertTrue(adj.contains(board.getCellAt(0, 5)));
-		assertTrue(adj.contains(board.getCellAt(1, 5)));
+		assertTrue(adj.contains(board.getCellAt(1, 6)));
 
 		adj = board.getAdjList(14, 0); // Test left edge
 
@@ -94,7 +94,7 @@ public class BoardAdjTests {
 	@Test
 	public void testRoomEdges() {
 		adj = board.getAdjList(13, 5); // Test location adjacent to Servant's Quarters
-
+		
 		assertEquals(adj.size(), 3);
 
 		assertTrue(adj.contains(board.getCellAt(12, 5)));

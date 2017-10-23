@@ -175,24 +175,36 @@ public class Board {
 				currCell = board[i][j];
 				adjSet = new HashSet<BoardCell>();
 				// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
-				if(i > 0) { 
-					adjSet.add(board[i-1][j]);
+				// Additionally, check if the cell is valid, i.e. not a Room, or a properly facing doorway
+				if(i > 0) {
+					if(!board[i-1][j].isRoom() || board[i-1][j].getDoorDirection() == DoorDirection.UP) {
+						adjSet.add(board[i-1][j]);
+					}
 				}
 				if(i < numRows - 1) {
-					adjSet.add(board[i+1][j]);
+					if(!board[i+1][j].isRoom() || board[i+1][j].getDoorDirection() == DoorDirection.DOWN) {
+						adjSet.add(board[i+1][j]);
+					}
 				}
 				if(j > 0) {
-					adjSet.add(board[i][j-1]);
+					if(!board[i][j-1].isRoom() || board[i][j-1].getDoorDirection() == DoorDirection.LEFT) {
+						adjSet.add(board[i][j-1]);
+					}
 				}
 				if(j < numColumns - 1) {
-					adjSet.add(board[i][j+1]);
+					if(!board[i][j+1].isRoom() || board[i][j+1].getDoorDirection() == DoorDirection.RIGHT) {
+						adjSet.add(board[i][j+1]);
+					}
 				}
+				
 				adjMatrix.put(currCell, adjSet);
 			}
 		}
 	}
-
-	public void calcTargets(BoardCell cell, int pathLength) {
+	
+	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
+	
+	/*public void calcTargets(BoardCell cell, int pathLength) {
 		//Stores possible target cells in targets
 		Set<BoardCell> adj = getAdjList(cell);
 		visited.add(cell);
@@ -212,10 +224,28 @@ public class Board {
 				}
 			}
 		}
-	}
+	}*/
 	
 	public void calcTargets(int cellX, int cellY, int pathLength) {
-		// TODO: Implement overloaded function
+		BoardCell cell = board[cellX][cellY];
+		Set<BoardCell> adj = getAdjList(cellX, cellY);
+		visited.add(cell);
+		// Iterate through all adjacent cells
+		for(BoardCell c : adj) {
+			// If the cell hasn't been visited
+			if(!visited.contains(c)) {
+				// If the path is length 1, add the cell to targets.
+				if(pathLength == 1) {
+					targets.add(c);
+				}
+				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
+				// Then, after that has completed, remove the cell from visited.
+				else {
+					calcTargets(c.getRow(), c.getColumn(), (pathLength-1));
+					visited.remove(c);
+				}
+			}
+		}
 	}
 
 	// -- Getters and Setters --
@@ -240,10 +270,12 @@ public class Board {
 	public Set<BoardCell> getTargets() {
 		return targets; //Getter for targets so the set doesn't have to be created for every get
 	}
-
-	public Set<BoardCell> getAdjList(BoardCell cell) {
+	
+	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
+	
+	/*public Set<BoardCell> getAdjList(BoardCell cell) {
 		return adjMatrix.get(cell); //Stores the adjacency list for a cell in a new list
-	}
+	}*/
 	public Set<BoardCell> getAdjList(int cellX, int cellY) {
 		return adjMatrix.get(board[cellX][cellY]);
 	}
