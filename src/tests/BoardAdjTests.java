@@ -72,7 +72,7 @@ public class BoardAdjTests {
 		assertEquals(adj.size(), 2);
 
 		assertTrue(adj.contains(board.getCellAt(15, 0)));
-		assertTrue(adj.contains(board.getCellAt(1, 14)));
+		assertTrue(adj.contains(board.getCellAt(14, 1)));
 
 		adj = board.getAdjList(8, 19); // Test right edge
 
