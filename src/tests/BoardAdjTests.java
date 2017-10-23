@@ -26,6 +26,7 @@ public class BoardAdjTests {
 		// set the file names to use my config files
 		board.setConfigFiles("ClueGameLayout.csv", "ClueGameLegend.txt");		
 		board.initialize();
+		board.calcAdjacencies();
 	}
 
 	// Tests for only walkways adjacent

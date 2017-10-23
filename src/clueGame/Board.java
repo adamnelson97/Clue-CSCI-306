@@ -245,8 +245,7 @@ public class Board {
 		return adjMatrix.get(cell); //Stores the adjacency list for a cell in a new list
 	}
 	public Set<BoardCell> getAdjList(int cellX, int cellY) {
-		// TODO: Implement getAdjList with new parameters
-		return null;
+		return adjMatrix.get(board[cellX][cellY]);
 	}
 
 	public BoardCell getCellAt(int i, int j) {
