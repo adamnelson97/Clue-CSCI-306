@@ -385,6 +385,8 @@ public class BoardAdjTests {
 
 		Set<BoardCell> targets = board.getTargets();
 		
+		
+		
 		assertEquals(targets.size(), 3);
 
 		assertTrue(targets.contains(board.getCellAt(2, 13)));
@@ -414,10 +416,11 @@ public class BoardAdjTests {
 		board.calcTargets(23, 3, 3); // Test exit from Library 'RIGHT' door
 		
 		targets = board.getTargets();
-
-		assertEquals(targets.size(), 3);
+		
+		assertEquals(targets.size(), 4);
 
 		assertTrue(targets.contains(board.getCellAt(21, 4)));
+		assertTrue(targets.contains(board.getCellAt(22, 3)));
 		assertTrue(targets.contains(board.getCellAt(22, 5)));
 		assertTrue(targets.contains(board.getCellAt(24, 5)));
 	}

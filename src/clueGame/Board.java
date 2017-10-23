@@ -231,6 +231,11 @@ public class Board {
 	}*/
 	
 	public void calcTargets(int cellX, int cellY, int pathLength) {
+		// If the function is being called for the first time (Since we clear visited after every completed recursion)
+		// Clear targets.
+		if(visited.isEmpty()) {
+			targets.clear();
+		}
 		BoardCell cell = board[cellX][cellY];
 		Set<BoardCell> adj = getAdjList(cellX, cellY);
 		visited.add(cell);
@@ -249,6 +254,10 @@ public class Board {
 					visited.remove(c);
 				}
 			}
+		}
+		// If we have completed the recursion and are closing, remove the starting cell from visited
+		if(visited.size() == 1 && visited.contains(cell)) {
+			visited.clear();
 		}
 	}
 
