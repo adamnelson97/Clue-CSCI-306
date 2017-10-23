@@ -180,22 +180,22 @@ public class Board {
 					// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
 					// Additionally, check if the cell is valid, i.e. not a Room, or a properly facing doorway
 					if(i > 0) {
-						if(board[i-1][j].isWalkway() || board[i-1][j].getDoorDirection() == DoorDirection.UP) {
+						if(board[i-1][j].isWalkway() || board[i-1][j].getDoorDirection() == DoorDirection.DOWN) {
 							adjSet.add(board[i-1][j]);
 						}
 					}
 					if(i < numRows - 1) {
-						if(board[i+1][j].isWalkway() || board[i+1][j].getDoorDirection() == DoorDirection.DOWN) {
+						if(board[i+1][j].isWalkway() || board[i+1][j].getDoorDirection() == DoorDirection.UP) {
 							adjSet.add(board[i+1][j]);
 						}
 					}
 					if(j > 0) {
-						if(board[i][j-1].isWalkway() || board[i][j-1].getDoorDirection() == DoorDirection.LEFT) {
+						if(board[i][j-1].isWalkway() || board[i][j-1].getDoorDirection() == DoorDirection.RIGHT) {
 							adjSet.add(board[i][j-1]);
 						}
 					}
 					if(j < numColumns - 1) {
-						if(board[i][j+1].isWalkway() || board[i][j+1].getDoorDirection() == DoorDirection.RIGHT) {
+						if(board[i][j+1].isWalkway() || board[i][j+1].getDoorDirection() == DoorDirection.LEFT) {
 							adjSet.add(board[i][j+1]);
 						}
 					}
