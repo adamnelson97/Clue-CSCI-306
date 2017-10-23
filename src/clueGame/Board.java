@@ -174,26 +174,30 @@ public class Board {
 			for(int j = 0; j < numColumns; j++) {
 				currCell = board[i][j];
 				adjSet = new HashSet<BoardCell>();
-				// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
-				// Additionally, check if the cell is valid, i.e. not a Room, or a properly facing doorway
-				if(i > 0) {
-					if(!board[i-1][j].isRoom() || board[i-1][j].getDoorDirection() == DoorDirection.UP) {
-						adjSet.add(board[i-1][j]);
+				
+				// Do not include adjacencies for cells in rooms or closets
+				if(currCell.isWalkway() || currCell.isDoorway()) {
+					// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
+					// Additionally, check if the cell is valid, i.e. not a Room, or a properly facing doorway
+					if(i > 0) {
+						if(board[i-1][j].isWalkway() || board[i-1][j].getDoorDirection() == DoorDirection.UP) {
+							adjSet.add(board[i-1][j]);
+						}
 					}
-				}
-				if(i < numRows - 1) {
-					if(!board[i+1][j].isRoom() || board[i+1][j].getDoorDirection() == DoorDirection.DOWN) {
-						adjSet.add(board[i+1][j]);
+					if(i < numRows - 1) {
+						if(board[i+1][j].isWalkway() || board[i+1][j].getDoorDirection() == DoorDirection.DOWN) {
+							adjSet.add(board[i+1][j]);
+						}
 					}
-				}
-				if(j > 0) {
-					if(!board[i][j-1].isRoom() || board[i][j-1].getDoorDirection() == DoorDirection.LEFT) {
-						adjSet.add(board[i][j-1]);
+					if(j > 0) {
+						if(board[i][j-1].isWalkway() || board[i][j-1].getDoorDirection() == DoorDirection.LEFT) {
+							adjSet.add(board[i][j-1]);
+						}
 					}
-				}
-				if(j < numColumns - 1) {
-					if(!board[i][j+1].isRoom() || board[i][j+1].getDoorDirection() == DoorDirection.RIGHT) {
-						adjSet.add(board[i][j+1]);
+					if(j < numColumns - 1) {
+						if(board[i][j+1].isWalkway() || board[i][j+1].getDoorDirection() == DoorDirection.RIGHT) {
+							adjSet.add(board[i][j+1]);
+						}
 					}
 				}
 				

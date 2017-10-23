@@ -114,7 +114,7 @@ public class BoardAdjTests {
 	@Test
 	public void testDoorwayEntry() {
 		adj = board.getAdjList(6, 1); // Test 'UP' door
-
+		
 		assertEquals(adj.size(), 4);
 
 		assertTrue(adj.contains(board.getCellAt(5, 1)));
