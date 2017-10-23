@@ -48,10 +48,14 @@ public class Board {
 		try {
 			loadBoardConfig();
 		} catch (BadConfigFormatException e) {}
+		
+		// Populate adjMatrix
+		calcAdjacencies();
 	}
 
 	public void loadRoomConfig() throws BadConfigFormatException {
 		FileReader roomCfg = null;
+		legend.clear();
 
 		try {
 			roomCfg = new FileReader(roomConfigFile);
@@ -73,6 +77,7 @@ public class Board {
 			secComma = temp.indexOf(',', 2); //Char at index should be a comma, so the next one follows the name of the room
 			name = temp.substring(3, secComma);
 			legend.put(letter, name); //Adds room to the legend
+			System.out.println(letter + " : " + name);
 		}
 		in.close();
 	}

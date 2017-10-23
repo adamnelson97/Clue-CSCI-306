@@ -48,6 +48,7 @@ public class ClueBoardTests {
 	@Test //Test that the rooms were properly loaded according to the legend
 	public void testRooms() {
 		Map<Character, String> legend = board.getLegend();
+		
 		assertEquals(LEGEND_SIZE, legend.size());
 		assertEquals("Art Room", legend.get('A'));
 		assertEquals("Kitchen", legend.get('K'));
