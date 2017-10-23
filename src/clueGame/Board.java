@@ -77,7 +77,6 @@ public class Board {
 			secComma = temp.indexOf(',', 2); //Char at index should be a comma, so the next one follows the name of the room
 			name = temp.substring(3, secComma);
 			legend.put(letter, name); //Adds room to the legend
-			System.out.println(letter + " : " + name);
 		}
 		in.close();
 	}
@@ -184,22 +183,22 @@ public class Board {
 				if(currCell.isWalkway() || currCell.isDoorway()) {
 					// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
 					// Additionally, check if the cell is valid, i.e. not a Room, or a properly facing doorway
-					if(i > 0) {
+					if(i > 0 && (currCell.getDoorDirection() == DoorDirection.NONE || currCell.getDoorDirection() == DoorDirection.UP)) {
 						if(board[i-1][j].isWalkway() || board[i-1][j].getDoorDirection() == DoorDirection.DOWN) {
 							adjSet.add(board[i-1][j]);
 						}
 					}
-					if(i < numRows - 1) {
+					if(i < numRows - 1 && (currCell.getDoorDirection() == DoorDirection.NONE || currCell.getDoorDirection() == DoorDirection.DOWN)) {
 						if(board[i+1][j].isWalkway() || board[i+1][j].getDoorDirection() == DoorDirection.UP) {
 							adjSet.add(board[i+1][j]);
 						}
 					}
-					if(j > 0) {
+					if(j > 0 && (currCell.getDoorDirection() == DoorDirection.NONE || currCell.getDoorDirection() == DoorDirection.LEFT)) {
 						if(board[i][j-1].isWalkway() || board[i][j-1].getDoorDirection() == DoorDirection.RIGHT) {
 							adjSet.add(board[i][j-1]);
 						}
 					}
-					if(j < numColumns - 1) {
+					if(j < numColumns - 1 && (currCell.getDoorDirection() == DoorDirection.NONE || currCell.getDoorDirection() == DoorDirection.RIGHT)) {
 						if(board[i][j+1].isWalkway() || board[i][j+1].getDoorDirection() == DoorDirection.LEFT) {
 							adjSet.add(board[i][j+1]);
 						}
@@ -248,8 +247,8 @@ public class Board {
 		for(BoardCell c : adj) {
 			// If the cell hasn't been visited
 			if(!visited.contains(c)) {
-				// If the path is length 1, add the cell to targets.
-				if(pathLength == 1) {
+				// If the path is length 1, OR the cell is a properly oriented doorway, add the cell to targets.
+				if(pathLength == 1 || c.isDoorway()) {
 					targets.add(c);
 				}
 				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
