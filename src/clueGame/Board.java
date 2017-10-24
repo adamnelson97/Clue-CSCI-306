@@ -13,6 +13,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
+/**
+ * <h1>Board</h1>
+ * This is the primary class that establishes the board and the data
+ * contained therein. 
+ * 
+ * @author Adam Nelson, Nathaniel Fuller, Youjun Lee
+ * @version 1.0
+ * @since 2017-10-09
+ *
+ */
 public class Board {
 	// -- Variables --
 	private int numRows;
@@ -31,6 +41,9 @@ public class Board {
 
 	// -- Constructors --
 
+	/**
+	 * Singleton constructor to ensure only one object of the board exists.
+	 */
 	// Private constructor to ensure only one can be created
 	private Board() {
 		// Set up empty data structures
@@ -41,6 +54,11 @@ public class Board {
 	}
 
 	// -- Methods --
+	
+	/**
+	 * This sets up the board by calling functions to load the corresponding
+	 * configuration files and then calculate the adjacency sets for each cell.
+	 */
 	public void initialize() {
 		try {
 			loadRoomConfig();
@@ -53,6 +71,12 @@ public class Board {
 		calcAdjacencies();
 	}
 
+	/**
+	 * This loads the legend for the different room types. Throws an exception
+	 * if the file is not properly formatted or if the file cannot be found.
+	 * 
+	 * @throws BadConfigFormatException
+	 */
 	public void loadRoomConfig() throws BadConfigFormatException {
 		FileReader roomCfg = null;
 		legend.clear();
@@ -81,6 +105,12 @@ public class Board {
 		in.close();
 	}
 
+	/**
+	 * This loads the data of the board, and throws an exception if the data is not
+	 * formatted properly or if the file cannot be found.
+	 * 
+	 * @throws BadConfigFormatException
+	 */
 	public void loadBoardConfig() throws BadConfigFormatException {
 		FileReader boardCfg = null;
 
@@ -170,6 +200,10 @@ public class Board {
 		}
 	}
 
+	/**
+	 * This method creates a set for each cell that contains the cells
+	 * it is adjacent to.
+	 */
 	public void calcAdjacencies() {
 		// Generates map of all cells and their adjacent cells and stores it in adjMtx
 		BoardCell currCell;
@@ -234,6 +268,14 @@ public class Board {
 		}
 	}*/
 	
+	/**
+	 * This determines possible new destinations for a given path length from
+	 * the previous cell.
+	 * 
+	 * @param cellX Location of the cell on the x-axis.
+	 * @param cellY Location of the cell on the y-axis.
+	 * @param pathLength The number of unique cells that can be traveled.
+	 */
 	public void calcTargets(int cellX, int cellY, int pathLength) {
 		// If the function is being called for the first time (Since we clear visited after every completed recursion)
 		// Clear targets.
@@ -301,6 +343,11 @@ public class Board {
 		return board[i][j]; //returns the BoardCell stored at the specified value
 	}
 
+	/**
+	 * Sets configuration files.
+	 * @param boardCfg Board Configuration file
+	 * @param roomCfg Room Legend Configuration file
+	 */
 	public void setConfigFiles(String boardCfg, String roomCfg) {
 		boardConfigFile = boardCfg;
 		roomConfigFile = roomCfg;
