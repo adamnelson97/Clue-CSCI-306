@@ -1,7 +1,7 @@
 /*
  * Class: Board
  * 
- * Authors: Nathaniel Fuller, Adam Nelson
+ * Authors: Nathaniel Fuller, Adam Nelson, Youjun Lee
  * 
  * Purpose: To represent the board used for the game 'Clue' including movement, possible player locations, rooms, and doorways.
  * 
