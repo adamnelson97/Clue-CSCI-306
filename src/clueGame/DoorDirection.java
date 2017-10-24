@@ -1,7 +1,7 @@
 /*
  * Class: DoorDirection
  * 
- * Authors: Nathaniel Fuller, Adam Nelson
+ * Authors: Nathaniel Fuller, Adam Nelson, Youjun Lee
  * 
  * Purpose: An enumerated type to indicate which direction a door is facing for the purposes of our 'Clue' game.
  * 
