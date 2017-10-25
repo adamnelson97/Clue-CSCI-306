@@ -256,10 +256,6 @@ public class BoardAdjTests {
 		assertTrue(targets.contains(board.getCellAt(6, 6)));
 
 		board.calcTargets(18, 19, 5);
-		targets = board.getTargets();
-		for(BoardCell c : targets) {
-			System.out.println(Integer.toString(c.getRow()) + " " + Integer.toString(c.getColumn()));
-		}
 		assertEquals(11, targets.size());
 		assertTrue(targets.contains(board.getCellAt(17, 19)));
 		assertTrue(targets.contains(board.getCellAt(19, 19)));
