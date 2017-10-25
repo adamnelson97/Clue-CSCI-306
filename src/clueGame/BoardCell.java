@@ -79,7 +79,7 @@ public class BoardCell {
 			door = DoorDirection.RIGHT;
 			break;
 		default:
-			throw new BadConfigFormatException("Error: Invalid Door Direction");
+			throw new BadConfigFormatException("Error: Invalid Door Direction: " + d);
 		}
 	}
 	
