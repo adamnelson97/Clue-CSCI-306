@@ -59,7 +59,7 @@ public class BoardCell {
 	 * @param y The y-axis location of the cell.
 	 * @param i The type of space that the cell is.
 	 * @param d What direction the door is adjacent to.
-	 * @throws BadConfigFormatException 
+	 * @throws BadConfigFormatException Throws if the door direction is invalid
 	 */
 	public BoardCell(int x, int y, char i, char d) throws BadConfigFormatException { // If the csv has two characters for the cell
 		row = x;

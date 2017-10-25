@@ -81,7 +81,7 @@ public class Board {
 	 * This loads the legend for the different room types. Throws an exception
 	 * if the file is not properly formatted or if the file cannot be found.
 	 * 
-	 * @throws BadConfigFormatException
+	 * @throws BadConfigFormatException Throws various formatting exceptions
 	 */
 	public void loadRoomConfig() throws BadConfigFormatException {
 		FileReader roomCfg = null;
@@ -114,7 +114,7 @@ public class Board {
 	 * This loads the data of the board, and throws an exception if the data is not
 	 * formatted properly or if the file cannot be found.
 	 * 
-	 * @throws BadConfigFormatException
+	 * @throws BadConfigFormatException Throws various formatting exceptions
 	 */
 	public void loadBoardConfig() throws BadConfigFormatException {
 		FileReader boardCfg = null;
