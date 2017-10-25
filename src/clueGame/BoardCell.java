@@ -28,24 +28,15 @@ public class BoardCell {
 	// -- Constructors --
 
 	/**
-	 * Default constructor with a location of (0,0).
+	 * Default constructor.
 	 */
 	public BoardCell() {
 		row = 0;
 		column = 0;
-	}
-	
-	/**
-	 * Constructor that only contains the location of a cell.
-	 * @param x The x-axis location of the cell.
-	 * @param y The y-axis location of the cell.
-	 */
-	public BoardCell(int x, int y) {
-		row = x;
-		column = 0;
 		initial = ' ';
 		door = DoorDirection.NONE;
 	}
+	
 	
 	/**
 	 * Constructor that contains the location of a cell and what type of space
@@ -68,8 +59,9 @@ public class BoardCell {
 	 * @param y The y-axis location of the cell.
 	 * @param i The type of space that the cell is.
 	 * @param d What direction the door is adjacent to.
+	 * @throws BadConfigFormatException 
 	 */
-	public BoardCell(int x, int y, char i, char d) { // If the csv has two characters for the cell
+	public BoardCell(int x, int y, char i, char d) throws BadConfigFormatException { // If the csv has two characters for the cell
 		row = x;
 		column = y;
 		initial = i;
@@ -87,8 +79,7 @@ public class BoardCell {
 			door = DoorDirection.RIGHT;
 			break;
 		default:
-			door = DoorDirection.NONE;
-			break;
+			throw new BadConfigFormatException("Error: Invalid Door Direction");
 		}
 	}
 	
