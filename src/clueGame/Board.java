@@ -54,7 +54,7 @@ public class Board {
 	}
 
 	// -- Methods --
-	
+
 	/**
 	 * This sets up the board by calling functions to load the corresponding
 	 * configuration files and then calculate the adjacency sets for each cell.
@@ -64,11 +64,15 @@ public class Board {
 			loadRoomConfig();
 		} catch (BadConfigFormatException e) {
 			//The only exception loadRoomConfig throws is for rooms of improper types 
-			System.out.println(e); }
+			System.out.println(e);
+		}
+
 		try {
 			loadBoardConfig();
-		} catch (BadConfigFormatException e) {}
-		
+		} catch (BadConfigFormatException e) {
+
+		}
+
 		// Populate adjMatrix
 		calcAdjacencies();
 	}
@@ -85,12 +89,14 @@ public class Board {
 
 		try {
 			roomCfg = new FileReader(roomConfigFile);
-		} catch (FileNotFoundException e) {System.out.println("Room Config File not found."); }
+		} catch (FileNotFoundException e) {
+			System.out.println("Room Config File not found.");
+		}
 
 		Scanner in = new Scanner(roomCfg);
 		String temp; //Used to grab the line from the file
 		String[] line = new String[3]; //Creates new string array to store data from the file
-		
+
 		while (in.hasNextLine()) {
 			temp = in.nextLine(); //Takes in entire line, ex: A, Art Room, Card
 			line = temp.split(", "); //Splits line by the commas
@@ -115,88 +121,138 @@ public class Board {
 
 		try {
 			boardCfg = new FileReader(boardConfigFile);
-		} catch (FileNotFoundException e) {System.out.println("Board Config File not found."); }
+		} catch (FileNotFoundException e) {
+			System.out.println("Board Config File not found.");
+		}
 
-		//First, get dimensions of csv file so the board array can be initialized
+		//Open file
 		Scanner in = new Scanner(boardCfg);
-		int expectedCommas = 0;
-		
-		ArrayList<String> lines = new ArrayList<String>(); // Create a data structure to store the lines from boardCfg
-		String currLine = in.nextLine();
-		// Read all lines from the file and add them to lines.
-		lines.add(currLine);
-		while(in.hasNextLine()) {
-			currLine = in.nextLine();
-			lines.add(currLine);
+		ArrayList<String[]> lines = new ArrayList<String[]>(); //Stores each line of the board as a separate string array
+		String[] line; //Stores a single line from the file
+
+		//Add each line to the ArrayList
+		while (in.hasNextLine()) {
+			line = in.nextLine().split(","); //Takes in a line and splits each cell by the commas
+			lines.add(line); //Adds the String[] to the ArrayList
 		}
 
-		in.close();
-		
-		//Get the num of columns in the first row. All other rows need to have this many columns
-		int numCommas = 0;
-		for (int i = 0; i < lines.get(0).length(); i++) {
-			if (currLine.charAt(i) == ',') {
-				numCommas++; //Increments for each instance of a comma
+		int size = lines.get(0).length; //Pulls the first String[] from the ArrayList and checks its size
+
+		//Check that each line has the same number of columns. Else, throw an exception
+		for (int i = 1; i < lines.size(); i++) {
+			if (lines.get(i).length != size) {
+				throw new BadConfigFormatException("Error: Row 0 has " + size + " columns.\n"+ "Row " + i + " has " + lines.get(i).length + " columns.");
 			}
 		}
-		expectedCommas = numCommas; //One less comma than total columns
-		
-		//Test all other rows to ensure they are the same size
-		for(int i = 0; i < lines.size(); i++) {
-			numCommas = 0;
-			for (int j = 0; j < lines.get(i).length(); j++) {
-				if (lines.get(i).charAt(j) == ',') {
-					numCommas++; //Increments for each instance of a comma
-				}
-			}
-			if (numCommas != expectedCommas) {
-				throw new BadConfigFormatException("Number of rows and columns is not consistent.");
-			}
-		}
-		
-		//If this point is reached, the rows all have the same number of columns
-		numColumns = expectedCommas + 1; //There is one less comma then total columns
+
+		//Get dimensions of board
 		numRows = lines.size();
-		
+		numColumns = size;
+		//Initialize board
 		board = new BoardCell[numRows][numColumns];
-		
-		int currStrPos;
-		int currIndex;
-		int nextComma;
-		String tileData;
-		// Iterate through all read lines
-		for(int i = 0; i < lines.size(); i++) {
-			currStrPos = 0;
-			currIndex = 0;
-			// As long as there are unprocessed characters in the string
-			while(currIndex < board[i].length) {
-				nextComma = lines.get(i).indexOf(',', currStrPos);
-				if(nextComma != -1) {
-					tileData = lines.get(i).substring(currStrPos, nextComma); // Get the character(s) between commas
+
+		for (int i = 0; i < numRows; i++) { //For each line...
+			for (int j = 0; j < numColumns; j++) { //For each cell in that line...
+				line = lines.get(i); //Accesses a line of cells
+				
+				//Checks that the room is a valid room
+				if (!legend.containsKey(line[j].charAt(0))) {
+					throw new BadConfigFormatException("Error: Invalid Room character " + line[j].charAt(0) + " at (" + i + ", " + j + ")");
 				}
-				else {
-					tileData = lines.get(i).substring(currStrPos); // If there are no more commas, get the rest of the string.
+				
+				if (line[j].length() > 1) { //If a cell has a door attached to it...
+					//Checks that the door direction is valid
+					try {
+						board[i][j] = new BoardCell(i, j, line[j].charAt(0), line[j].charAt(1));
+					} catch (BadConfigFormatException e) {
+						System.out.println(e);
+					}
 				}
-				// Depending on how many characters are there, call the appropriate constructor, or throw the exception.
-				if(legend.containsKey(tileData.charAt(0))) {
-					if(tileData.length() == 1) {
-						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0));
-						currIndex++;
-					}
-					else if(tileData.length() == 2) {
-						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0), tileData.charAt(1));
-						currIndex++;
-					}
-					else {
-						throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + "," + Integer.toString(currIndex) + " has too many defining characters.");
-					}
-					currStrPos = nextComma + 1; // Increment the current position in the string.
-				}
-				else {
-					throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + ","  + Integer.toString(currIndex) + " has an invalid character.");
+				else { //The cell has no door
+					board[i][j] = new BoardCell(i, j, line[j].charAt(0));
 				}
 			}
 		}
+		//First, get dimensions of csv file so the board array can be initialized
+		//		Scanner in = new Scanner(boardCfg);
+		//		int expectedCommas = 0;
+		//
+		//		ArrayList<String> lines = new ArrayList<String>(); // Create a data structure to store the lines from boardCfg
+		//		String currLine = in.nextLine();
+		//		// Read all lines from the file and add them to lines.
+		//		lines.add(currLine);
+		//		while(in.hasNextLine()) {
+		//			currLine = in.nextLine();
+		//			lines.add(currLine);
+		//		}
+		//
+		//		in.close();
+		//
+		//		//Get the num of columns in the first row. All other rows need to have this many columns
+		//		int numCommas = 0;
+		//		for (int i = 0; i < lines.get(0).length(); i++) {
+		//			if (currLine.charAt(i) == ',') {
+		//				numCommas++; //Increments for each instance of a comma
+		//			}
+		//		}
+		//		expectedCommas = numCommas; //One less comma than total columns
+		//
+		//		//Test all other rows to ensure they are the same size
+		//		for(int i = 0; i < lines.size(); i++) {
+		//			numCommas = 0;
+		//			for (int j = 0; j < lines.get(i).length(); j++) {
+		//				if (lines.get(i).charAt(j) == ',') {
+		//					numCommas++; //Increments for each instance of a comma
+		//				}
+		//			}
+		//			if (numCommas != expectedCommas) {
+		//				throw new BadConfigFormatException("Number of rows and columns is not consistent.");
+		//			}
+		//		}
+		//
+		//		//If this point is reached, the rows all have the same number of columns
+		//		numColumns = expectedCommas + 1; //There is one less comma then total columns
+		//		numRows = lines.size();
+		//
+		//		board = new BoardCell[numRows][numColumns];
+		//
+		//		int currStrPos;
+		//		int currIndex;
+		//		int nextComma;
+		//		String tileData;
+		//		// Iterate through all read lines
+		//		for(int i = 0; i < lines.size(); i++) {
+		//			currStrPos = 0;
+		//			currIndex = 0;
+		//			// As long as there are unprocessed characters in the string
+		//			while(currIndex < board[i].length) {
+		//				nextComma = lines.get(i).indexOf(',', currStrPos);
+		//				if(nextComma != -1) {
+		//					tileData = lines.get(i).substring(currStrPos, nextComma); // Get the character(s) between commas
+		//				}
+		//				else {
+		//					tileData = lines.get(i).substring(currStrPos); // If there are no more commas, get the rest of the string.
+		//				}
+		//				// Depending on how many characters are there, call the appropriate constructor, or throw the exception.
+		//				if(legend.containsKey(tileData.charAt(0))) {
+		//					if(tileData.length() == 1) {
+		//						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0));
+		//						currIndex++;
+		//					}
+		//					else if(tileData.length() == 2) {
+		//						board[i][currIndex] = new BoardCell(i, currIndex, tileData.charAt(0), tileData.charAt(1));
+		//						currIndex++;
+		//					}
+		//					else {
+		//						throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + "," + Integer.toString(currIndex) + " has too many defining characters.");
+		//					}
+		//					currStrPos = nextComma + 1; // Increment the current position in the string.
+		//				}
+		//				else {
+		//					throw new BadConfigFormatException("Entry at position " + Integer.toString(i) + ","  + Integer.toString(currIndex) + " has an invalid character.");
+		//				}
+		//			}
+		//		}
 	}
 
 	/**
@@ -211,7 +267,7 @@ public class Board {
 			for(int j = 0; j < numColumns; j++) {
 				currCell = board[i][j];
 				adjSet = new HashSet<BoardCell>();
-				
+
 				// Do not include adjacencies for cells in rooms or closets
 				if(currCell.isWalkway() || currCell.isDoorway()) {
 					// Check to see whether each neighboring cell exists, i.e. Index not out of bounds, and add it to adjSet.
@@ -237,14 +293,14 @@ public class Board {
 						}
 					}
 				}
-				
+
 				adjMatrix.put(currCell, adjSet);
 			}
 		}
 	}
-	
+
 	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
-	
+
 	/*public void calcTargets(BoardCell cell, int pathLength) {
 		//Stores possible target cells in targets
 		Set<BoardCell> adj = getAdjList(cell);
@@ -266,7 +322,7 @@ public class Board {
 			}
 		}
 	}*/
-	
+
 	/**
 	 * This determines possible new destinations for a given path length from
 	 * the previous cell.
@@ -328,9 +384,9 @@ public class Board {
 	public Set<BoardCell> getTargets() {
 		return targets; //Getter for targets so the set doesn't have to be created for every get
 	}
-	
+
 	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
-	
+
 	/*public Set<BoardCell> getAdjList(BoardCell cell) {
 		return adjMatrix.get(cell); //Stores the adjacency list for a cell in a new list
 	}*/
