@@ -24,7 +24,7 @@ public class BoardCell {
 	private int column;
 	private char initial;
 	private DoorDirection door;
-	
+
 	// -- Constructors --
 
 	/**
@@ -36,8 +36,8 @@ public class BoardCell {
 		initial = ' ';
 		door = DoorDirection.NONE;
 	}
-	
-	
+
+
 	/**
 	 * Constructor that contains the location of a cell and what type of space
 	 * the cell is (room, walkway, other).
@@ -51,7 +51,7 @@ public class BoardCell {
 		initial = i;
 		door = DoorDirection.NONE;
 	}
-	
+
 	/**
 	 * Constructor that contains the location of a cell, the type of space, and
 	 * what direction a door is facing for that cell.
@@ -78,13 +78,16 @@ public class BoardCell {
 		case 'R':
 			door = DoorDirection.RIGHT;
 			break;
+		case 'N':
+			door = DoorDirection.NONE;
+			break;
 		default:
 			throw new BadConfigFormatException("Error: Invalid Door Direction: " + d);
 		}
 	}
-	
+
 	// -- Methods --
-	
+
 	/**
 	 * @return boolean Whether a space is a walkway or not.
 	 */
@@ -94,7 +97,7 @@ public class BoardCell {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Any space that is not a walkway or the closet is an accessible room.
 	 * @return boolean Whether a space is a room or not.
@@ -105,7 +108,7 @@ public class BoardCell {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @return boolean Whether a space contains a door or not.
@@ -116,7 +119,7 @@ public class BoardCell {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * @return DoorDirection What direction the door is facing.
@@ -124,17 +127,17 @@ public class BoardCell {
 	public DoorDirection getDoorDirection() {
 		return door;
 	}
-	
+
 	// -- Getters & Setters
-	
+
 	public int getRow() {
 		return row;
 	}
-	
+
 	public int getColumn() {
 		return column;
 	}
-	
+
 	public char getInitial() {
 		return initial;
 	}
