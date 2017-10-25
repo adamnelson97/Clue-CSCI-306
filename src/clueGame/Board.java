@@ -62,7 +62,9 @@ public class Board {
 	public void initialize() {
 		try {
 			loadRoomConfig();
-		} catch (BadConfigFormatException e) {}
+		} catch (BadConfigFormatException e) {
+			//The only exception loadRoomConfig throws is for rooms of improper types
+			System.out.println(e); }
 		try {
 			loadBoardConfig();
 		} catch (BadConfigFormatException e) {}
@@ -86,21 +88,18 @@ public class Board {
 		} catch (FileNotFoundException e) {System.out.println("Room Config File not found."); }
 
 		Scanner in = new Scanner(roomCfg);
-		char letter; //Ex: 'A'
-		String name; //Ex: 'Art Room'
-		String temp; //Entire line that will be manipulated, ex: A, Art Room, Card
-		int secComma; //Index location of second comma, i.e. follows the name of the room
-
+		String temp; //Used to grab the line from the file
+		String[] line = new String[3]; //Creates new string array to store data from the file
+		
 		while (in.hasNextLine()) {
 			temp = in.nextLine(); //Takes in entire line, ex: A, Art Room, Card
-			if (!temp.endsWith("Card") && !temp.endsWith("Other")) {
-				throw new BadConfigFormatException("Room is not type Card or Other");
+			line = temp.split(", "); //Splits line by the commas
+			if (line[2].equals("Card") || line[2].equals("Other")) { //Checks for proper room type
+				legend.put(line[0].charAt(0), line[1]);
 			}
-
-			letter = temp.charAt(0); //Stores the first character as the room symbol, ex: A
-			secComma = temp.indexOf(',', 2); //Char at index should be a comma, so the next one follows the name of the room
-			name = temp.substring(3, secComma);
-			legend.put(letter, name); //Adds room to the legend
+			else {
+				throw new BadConfigFormatException("Room is not type Card or Other. Type is: " + line[2]);
+			}
 		}
 		in.close();
 	}

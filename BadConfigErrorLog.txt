@@ -1,1 +1,1 @@
-Room is not type Card or Other
+Entry at position 0,0 has an invalid character.
