@@ -25,7 +25,7 @@ public class BoardCell {
 	private char initial;
 	private DoorDirection door;
 
-	// -- Constructors --
+	//Constructors
 
 	/**
 	 * Default constructor.
@@ -86,7 +86,7 @@ public class BoardCell {
 		}
 	}
 
-	// -- Methods --
+	//Methods
 
 	/**
 	 * @return boolean Whether a space is a walkway or not.
@@ -120,15 +120,9 @@ public class BoardCell {
 		return true;
 	}
 
-	/**
-	 * 
-	 * @return DoorDirection What direction the door is facing.
-	 */
-	public DoorDirection getDoorDirection() {
-		return door;
-	}
+	
 
-	// -- Getters & Setters
+	//Getters & Setters
 
 	public int getRow() {
 		return row;
@@ -140,5 +134,9 @@ public class BoardCell {
 
 	public char getInitial() {
 		return initial;
+	}
+	
+	public DoorDirection getDoorDirection() {
+		return door;
 	}
 }

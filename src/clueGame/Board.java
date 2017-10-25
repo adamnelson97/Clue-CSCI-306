@@ -24,7 +24,7 @@ import java.util.*;
  *
  */
 public class Board {
-	// -- Variables --
+	//Variables
 	private int numRows;
 	private int numColumns;
 	public final static int MAX_BOARD_SIZE = 50;
@@ -53,7 +53,7 @@ public class Board {
 		visited = new HashSet<BoardCell>();
 	}
 
-	// -- Methods --
+	//Methods
 
 	/**
 	 * This sets up the board by calling functions to load the corresponding
@@ -282,7 +282,7 @@ public class Board {
 		}
 	}
 
-	// -- Getters and Setters --
+	//Getters and Setters
 
 	// This method returns the only Board.
 	public static Board getInstance() {
