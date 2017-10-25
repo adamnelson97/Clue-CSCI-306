@@ -92,10 +92,7 @@ public class BoardCell {
 	 * @return boolean Whether a space is a walkway or not.
 	 */
 	public boolean isWalkway() {
-		if(initial == 'W') {
-			return true;
-		}
-		return false;
+		return initial == 'W';
 	}
 
 	/**
@@ -103,10 +100,7 @@ public class BoardCell {
 	 * @return boolean Whether a space is a room or not.
 	 */
 	public boolean isRoom() {
-		if(initial != 'W' && initial != 'X') {
-			return true;
-		}
-		return false;
+		return (initial != 'W' && initial != 'X');
 	}
 
 	/**
@@ -114,10 +108,7 @@ public class BoardCell {
 	 * @return boolean Whether a space contains a door or not.
 	 */
 	public boolean isDoorway() {
-		if(door == DoorDirection.NONE) {
-			return false;
-		}
-		return true;
+		return door != DoorDirection.NONE;
 	}
 
 	
