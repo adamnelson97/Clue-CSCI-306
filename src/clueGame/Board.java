@@ -63,7 +63,7 @@ public class Board {
 		try {
 			loadRoomConfig();
 		} catch (BadConfigFormatException e) {
-			//The only exception loadRoomConfig throws is for rooms of improper types
+			//The only exception loadRoomConfig throws is for rooms of improper types 
 			System.out.println(e); }
 		try {
 			loadBoardConfig();
