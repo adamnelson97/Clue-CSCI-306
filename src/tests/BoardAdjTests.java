@@ -177,7 +177,6 @@ public class BoardAdjTests {
 		assertTrue(adj.contains(board.getCellAt(23, 4)));
 	}
 
-	// TODO: Implement tests for movement (1,3,5,6 spaces)
 	@Test
 	public void testTargetsOneStep() {
 		board.calcTargets(10, 5, 1);
@@ -340,7 +339,6 @@ public class BoardAdjTests {
 		assertTrue(targets.contains(board.getCellAt(22, 3)));
 	}
 
-	// TODO: Implement tests for entering a room
 	@Test
 	public void testTargetsIntoRoom() {
 		Set<BoardCell> targets = board.getTargets();
