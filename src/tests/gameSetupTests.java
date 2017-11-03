@@ -70,7 +70,7 @@ public class gameSetupTests {
 	
 	@Test
 	public void testPlayerDeck() {
-		assertEquals(6, board.getPlayerDeck());
+		assertEquals(6, board.getPlayerCards().size());
 	}
 	//Test for correct total number of cards
 	//Test for correct number of each type of card

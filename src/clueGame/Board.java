@@ -67,6 +67,7 @@ public class Board {
 		players = new HashMap<String, Player>();
 		rooms = new HashMap<String, Card>();
 		weapons = new HashMap<String, Card>();
+		playerCards = new HashMap<String, Card>();
 	}
 
 	//Methods
@@ -304,7 +305,7 @@ public class Board {
 			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
 			//System.out.println(x.toString());
 			players.put(line[0], x); //Puts players into map of players
-			playerCards.put(line[0], new Card(line[0], CardType.PERSON)); //Puts player into map of cards
+			playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
 		}
 		
 		FileReader weaponCfg = null;
