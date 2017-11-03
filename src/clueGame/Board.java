@@ -72,6 +72,7 @@ public class Board {
 		weapons = new HashMap<String, Card>();
 		playerCards = new HashMap<String, Card>();
 		deck = new HashMap<String, Card>();
+		solution = new Solution();
 	}
 
 	//Methods
@@ -98,6 +99,7 @@ public class Board {
 		calcAdjacencies();
 
 		loadConfigFiles(); //Populates players and weapons sets
+		dealer(); //Creates a solution and deals cards to the players
 	}
 
 	/**
@@ -377,12 +379,11 @@ public class Board {
 
 		for (int i = 0; i < 18; i += 6) { //Each player gets exactly 3 cards
 			players.get("Miss Scarlett").addCard(cards.get(i));
-			players.get("Professor Plum").addCard(cards.get(i));
-			players.get("Mrs. Peacock").addCard(cards.get(i));
-			players.get("Mr. Green").addCard(cards.get(i));
-			players.get("Colonel Mustard").addCard(cards.get(i));
-			players.get("Mrs. White").addCard(cards.get(i));
-
+			players.get("Professor Plum").addCard(cards.get(i+1));
+			players.get("Mrs. Peacock").addCard(cards.get(i+2));
+			players.get("Mr. Green").addCard(cards.get(i+3));
+			players.get("Colonel Mustard").addCard(cards.get(i+4));
+			players.get("Mrs. White").addCard(cards.get(i+5));
 		}
 
 	}

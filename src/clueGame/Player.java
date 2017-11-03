@@ -26,7 +26,7 @@ public class Player {
 		this.color = color;
 		this.row = row;
 		this.column = column;
-		hand = new ArrayList<Card>();
+		this.hand = new ArrayList<Card>();
 	}
 	
 	//Methods
