@@ -1,8 +1,15 @@
 package tests;
 
+import static org.junit.Assert.*;
+
+import java.awt.Color;
+import java.util.Set;
+
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.Player;
 
 /*
  * Authors: Adam Nelson and Youjun Lee
@@ -24,11 +31,28 @@ public class gameSetupTests {
 		board.setConfigFiles("ClueGameLayout.csv", "ClueGameLegend.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
+		board.loadConfigFiles(); //Loads players and weapons into board
 	}
 	
-	//TODO Create @BeforeClass for tests
 
 	//TODO Test loading 1st, 3rd, and last player from config file
+	@Test
+	public void testLoadPlayers() {
+		Set<Player> players = board.getPlayers();
+		//Creates a new player object, then tests the set for that object
+		Player x = new Player("Miss Scarlett", Color.RED, 0, 6);
+		assertTrue(players.contains(x));
+		x = new Player("Professor Plum", Color.PINK, 8, 19);
+		assertTrue(players.contains(x));
+		x = new Player("Mrs. Peacock", Color.BLUE, 18, 19);
+		assertTrue(players.contains(x));
+		x = new Player("Mr. Green", Color.GREEN, 24, 13);
+		assertTrue(players.contains(x));
+		x = new Player("Colonel Mustard", Color.YELLOW, 24, 5);
+		assertTrue(players.contains(x));
+		x = new Player("Mrs. White", Color.WHITE, 6, 1);
+		assertTrue(players.contains(x));
+	}
 
 	//TODO Determine if Human player will be determined by format or chosen by player
 
