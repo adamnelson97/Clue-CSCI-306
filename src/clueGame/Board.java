@@ -411,4 +411,8 @@ public class Board {
 	public Map<String, Card> getWeapons() {
 		return weapons;
 	}
+
+	public Map<String, Card> getRooms() {
+		return rooms;
+	}
 }
