@@ -58,6 +58,10 @@ public class Player {
 	public int getColumn() {
 		return column;
 	}
+	
+	public ArrayList<Card> getHand() {
+		return hand;
+	}
 
 	@Override
 	public String toString() {
