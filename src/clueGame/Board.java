@@ -288,11 +288,13 @@ public class Board {
 		Scanner in = new Scanner(playerCfg);
 		String temp; //Used to grab the line from the file
 		String[] line = new String[4]; //Creates new string array to store data from the file
+		Color color; //Temporarily stores color object for each player
 
 		while (in.hasNextLine()) {
 			temp = in.nextLine(); //Takes in entire line, e.g. Mrs. White,WHITE,6,1
 			line = temp.split(","); //Splits line by the commas
-			players.add(new Player())
+			color = convertColor(line[1]);
+			players.add(new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3])));
 		}
 	}
 
