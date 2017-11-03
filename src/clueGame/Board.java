@@ -297,7 +297,7 @@ public class Board {
 			line = temp.split(","); //Splits line by the commas
 			color = convertColor(line[1]);
 			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
-			System.out.println(x.toString());
+			//System.out.println(x.toString());
 			players.put(line[0], x);
 		}
 	}
@@ -387,7 +387,7 @@ public class Board {
 		roomConfigFile = roomCfg;
 	}
 
-	public Set<Player> getPlayers() {
+	public Map<String, Player> getPlayers() {
 		return players;
 	}
 }

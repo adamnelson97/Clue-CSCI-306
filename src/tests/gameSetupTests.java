@@ -38,13 +38,9 @@ public class gameSetupTests {
 	//TODO Test loading 1st, 3rd, and last player from config file
 	@Test
 	public void testLoadPlayers() {
-		Set<Player> players = board.getPlayers();
+		assertEquals(6, board.getPlayers().size());
 		//Creates a new player object, then tests the set for that object
-		Set<Player> testPlayers = new HashSet<Player>();
-		testPlayers.add(new Player("Miss Scarlett", Color.RED, 0, 6));
-		testPlayers.add(new Player("Mrs. Peacock", Color.BLUE, 18, 19));
-		testPlayers.add(new Player("Mrs. White", Color.WHITE, 6, 1));
-		assertTrue(players.containsAll(testPlayers));
+		assertEquals("Mrs. White", board.getPlayers().get("Mrs. White").getPlayerName());
 	} 
 
 	//TODO Determine if Human player will be determined by format or chosen by player
