@@ -4,12 +4,14 @@ import static org.junit.Assert.*;
 
 import java.awt.Color;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.Card;
 import clueGame.Player;
 
 /*
@@ -81,7 +83,7 @@ public class gameSetupTests {
 
 
 	//TESTS BELOW THIS POINT HAVE DETAILED SUGGESTIONS IN CluePlayer.pdf
-	//TODO Test dealing the cards.
+	//Test dealing the cards.
 	@Test
 	public void testPlayerHands() {
 		assertEquals(3, board.getPlayers().get("Miss Scarlett").getHand().size());
@@ -91,7 +93,22 @@ public class gameSetupTests {
 		assertEquals(3, board.getPlayers().get("Colonel Mustard").getHand().size());
 		assertEquals(3, board.getPlayers().get("Mrs. White").getHand().size());
 	}
-	//Each player (human and computer) should have roughly the same number of cards
+	
+	//Double check cards have not been dealt twice
+	@Test
+	public void doubleCheckDealing() {
+		Map<String, Card> cards = board.getDeck();
+		boolean no_doubles = false;
+		
+		for (String x : cards.keySet()) {
+			for (String y : cards.keySet()) {
+				if (cards.get(x).equals(cards.get(y))) {
+					no_doubles = true;
+				}
+			}
+		}
+		assertFalse(no_doubles);
+	}
 
 	//TODO Test selecting a target location (Computer Player)
 
