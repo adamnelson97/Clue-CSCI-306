@@ -44,6 +44,7 @@ public class Board {
 	private String weaponConfigFile = "WeaponsLegend.txt";
 
 	private Map<String, Player> players; //Set of all 6 players in the game
+	private Map<String, Card> playerCards;
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 
@@ -302,7 +303,8 @@ public class Board {
 			color = convertColor(line[1]);
 			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
 			//System.out.println(x.toString());
-			players.put(line[0], x);
+			players.put(line[0], x); //Puts players into map of players
+			playerCards.put(line[0], new Card(line[0], CardType.PERSON)); //Puts player into map of cards
 		}
 		
 		FileReader weaponCfg = null;
@@ -417,5 +419,9 @@ public class Board {
 
 	public Map<String, Card> getRooms() {
 		return rooms;
+	}
+
+	public Map<String, Card> getPlayerCards() {
+		return playerCards;
 	}
 }
