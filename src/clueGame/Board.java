@@ -219,30 +219,6 @@ public class Board {
 		}
 	}
 
-	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
-
-	/*public void calcTargets(BoardCell cell, int pathLength) {
-		//Stores possible target cells in targets
-		Set<BoardCell> adj = getAdjList(cell);
-		visited.add(cell);
-		// Iterate through all adjacent cells
-		for(BoardCell c : adj) {
-			// If the cell hasn't been visited
-			if(!visited.contains(c)) {
-				// If the path is length 1, add the cell to targets.
-				if(pathLength == 1) {
-					targets.add(c);
-				}
-				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
-				// Then, after that has completed, remove the cell from visited.
-				else {
-					calcTargets(c, (pathLength-1));
-					visited.remove(c);
-				}
-			}
-		}
-	}*/
-
 	/**
 	 * This determines possible new destinations for a given path length from
 	 * the previous cell.
