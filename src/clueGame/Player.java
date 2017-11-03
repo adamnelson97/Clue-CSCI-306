@@ -37,4 +37,10 @@ public class Player {
 		//TODO Complete disproveSuggestion method
 		return null;
 	}
+	
+	//Getters for Testing
+	
+	public Color getColor() {
+		return color;
+	}
 }
