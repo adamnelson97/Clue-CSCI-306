@@ -19,11 +19,11 @@ public class Player {
 	private Color color;
 	
 	//Constructors
-	public Player(String name, Color col, int r, int c) {
-		playerName = name;
-		color = col;
-		row = r;
-		column = c;
+	public Player(String playerName, Color color, int row, int column) {
+		this.playerName = playerName;
+		this.color = color;
+		this.row = row;
+		this.column = column;
 	}
 	
 	//Methods
