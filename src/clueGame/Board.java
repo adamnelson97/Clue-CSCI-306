@@ -59,6 +59,9 @@ public class Board {
 		adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
+		players = new HashSet<Player>();
+		rooms = new HashSet<Card>();
+		weapons = new HashSet<Card>();
 	}
 
 	//Methods
