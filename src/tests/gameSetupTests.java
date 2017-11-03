@@ -67,6 +67,7 @@ public class gameSetupTests {
 	@Test
 	public void testRoomDeck() {
 		assertEquals(9, board.getRooms().size());
+		assertTrue(board.getRooms().containsKey("Art Room"));
 	}
 	
 	@Test
