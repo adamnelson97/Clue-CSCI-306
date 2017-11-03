@@ -7,7 +7,7 @@ import java.awt.Color;
  * This class stores all the information relevant to the players in the game.
  * @author Adam Nelson, Youjun Lee
  * @version 1.0
- * @since 2017-11-2
+ * @since 2017-11-02
  *
  */
 public class Player {
