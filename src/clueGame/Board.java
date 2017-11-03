@@ -15,6 +15,8 @@ import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.util.*;
 
+import clueGame.Card.CardType;
+
 /**
  * <h1>Board</h1>
  * This is the primary class that establishes the board and the data
@@ -277,7 +279,6 @@ public class Board {
 	 * Loads the Players, and Weapons configuration files.
 	 */
 	public void loadConfigFiles() {
-		//TODO complete loadConfigFiles method
 		FileReader playerCfg = null;
 		players.clear();
 
@@ -314,7 +315,7 @@ public class Board {
 		
 		while (in.hasNextLine()) {
 			temp = in.nextLine(); //Stores the weapon name
-			weapons.add(new Card(temp, 2));
+			weapons.add(new Card(temp, CardType.WEAPON));
 		}
 	}
 

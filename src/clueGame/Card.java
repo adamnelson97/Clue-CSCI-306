@@ -20,13 +20,9 @@ public class Card {
 
 	//Constructors
 
-	public Card(String cardName, int x) {
+	public Card(String cardName, CardType cardType) {
 		this.cardName = cardName;
-		switch(x) {
-		case 1: cardType = CardType.PERSON; break;
-		case 2: cardType = CardType.WEAPON; break;
-		case 3: cardType = CardType.ROOM; break;
-		}
+		this.cardType = cardType;
 	}
 	
 	//Methods
