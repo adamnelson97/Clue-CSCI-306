@@ -430,4 +430,8 @@ public class Board {
 	public Map<String, Card> getPlayerCards() {
 		return playerCards;
 	}
+
+	public Map<String, Card> getDeck() {
+		return deck;
+	}
 }

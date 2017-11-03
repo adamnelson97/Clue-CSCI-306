@@ -82,6 +82,15 @@ public class gameSetupTests {
 
 	//TESTS BELOW THIS POINT HAVE DETAILED SUGGESTIONS IN CluePlayer.pdf
 	//TODO Test dealing the cards.
+	@Test
+	public void testPlayerHands() {
+		assertEquals(3, board.getPlayers().get("Miss Scarlett").getHand().size());
+		assertEquals(3, board.getPlayers().get("Professor Plum").getHand().size());
+		assertEquals(3, board.getPlayers().get("Mrs. Peacock").getHand().size());
+		assertEquals(3, board.getPlayers().get("Mr. Green").getHand().size());
+		assertEquals(3, board.getPlayers().get("Colonel Mustard").getHand().size());
+		assertEquals(3, board.getPlayers().get("Mrs. White").getHand().size());
+	}
 	//Each player (human and computer) should have roughly the same number of cards
 
 	//TODO Test selecting a target location (Computer Player)
