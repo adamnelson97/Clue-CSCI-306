@@ -98,16 +98,17 @@ public class gameSetupTests {
 	@Test
 	public void doubleCheckDealing() {
 		Map<String, Card> cards = board.getDeck();
-		boolean no_doubles = false;
+		assertEquals(21, board.getDeck().size());
+		int num_doubles = 0;
 		
 		for (String x : cards.keySet()) {
 			for (String y : cards.keySet()) {
 				if (cards.get(x).equals(cards.get(y))) {
-					no_doubles = true;
+					num_doubles++;
 				}
 			}
 		}
-		assertFalse(no_doubles);
+		assertEquals(21, num_doubles);
 	}
 
 	//TODO Test selecting a target location (Computer Player)
