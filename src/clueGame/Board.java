@@ -119,6 +119,9 @@ public class Board {
 			line = temp.split(", "); //Splits line by the commas
 			if (line[2].equals("Card") || line[2].equals("Other")) { //Checks for proper room type
 				legend.put(line[0].charAt(0), line[1]);
+				if (line[2].equals("Card")) {
+					rooms.put(line[1], new Card(line[1], CardType.ROOM));
+				}
 			}
 			else {
 				throw new BadConfigFormatException("Room is not type Card or Other. Type is: " + line[2]);
