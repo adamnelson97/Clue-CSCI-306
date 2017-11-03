@@ -9,8 +9,10 @@
 
 package clueGame;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -33,16 +35,16 @@ public class Board {
 	private Map<BoardCell, Set<BoardCell>> adjMatrix;
 	private Set<BoardCell> targets;
 	private Set<BoardCell> visited;
-	
+
 	private String boardConfigFile = "ClueGameLayout.csv";
 	private String roomConfigFile = "ClueGameLegend.txt";
 	private String playerConfigFile = "PlayerLegend.txt";
 	private String weaponConfigFile = "WeaponLegend.txt";
-	
+
 	private Set<Player> players; //Set of all 6 players in the game
 	private Set<Card> rooms; //Set of all 9 rooms in the game
 	private Set<Card> weapons; //Set of all 6 weapons in the game
-	
+
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
@@ -165,12 +167,12 @@ public class Board {
 		for (int i = 0; i < numRows; i++) { //For each line...
 			for (int j = 0; j < numColumns; j++) { //For each cell in that line...
 				line = lines.get(i); //Accesses a line of cells
-				
+
 				//Checks that the room is a valid room
 				if (!legend.containsKey(line[j].charAt(0))) {
 					throw new BadConfigFormatException("Error: Invalid Room character " + line[j].charAt(0) + " at (" + i + ", " + j + ")");
 				}
-				
+
 				if (line[j].length() > 1) { //If a cell has a door attached to it...
 					//Checks that the door direction is valid
 					try {
@@ -268,21 +270,56 @@ public class Board {
 			visited.clear();
 		}
 	}
-	
+
 	/**
-	 * Loads the Room, Board, Players, and Weapons configuration files.
+	 * Loads the Players, and Weapons configuration files.
 	 */
 	public void loadConfigFiles() {
 		//TODO complete loadConfigFiles method
+		FileReader playerCfg = null;
+		players.clear();
+
+		try {
+			playerCfg = new FileReader(playerConfigFile);
+		} catch (FileNotFoundException e) {
+			System.out.println("Player Config File not found.");
+		}
+
+		Scanner in = new Scanner(playerCfg);
+		String temp; //Used to grab the line from the file
+		String[] line = new String[4]; //Creates new string array to store data from the file
+
+		while (in.hasNextLine()) {
+			temp = in.nextLine(); //Takes in entire line, e.g. Mrs. White,WHITE,6,1
+			line = temp.split(","); //Splits line by the commas
+			players.add(new Player())
+		}
 	}
-	
+
+	/**
+	 * Used to convert a string from config file to a color object
+	 * @param strColor The string of the desired color
+	 * @return Color The color object.
+	 */
+	public Color convertColor(String strColor) {
+		Color color;
+		try {
+			// We can use reflection to convert the string to a color
+			Field field = Class.forName("java.awt.Color").getField(strColor.trim());
+			color = (Color)field.get(null);
+		} catch (Exception e) {
+			color = null; // Not defined
+		}
+		return color;
+	}
+
 	/**
 	 * Randomly selects a solution of one Room, Weapon, and Person.
 	 */
 	public void selectAnswer() {
 		//TODO complete selectAnswer method
 	}
-	
+
 	/**
 	 * Sends a suggestion to each player and checks for possible cards.
 	 * @return Card Returns a card within the suggestion, revealing it to the player who guessed.
@@ -291,7 +328,7 @@ public class Board {
 		//TODO complete handleSuggestion method
 		return null;
 	}
-	
+
 	/**
 	 * Checks an accusation against the set solution to see if the player has correctly
 	 * guessed and therefore won.
@@ -343,7 +380,7 @@ public class Board {
 		boardConfigFile = boardCfg;
 		roomConfigFile = roomCfg;
 	}
-	
+
 	public Set<Player> getPlayers() {
 		return players;
 	}
