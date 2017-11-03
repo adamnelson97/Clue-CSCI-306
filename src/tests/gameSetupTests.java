@@ -61,6 +61,7 @@ public class gameSetupTests {
 	@Test
 	public void testWeaponDeck() {
 		assertEquals(6, board.getWeapons().size());
+		assertTrue(board.getWeapons().containsKey("Knife"));
 	}
 	
 	@Test
