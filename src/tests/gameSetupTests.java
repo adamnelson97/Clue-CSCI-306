@@ -73,6 +73,7 @@ public class gameSetupTests {
 	@Test
 	public void testPlayerDeck() {
 		assertEquals(6, board.getPlayerCards().size());
+		assertTrue(board.getPlayerCards().containsKey("Colonel Mustard"));
 	}
 	//Test for correct total number of cards
 	//Test for correct number of each type of card
