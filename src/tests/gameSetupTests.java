@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.awt.Color;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.BeforeClass;
@@ -39,12 +40,11 @@ public class gameSetupTests {
 	public void testLoadPlayers() {
 		Set<Player> players = board.getPlayers();
 		//Creates a new player object, then tests the set for that object
-		Player x = new Player("Miss Scarlett", Color.RED, 0, 6);
-		assertTrue(players.contains(x));
-		x = new Player("Mrs. Peacock", Color.BLUE, 18, 19);
-		assertTrue(players.contains(x));
-		x = new Player("Mrs. White", Color.WHITE, 6, 1);
-		assertTrue(players.contains(x));
+		Set<Player> testPlayers = new HashSet<Player>();
+		testPlayers.add(new Player("Miss Scarlett", Color.RED, 0, 6));
+		testPlayers.add(new Player("Mrs. Peacock", Color.BLUE, 18, 19));
+		testPlayers.add(new Player("Mrs. White", Color.WHITE, 6, 1));
+		assertTrue(players.containsAll(testPlayers));
 	} 
 
 	//TODO Determine if Human player will be determined by format or chosen by player
