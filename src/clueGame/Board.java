@@ -300,6 +300,22 @@ public class Board {
 			//System.out.println(x.toString());
 			players.put(line[0], x);
 		}
+		
+		FileReader weaponCfg = null;
+		weapons.clear();
+		
+		try {
+			weaponCfg = new FileReader(weaponConfigFile);
+		} catch (FileNotFoundException e) {
+			System.out.println("Weapon Config File not found.");
+		}
+		
+		in = new Scanner(weaponCfg);
+		
+		while (in.hasNextLine()) {
+			temp = in.nextLine(); //Stores the weapon name
+			weapons.add(new Card(temp, 2));
+		}
 	}
 
 	/**
