@@ -70,7 +70,7 @@ public class Board {
 		try {
 			loadBoardConfig();
 		} catch (BadConfigFormatException e) {
-
+			System.out.println(e);
 		}
 
 		// Populate adjMatrix
