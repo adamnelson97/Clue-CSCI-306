@@ -326,11 +326,6 @@ public class Board {
 		return targets; //Getter for targets so the set doesn't have to be created for every get
 	}
 
-	// Old function accepting old parameters. Delete if determined superfluous & obsolete.
-
-	/*public Set<BoardCell> getAdjList(BoardCell cell) {
-		return adjMatrix.get(cell); //Stores the adjacency list for a cell in a new list
-	}*/
 	public Set<BoardCell> getAdjList(int cellX, int cellY) {
 		return adjMatrix.get(board[cellX][cellY]);
 	}
