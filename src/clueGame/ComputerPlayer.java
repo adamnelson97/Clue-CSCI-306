@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.util.Set;
 
 /**
@@ -18,8 +19,21 @@ public class ComputerPlayer extends Player {
 	
 	//Constructors
 	
+	/**
+	 * Generates a ComputerPlayer from a config file.
+	 * @param name Name of the player.
+	 * @param col The player's color.
+	 * @param r The starting row for the player.
+	 * @param c The starting column for the player.
+	 */
+	public ComputerPlayer(String name, Color col, int r, int c) {
+		super(name, col, r, c);
+		// TODO Auto-generated constructor stub
+	}
+	
 	//Methods
 	
+
 	/**
 	 * Randomly selects a destination from the list of viable targets.
 	 * @param targets The set of all possible destinations.
