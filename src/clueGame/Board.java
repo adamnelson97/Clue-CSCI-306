@@ -343,4 +343,8 @@ public class Board {
 		boardConfigFile = boardCfg;
 		roomConfigFile = roomCfg;
 	}
+	
+	public Set<Player> getPlayers() {
+		return players;
+	}
 }
