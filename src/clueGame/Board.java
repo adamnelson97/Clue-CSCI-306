@@ -296,7 +296,8 @@ public class Board {
 			temp = in.nextLine(); //Takes in entire line, e.g. Mrs. White,WHITE,6,1
 			line = temp.split(","); //Splits line by the commas
 			color = convertColor(line[1]);
-			players.add(new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3])));
+			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
+			players.add(x);
 		}
 	}
 
