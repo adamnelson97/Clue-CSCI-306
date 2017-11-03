@@ -48,6 +48,8 @@ public class Board {
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 	private Map<String, Card> deck; //The entire deck of playing cards
+	
+	private Solution solution;
 
 
 	// Variable used for the singleton pattern
@@ -350,9 +352,14 @@ public class Board {
 	/**
 	 * Randomly selects a solution of one Room, Weapon, and Person.
 	 */
-	public void selectAnswer() {
-		//TODO complete selectAnswer method
-	}
+	public void dealer() {
+		List<Card> roomCards = new ArrayList<Card>(rooms.values());
+		List<Card> peopleCards = new ArrayList<Card>(playerCards.values());
+		List<Card> weaponCards = new ArrayList<Card>(weapons.values());
+		Map<String, Card> needsDealt = new HashMap<String, Card>();
+
+		
+		}
 
 	/**
 	 * Sends a suggestion to each player and checks for possible cards.
