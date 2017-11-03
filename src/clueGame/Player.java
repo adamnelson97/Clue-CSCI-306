@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * <h1>Player</h1>
@@ -17,6 +18,7 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
+	private ArrayList<Card> hand; //All the cards dealt to the player
 	
 	//Constructors
 	public Player(String playerName, Color color, int row, int column) {
@@ -24,6 +26,7 @@ public class Player {
 		this.color = color;
 		this.row = row;
 		this.column = column;
+		hand = new ArrayList<Card>();
 	}
 	
 	//Methods
