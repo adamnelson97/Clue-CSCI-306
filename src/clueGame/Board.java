@@ -257,6 +257,40 @@ public class Board {
 			visited.clear();
 		}
 	}
+	
+	/**
+	 * Loads the Room, Board, Players, and Weapons configuration files.
+	 */
+	public void loadConfigFiles() {
+		//TODO complete loadConfigFiles method
+	}
+	
+	/**
+	 * Randomly selects a solution of one Room, Weapon, and Person.
+	 */
+	public void selectAnswer() {
+		//TODO complete selectAnswer method
+	}
+	
+	/**
+	 * Sends a suggestion to each player and checks for possible cards.
+	 * @return Card Returns a card within the suggestion, revealing it to the player who guessed.
+	 */
+	public Card handleSuggestion() {
+		//TODO complete handleSuggestion method
+		return null;
+	}
+	
+	/**
+	 * Checks an accusation against the set solution to see if the player has correctly
+	 * guessed and therefore won.
+	 * @param accusation The player's guess.
+	 * @return boolean Whether the player accurately guessed the solution.
+	 */
+	public boolean checkAccusation(Solution accusation) {
+		//TODO complete checkAccusation method
+		return false;
+	}
 
 	//Getters and Setters
 
