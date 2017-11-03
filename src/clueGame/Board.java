@@ -41,7 +41,7 @@ public class Board {
 	private String playerConfigFile = "PlayerLegend.txt";
 	private String weaponConfigFile = "WeaponLegend.txt";
 
-	private Set<Player> players; //Set of all 6 players in the game
+	private Map<String, Player> players; //Set of all 6 players in the game
 	private Set<Card> rooms; //Set of all 9 rooms in the game
 	private Set<Card> weapons; //Set of all 6 weapons in the game
 
@@ -61,7 +61,7 @@ public class Board {
 		adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
-		players = new HashSet<Player>();
+		players = new HashMap<String, Player>();
 		rooms = new HashSet<Card>();
 		weapons = new HashSet<Card>();
 	}
@@ -297,7 +297,8 @@ public class Board {
 			line = temp.split(","); //Splits line by the commas
 			color = convertColor(line[1]);
 			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
-			players.add(x);
+			System.out.println(x.toString());
+			players.put(line[0], x);
 		}
 	}
 
