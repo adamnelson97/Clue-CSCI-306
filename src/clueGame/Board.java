@@ -33,11 +33,16 @@ public class Board {
 	private Map<BoardCell, Set<BoardCell>> adjMatrix;
 	private Set<BoardCell> targets;
 	private Set<BoardCell> visited;
+	
 	private String boardConfigFile = "ClueGameLayout.csv";
 	private String roomConfigFile = "ClueGameLegend.txt";
+	private String playerConfigFile = "PlayerLegend.txt";
+	private String weaponConfigFile = "WeaponLegend.txt";
+	
 	private Set<Player> players; //Set of all 6 players in the game
 	private Set<Card> rooms; //Set of all 9 rooms in the game
 	private Set<Card> weapons; //Set of all 6 weapons in the game
+	
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
