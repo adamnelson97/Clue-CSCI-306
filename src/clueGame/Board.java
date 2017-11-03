@@ -25,16 +25,19 @@ import java.util.*;
  */
 public class Board {
 	//Variables
-	private int numRows;
+	private int numRows; //The dimensions of the game board
 	private int numColumns;
 	public final static int MAX_BOARD_SIZE = 50;
-	private BoardCell[][] board;
-	private Map<Character, String> legend;
+	private BoardCell[][] board; //Stores the BoardCells in a 2D grid
+	private Map<Character, String> legend; //Stores the room configuration, e.g. Character -> A, String -> Art Room
 	private Map<BoardCell, Set<BoardCell>> adjMatrix;
 	private Set<BoardCell> targets;
 	private Set<BoardCell> visited;
 	private String boardConfigFile = "ClueGameLayout.csv";
 	private String roomConfigFile = "ClueGameLegend.txt";
+	private Set<Player> players; //Set of all 6 players in the game
+	private Set<Card> rooms; //Set of all 9 rooms in the game
+	private Set<Card> weapons; //Set of all 6 weapons in the game
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
