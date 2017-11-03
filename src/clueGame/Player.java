@@ -19,7 +19,12 @@ public class Player {
 	private Color color;
 	
 	//Constructors
-	
+	public Player(String name, Color col, int r, int c) {
+		playerName = name;
+		color = col;
+		row = r;
+		column = c;
+	}
 	
 	//Methods
 	
