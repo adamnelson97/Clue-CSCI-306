@@ -28,7 +28,7 @@ public class Card {
 	 */
 	public boolean equals() {
 		//TODO complete equals method
-		return null;
+		return false;
 	}
 
 }
