@@ -41,6 +41,14 @@ public class Player {
 		return null;
 	}
 	
+	/**
+	 * Adds a card to the player's hand.
+	 * @param c The card to be added.
+	 */
+	public void addCard(Card c) {
+		hand.add(c);
+	}
+	
 	//Getters for Testing
 	
 	public Color getColor() {
