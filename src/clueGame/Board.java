@@ -44,8 +44,8 @@ public class Board {
 	private String weaponConfigFile = "WeaponLegend.txt";
 
 	private Map<String, Player> players; //Set of all 6 players in the game
-	private Set<Card> rooms; //Set of all 9 rooms in the game
-	private Set<Card> weapons; //Set of all 6 weapons in the game
+	private Map<String, Card> rooms; //Set of all 9 rooms in the game
+	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 
 
 	// Variable used for the singleton pattern
@@ -64,8 +64,8 @@ public class Board {
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
 		players = new HashMap<String, Player>();
-		rooms = new HashSet<Card>();
-		weapons = new HashSet<Card>();
+		rooms = new HashMap<String, Card>();
+		weapons = new HashMap<String, Card>();
 	}
 
 	//Methods
@@ -315,7 +315,7 @@ public class Board {
 		
 		while (in.hasNextLine()) {
 			temp = in.nextLine(); //Stores the weapon name
-			weapons.add(new Card(temp, CardType.WEAPON));
+			weapons.put(temp, new Card(temp, CardType.WEAPON));
 		}
 	}
 
