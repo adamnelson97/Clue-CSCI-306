@@ -67,6 +67,11 @@ public class gameSetupTests {
 	public void testRoomDeck() {
 		assertEquals(9, board.getRooms().size());
 	}
+	
+	@Test
+	public void testPlayerDeck() {
+		assertEquals(6, board.getPlayerDeck());
+	}
 	//Test for correct total number of cards
 	//Test for correct number of each type of card
 	//Test existence of one specific weapon, room, and person
