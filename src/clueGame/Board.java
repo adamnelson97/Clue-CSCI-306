@@ -88,6 +88,8 @@ public class Board {
 
 		// Populate adjMatrix
 		calcAdjacencies();
+		
+		loadConfigFiles(); //Populates players and weapons sets
 	}
 
 	/**
