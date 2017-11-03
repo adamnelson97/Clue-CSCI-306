@@ -41,9 +41,21 @@ public class gameSetupTests {
 		assertEquals(6, board.getPlayers().size());
 		//Creates a new player object, then tests the set for that object
 		assertEquals("Mrs. White", board.getPlayers().get("Mrs. White").getPlayerName());
+		assertEquals(Color.WHITE, board.getPlayers().get("Mrs. White").getColor());
+		assertEquals(6, board.getPlayers().get("Mrs. White").getRow());
+		assertEquals(1, board.getPlayers().get("Mrs. White").getColumn());
+		
+		assertEquals("Miss Scarlett", board.getPlayers().get("Miss Scarlett").getPlayerName());
+		assertEquals(Color.RED, board.getPlayers().get("Miss Scarlett").getColor());
+		assertEquals(0, board.getPlayers().get("Miss Scarlett").getRow());
+		assertEquals(6, board.getPlayers().get("Miss Scarlett").getColumn());
+		
+		assertEquals("Mrs. Peacock", board.getPlayers().get("Mrs. Peacock").getPlayerName());
+		assertEquals(Color.BLUE, board.getPlayers().get("Mrs. Peacock").getColor());
+		assertEquals(18, board.getPlayers().get("Mrs. Peacock").getRow());
+		assertEquals(19, board.getPlayers().get("Mrs. Peacock").getColumn());
 	} 
 
-	//TODO Determine if Human player will be determined by format or chosen by player
 
 	//TODO Test loading the deck of cards
 	//Test for correct total number of cards
