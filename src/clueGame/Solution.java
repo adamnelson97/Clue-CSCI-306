@@ -16,6 +16,8 @@ public class Solution {
 	public String weapon;
 	
 	//Constructors
-	
+	public Solution() {
+		
+	}
 	//Methods
 }
