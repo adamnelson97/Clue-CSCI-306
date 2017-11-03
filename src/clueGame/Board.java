@@ -48,7 +48,7 @@ public class Board {
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 	private Map<String, Card> deck; //The entire deck of playing cards
-	
+
 	private Solution solution;
 
 
@@ -96,7 +96,7 @@ public class Board {
 
 		// Populate adjMatrix
 		calcAdjacencies();
-		
+
 		loadConfigFiles(); //Populates players and weapons sets
 	}
 
@@ -313,18 +313,18 @@ public class Board {
 			playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
 			deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON));
 		}
-		
+
 		FileReader weaponCfg = null;
 		weapons.clear();
-		
+
 		try {
 			weaponCfg = new FileReader(weaponConfigFile);
 		} catch (FileNotFoundException e) {
 			System.out.println("Weapon Config File not found.");
 		}
-		
+
 		Scanner wp = new Scanner(weaponCfg);
-		
+
 		while (wp.hasNextLine()) {
 			temp = wp.nextLine(); //Stores the weapon name
 			weapons.put(temp, new Card(temp, CardType.WEAPON));
@@ -358,8 +358,34 @@ public class Board {
 		List<Card> weaponCards = new ArrayList<Card>(weapons.values());
 		Map<String, Card> needsDealt = new HashMap<String, Card>();
 
-		
+		//Draw three cards for a solution to the game
+		solution.person = peopleCards.get(0).getCardName(); //Takes the first randomly selected person card and stores it in the solution
+		solution.room = roomCards.get(0).getCardName(); //Takes the first randomly selected room card and stores it in the solution
+		solution.weapon = weaponCards.get(0).getCardName(); //Takes the first randomly selected weapon card and stores it in the solution
+
+		for (int i = 1; i < 6; i++) { //Starting with index 1 since index 0 is the solution
+			needsDealt.put(roomCards.get(i).getCardName(), roomCards.get(i));
+			needsDealt.put(peopleCards.get(i).getCardName(), peopleCards.get(i));
+			needsDealt.put(weaponCards.get(i).getCardName(), weaponCards.get(i));
 		}
+
+		for (int i = 6; i < 9; i++) { //Adds remaining room cards
+			needsDealt.put(roomCards.get(i).getCardName(), roomCards.get(i));
+		}
+
+		List<Card> cards = new ArrayList<Card>(needsDealt.values());
+
+		for (int i = 0; i < 18; i += 6) { //Each player gets exactly 3 cards
+			players.get("Miss Scarlett").addCard(cards.get(i));
+			players.get("Professor Plum").addCard(cards.get(i));
+			players.get("Mrs. Peacock").addCard(cards.get(i));
+			players.get("Mr. Green").addCard(cards.get(i));
+			players.get("Colonel Mustard").addCard(cards.get(i));
+			players.get("Mrs. White").addCard(cards.get(i));
+
+		}
+
+	}
 
 	/**
 	 * Sends a suggestion to each player and checks for possible cards.
