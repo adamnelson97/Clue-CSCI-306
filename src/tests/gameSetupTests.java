@@ -31,7 +31,6 @@ public class gameSetupTests {
 		board.setConfigFiles("ClueGameLayout.csv", "ClueGameLegend.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
-		board.loadConfigFiles(); //Loads players and weapons into board
 	}
 	
 
