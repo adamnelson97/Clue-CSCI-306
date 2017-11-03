@@ -52,7 +52,7 @@ public class gameSetupTests {
 		assertTrue(players.contains(x));
 		x = new Player("Mrs. White", Color.WHITE, 6, 1);
 		assertTrue(players.contains(x));
-	}
+	} 
 
 	//TODO Determine if Human player will be determined by format or chosen by player
 
