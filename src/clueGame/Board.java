@@ -41,7 +41,7 @@ public class Board {
 	private String boardConfigFile = "ClueGameLayout.csv";
 	private String roomConfigFile = "ClueGameLegend.txt";
 	private String playerConfigFile = "PlayerLegend.txt";
-	private String weaponConfigFile = "WeaponLegend.txt";
+	private String weaponConfigFile = "WeaponsLegend.txt";
 
 	private Map<String, Player> players; //Set of all 6 players in the game
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
@@ -311,10 +311,10 @@ public class Board {
 			System.out.println("Weapon Config File not found.");
 		}
 		
-		in = new Scanner(weaponCfg);
+		Scanner wp = new Scanner(weaponCfg);
 		
-		while (in.hasNextLine()) {
-			temp = in.nextLine(); //Stores the weapon name
+		while (wp.hasNextLine()) {
+			temp = wp.nextLine(); //Stores the weapon name
 			weapons.put(temp, new Card(temp, CardType.WEAPON));
 		}
 	}
