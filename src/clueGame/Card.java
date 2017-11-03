@@ -10,18 +10,27 @@ package clueGame;
  *
  */
 public class Card {
-	
+
 	//Variables
 	private String cardName;
 	public enum CardType {
 		PERSON, WEAPON, ROOM;
 	}
 	private CardType cardType;
-	
+
 	//Constructors
+
+	public Card(String cardName, int x) {
+		this.cardName = cardName;
+		switch(x) {
+		case 1: cardType = CardType.PERSON; break;
+		case 2: cardType = CardType.WEAPON; break;
+		case 3: cardType = CardType.ROOM; break;
+		}
+	}
 	
 	//Methods
-	
+
 	/**
 	 * Comparator that determines if two cards are equal.
 	 * @return boolean Whether the two cards are equal.
