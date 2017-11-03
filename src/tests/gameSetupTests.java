@@ -42,13 +42,7 @@ public class gameSetupTests {
 		//Creates a new player object, then tests the set for that object
 		Player x = new Player("Miss Scarlett", Color.RED, 0, 6);
 		assertTrue(players.contains(x));
-		x = new Player("Professor Plum", Color.PINK, 8, 19);
-		assertTrue(players.contains(x));
 		x = new Player("Mrs. Peacock", Color.BLUE, 18, 19);
-		assertTrue(players.contains(x));
-		x = new Player("Mr. Green", Color.GREEN, 24, 13);
-		assertTrue(players.contains(x));
-		x = new Player("Colonel Mustard", Color.YELLOW, 24, 5);
 		assertTrue(players.contains(x));
 		x = new Player("Mrs. White", Color.WHITE, 6, 1);
 		assertTrue(players.contains(x));
