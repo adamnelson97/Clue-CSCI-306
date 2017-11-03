@@ -407,4 +407,8 @@ public class Board {
 	public Map<String, Player> getPlayers() {
 		return players;
 	}
+
+	public Map<String, Card> getWeapons() {
+		return weapons;
+	}
 }
