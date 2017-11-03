@@ -47,6 +47,7 @@ public class Board {
 	private Map<String, Card> playerCards;
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
+	private Map<String, Card> deck; //The entire deck of playing cards
 
 
 	// Variable used for the singleton pattern
@@ -68,6 +69,7 @@ public class Board {
 		rooms = new HashMap<String, Card>();
 		weapons = new HashMap<String, Card>();
 		playerCards = new HashMap<String, Card>();
+		deck = new HashMap<String, Card>();
 	}
 
 	//Methods

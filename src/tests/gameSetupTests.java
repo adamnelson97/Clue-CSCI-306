@@ -17,7 +17,7 @@ import clueGame.Player;
  * Purpose: Test loading the different characters and cards, and dealing the cards.
  */
 public class gameSetupTests {
-	
+
 	public static final int LEGEND_SIZE = 11;
 	public static final int NUM_ROWS = 25;
 	public static final int NUM_COLUMNS = 20;
@@ -33,9 +33,10 @@ public class gameSetupTests {
 		// Initialize will load BOTH config files 
 		board.initialize();
 	}
-	
 
-	//TODO Test loading 1st, 3rd, and last player from config file
+
+	//Test loading 1st, 3rd, and last player from config file
+	//Test that each player's color and starting location is correct.
 	@Test
 	public void testLoadPlayers() {
 		assertEquals(6, board.getPlayers().size());
@@ -44,12 +45,12 @@ public class gameSetupTests {
 		assertEquals(Color.WHITE, board.getPlayers().get("Mrs. White").getColor());
 		assertEquals(6, board.getPlayers().get("Mrs. White").getRow());
 		assertEquals(1, board.getPlayers().get("Mrs. White").getColumn());
-		
+
 		assertEquals("Miss Scarlett", board.getPlayers().get("Miss Scarlett").getPlayerName());
 		assertEquals(Color.RED, board.getPlayers().get("Miss Scarlett").getColor());
 		assertEquals(0, board.getPlayers().get("Miss Scarlett").getRow());
 		assertEquals(6, board.getPlayers().get("Miss Scarlett").getColumn());
-		
+
 		assertEquals("Mrs. Peacock", board.getPlayers().get("Mrs. Peacock").getPlayerName());
 		assertEquals(Color.BLUE, board.getPlayers().get("Mrs. Peacock").getColor());
 		assertEquals(18, board.getPlayers().get("Mrs. Peacock").getRow());
@@ -57,27 +58,27 @@ public class gameSetupTests {
 	} 
 
 
-	//TODO Test loading the deck of cards
+	//Test for correct total number of cards
+	//Test for correct number of each type of card
+	//Test existence of one specific weapon, room, and person
 	@Test
 	public void testWeaponDeck() {
 		assertEquals(6, board.getWeapons().size());
 		assertTrue(board.getWeapons().containsKey("Knife"));
 	}
-	
+
 	@Test
 	public void testRoomDeck() {
 		assertEquals(9, board.getRooms().size());
 		assertTrue(board.getRooms().containsKey("Art Room"));
 	}
-	
+
 	@Test
 	public void testPlayerDeck() {
 		assertEquals(6, board.getPlayerCards().size());
 		assertTrue(board.getPlayerCards().containsKey("Colonel Mustard"));
 	}
-	//Test for correct total number of cards
-	//Test for correct number of each type of card
-	//Test existence of one specific weapon, room, and person
+
 
 	//TESTS BELOW THIS POINT HAVE DETAILED SUGGESTIONS IN CluePlayer.pdf
 	//TODO Test dealing the cards.
