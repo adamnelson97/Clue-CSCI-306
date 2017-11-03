@@ -125,6 +125,7 @@ public class Board {
 				legend.put(line[0].charAt(0), line[1]);
 				if (line[2].equals("Card")) {
 					rooms.put(line[1], new Card(line[1], CardType.ROOM));
+					deck.put(line[1], new Card(line[1], CardType.ROOM));
 				}
 			}
 			else {
@@ -308,6 +309,7 @@ public class Board {
 			//System.out.println(x.toString());
 			players.put(line[0], x); //Puts players into map of players
 			playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
+			deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON));
 		}
 		
 		FileReader weaponCfg = null;
@@ -324,6 +326,7 @@ public class Board {
 		while (wp.hasNextLine()) {
 			temp = wp.nextLine(); //Stores the weapon name
 			weapons.put(temp, new Card(temp, CardType.WEAPON));
+			deck.put(temp, new Card(temp, CardType.WEAPON));
 		}
 	}
 
