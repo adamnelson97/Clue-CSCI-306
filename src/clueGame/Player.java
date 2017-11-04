@@ -21,6 +21,15 @@ public class Player {
 	private ArrayList<Card> hand; //All the cards dealt to the player
 	
 	//Constructors
+	
+	/**
+	 * Parameterized Constructor that creates a new player from a data file, and
+	 * initializes an empty hand.
+	 * @param playerName The name of the player.
+	 * @param color The player's identifying color.
+	 * @param row The row of the player's starting location.
+	 * @param column The column of the player's starting location.
+	 */
 	public Player(String playerName, Color color, int row, int column) {
 		this.playerName = playerName;
 		this.color = color;
