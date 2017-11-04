@@ -28,7 +28,6 @@ public class ComputerPlayer extends Player {
 	 */
 	public ComputerPlayer(String name, Color col, int r, int c) {
 		super(name, col, r, c);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//Methods
