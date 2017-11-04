@@ -291,6 +291,7 @@ public class Board {
 	 * Loads the Players, and Weapons configuration files.
 	 */
 	public void loadConfigFiles() {
+		//Load the players
 		FileReader playerCfg = null;
 		players.clear();
 
@@ -313,9 +314,10 @@ public class Board {
 			//System.out.println(x.toString());
 			players.put(line[0], x); //Puts players into map of players
 			playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
-			deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON));
+			deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into master deck
 		}
 
+		//Load the weapons
 		FileReader weaponCfg = null;
 		weapons.clear();
 
@@ -329,8 +331,8 @@ public class Board {
 
 		while (wp.hasNextLine()) {
 			temp = wp.nextLine(); //Stores the weapon name
-			weapons.put(temp, new Card(temp, CardType.WEAPON));
-			deck.put(temp, new Card(temp, CardType.WEAPON));
+			weapons.put(temp, new Card(temp, CardType.WEAPON)); //Puts weapon into map of weapons
+			deck.put(temp, new Card(temp, CardType.WEAPON)); //Puts weapon into master deck
 		}
 	}
 
