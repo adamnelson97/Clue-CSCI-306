@@ -20,6 +20,11 @@ public class Card {
 
 	//Constructors
 
+	/**
+	 * Parameterized constructor that creates a Card from a data file.
+	 * @param cardName The name of the Card.
+	 * @param cardType The type of the card: Person, Weapon, or Room.
+	 */
 	public Card(String cardName, CardType cardType) {
 		this.cardName = cardName;
 		this.cardType = cardType;
@@ -36,6 +41,9 @@ public class Card {
 		return false;
 	}
 
+	
+	//Getters
+	
 	public String getCardName() {
 		return cardName;
 	}
