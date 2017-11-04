@@ -16,8 +16,13 @@ public class Solution {
 	public String weapon;
 	
 	//Constructors
+	
+	/**
+	 * Default constructor.
+	 */
 	public Solution() {
-		
+		//Nothing should need to go here.
 	}
+	
 	//Methods
 }
