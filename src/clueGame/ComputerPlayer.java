@@ -19,6 +19,10 @@ public class ComputerPlayer extends Player {
 	
 	//Constructors
 	
+	public ComputerPlayer() {
+		
+	}
+	
 	/**
 	 * Generates a ComputerPlayer from a config file.
 	 * @param name Name of the player.
