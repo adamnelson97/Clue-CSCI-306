@@ -24,5 +24,17 @@ public class Solution {
 		//Nothing should need to go here.
 	}
 	
+	/**
+	 * Parameterized constructor.
+	 * @param person
+	 * @param weapon
+	 * @param room
+	 */
+	public Solution(String person, String weapon, String room) {
+		this.person = person;
+		this.weapon = weapon;
+		this.room = room;
+	}
+	
 	//Methods
 }
