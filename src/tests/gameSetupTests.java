@@ -174,6 +174,41 @@ public class gameSetupTests {
 		assertFalse(loc_19_15);
 		assertFalse(loc_19_19);
 		assertTrue(loc_20_17);
+
+		//Location has 5 targets plus a room that HAS just been visited
+		board.calcTargets(19, 17, 2);
+		 loc_17_17 = false;
+		 loc_18_16 = false;
+		 loc_18_18 = false;
+		 loc_19_15 = false;
+		 loc_19_19 = false;
+		 loc_20_17 = false;
+		// Run the test a large number of times
+		for (int i=0; i<100; i++) {
+			BoardCell selected = player.pickLocation(board.getTargets());
+			//System.out.println("Selected: " + selected.toString());
+			if (selected == board.getCellAt(17, 17))
+				loc_17_17 = true;
+			else if (selected == board.getCellAt(18, 16))
+				loc_18_16 = true;
+			else if (selected == board.getCellAt(18, 18))
+				loc_18_18 = true;
+			else if (selected == board.getCellAt(19, 15))
+				loc_19_15 = true;
+			else if (selected == board.getCellAt(19, 19))
+				loc_19_19 = true;
+			else if (selected == board.getCellAt(20, 17))
+				loc_20_17 = true;
+			else
+				fail("Invalid target selected");
+		}
+		// Ensure each target was selected at least once
+		assertTrue(loc_17_17);
+		assertTrue(loc_18_16);
+		assertTrue(loc_18_18);
+		assertTrue(loc_19_15);
+		assertTrue(loc_19_19);
+		assertTrue(loc_20_17);
 	}
 
 	//TODO Test checking an accusation (Board)
