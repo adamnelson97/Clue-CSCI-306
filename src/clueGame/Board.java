@@ -407,8 +407,10 @@ public class Board {
 	 * @return boolean Whether the player accurately guessed the solution.
 	 */
 	public boolean checkAccusation(Solution accusation) {
-		//TODO complete checkAccusation method
-		return false;
+		if (!accusation.person.equals(solution.person)) return false;
+		if (!accusation.weapon.equals(solution.weapon)) return false;
+		if (!accusation.room.equals(solution.room)) return false;
+		return true;
 	}
 
 	//Getters and Setters
