@@ -70,9 +70,9 @@ public class ComputerPlayer extends Player {
 	 * The computer randomly makes an accusation based off the cards it has
 	 * in its hand and cards that it has already seen.
 	 */
-	public void makeAccusation() {
+	public Solution makeAccusation() {
 		//TODO complete makeAccusation method
-		return;
+		return null;
 	}
 
 	/**
