@@ -74,6 +74,7 @@ public class ComputerPlayer extends Player {
 	/**
 	 * The computer randomly makes an accusation based off the cards it has
 	 * in its hand and cards that it has already seen.
+	 * @return Solution The computer player's accusation.
 	 */
 	public Solution makeAccusation() {
 		//TODO complete makeAccusation method
@@ -83,6 +84,10 @@ public class ComputerPlayer extends Player {
 	/**
 	 * The computer randomly makes a suggestion based off the cards it has
 	 * in its hand and cards that it has already seen.
+	 * @param board The game board.
+	 * @param location The current cell the player is located at.
+	 * @param dealtCards The set of cards that have been dealt to any player.
+	 * @return Solution The computer player's suggestion.
 	 */
 	public Solution createSuggestion(Board board, BoardCell location, Set<Card> dealtCards) {
 		Solution suggestion = new Solution();

@@ -26,9 +26,9 @@ public class Solution {
 	
 	/**
 	 * Parameterized constructor.
-	 * @param person
-	 * @param weapon
-	 * @param room
+	 * @param person The person who committed the crime.
+	 * @param weapon The weapon the person used.
+	 * @param room The location the crime took place in.
 	 */
 	public Solution(String person, String weapon, String room) {
 		this.person = person;
