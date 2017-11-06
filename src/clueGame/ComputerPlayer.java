@@ -17,16 +17,17 @@ import java.util.Set;
 public class ComputerPlayer extends Player {
 
 	//Variables
-	
+	private BoardCell lastRoom; //Tracks the last room the CP visited for targeting purposes
+
 	//Constructors
-	
+
 	/**
 	 * Default constructor.
 	 */
 	public ComputerPlayer() {
-		
+		this.lastRoom = new BoardCell(); //Stores a default cell for the "first room."
 	}
-	
+
 	/**
 	 * Generates a ComputerPlayer from a config file.
 	 * @param name Name of the player.
@@ -36,10 +37,11 @@ public class ComputerPlayer extends Player {
 	 */
 	public ComputerPlayer(String name, Color col, int r, int c) {
 		super(name, col, r, c);
+		this.lastRoom = new BoardCell(); //Stores a default cell for the "first room."
 	}
-	
+
 	//Methods
-	
+
 
 	/**
 	 * Randomly selects a destination from the list of viable targets.
@@ -48,15 +50,21 @@ public class ComputerPlayer extends Player {
 	 */
 	public BoardCell pickLocation(Set<BoardCell> targets) {
 		for (BoardCell cell : targets) {
-			if (cell.isDoorway()) return cell; //Always chooses a room if it is an option
+			if (cell.isDoorway()) {
+				//If the target is a room, determine if the CP just left that room
+				if (!(cell.getColumn() == lastRoom.getColumn() && cell.getRow() == lastRoom.getRow())) {
+					lastRoom = cell; //Stores the new last visit room.
+					return cell; //Returns the target if it is a new room.
+				}
+			}
 		}
-		
+
 		//If no rooms are present in the set:
 		BoardCell[] targs = targets.toArray(new BoardCell[targets.size()]); //Puts the contents of the set into an array
 		Random rand = new Random();
 		return targs[rand.nextInt(targs.length)]; //Randomly returns a cell from the array
 	}
-	
+
 	/**
 	 * The computer randomly makes an accusation based off the cards it has
 	 * in its hand and cards that it has already seen.
@@ -65,7 +73,7 @@ public class ComputerPlayer extends Player {
 		//TODO complete makeAccusation method
 		return;
 	}
-	
+
 	/**
 	 * The computer randomly makes a suggestion based off the cards it has
 	 * in its hand and cards that it has already seen.
