@@ -139,7 +139,7 @@ public class gameSetupTests {
 		assertTrue(loc_19_4);
 		assertTrue(loc_18_5);
 
-		//Location has 5 targets plus a room
+		//Location has 5 targets plus a room that has NOT just been visited
 		board.calcTargets(19, 17, 2);
 		boolean loc_17_17 = false;
 		boolean loc_18_16 = false;
@@ -149,8 +149,9 @@ public class gameSetupTests {
 		boolean loc_20_17 = false;
 		// Run the test a large number of times
 		for (int i=0; i<100; i++) {
+			player.resetRoom();
 			BoardCell selected = player.pickLocation(board.getTargets());
-			System.out.println("Selected: " + selected.toString());
+			//System.out.println("Selected: " + selected.toString());
 			if (selected == board.getCellAt(17, 17))
 				loc_17_17 = true;
 			else if (selected == board.getCellAt(18, 16))
