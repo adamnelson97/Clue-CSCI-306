@@ -22,6 +22,9 @@ public class Player {
 	
 	//Constructors
 	
+	public Player() {
+		
+	}
 	/**
 	 * Parameterized Constructor that creates a new player from a data file, and
 	 * initializes an empty hand.
