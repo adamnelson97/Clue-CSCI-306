@@ -2,6 +2,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <h1>Player</h1>
@@ -19,7 +21,8 @@ public class Player {
 	private int column;
 	private Color color;
 	private ArrayList<Card> hand; //All the cards dealt to the player
-	
+	Set<Card> seen; //Tracks all the cards revealed to the player.
+
 	//Constructors
 	
 	/**
@@ -42,6 +45,7 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = new ArrayList<Card>();
+		this.seen = new HashSet<Card>();
 	}
 	
 	//Methods
@@ -62,6 +66,7 @@ public class Player {
 	 */
 	public void addCard(Card c) {
 		hand.add(c);
+		seen.add(c);
 	}
 	
 	//Getters for Testing
