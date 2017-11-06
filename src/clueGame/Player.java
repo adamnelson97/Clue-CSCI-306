@@ -20,8 +20,7 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
-	private ArrayList<Card> hand; //All the cards dealt to the player
-	Set<Card> seen; //Tracks all the cards revealed to the player.
+	protected ArrayList<Card> hand; //All the cards dealt to the player
 
 	//Constructors
 	
@@ -30,7 +29,6 @@ public class Player {
 	 */
 	public Player() {
 		this.hand = new ArrayList<Card>();
-		this.seen = new HashSet<Card>();
 	}
 	/**
 	 * Parameterized Constructor that creates a new player from a data file, and
@@ -46,7 +44,6 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = new ArrayList<Card>();
-		this.seen = new HashSet<Card>();
 	}
 	
 	//Methods
@@ -67,7 +64,7 @@ public class Player {
 	 */
 	public void addCard(Card c) {
 		hand.add(c);
-		seen.add(c);
+		//System.out.println("Adding card " + c.getCardName() + " to hand for " + getPlayerName()); //Debugging statement
 	}
 	
 	//Getters for Testing
@@ -96,6 +93,4 @@ public class Player {
 	public String toString() {
 		return "Player [playerName=" + playerName + ", row=" + row + ", column=" + column + ", color=" + color + "]";
 	}
-	
-	
 }

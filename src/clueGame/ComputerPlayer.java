@@ -22,7 +22,7 @@ public class ComputerPlayer extends Player {
 
 	//Variables
 	private BoardCell lastRoom; //Tracks the last room the CP visited for targeting purposes.
-	
+
 	//Constructors
 
 	/**
@@ -84,29 +84,49 @@ public class ComputerPlayer extends Player {
 	 * The computer randomly makes a suggestion based off the cards it has
 	 * in its hand and cards that it has already seen.
 	 */
-	public Solution createSuggestion(Board board, BoardCell location, Set<Card> dealtCards) {
+	public Solution createSuggestion(BoardCell location, Set<Card> dealtCards) {
 		Solution suggestion = new Solution();
-		//Choose a person
+
 		ArrayList<Card> people = new ArrayList<Card>();
-		//Adds unseen people to the array
+		ArrayList<Card> weapons = new ArrayList<Card>();
+
+		//Adds unseen cards to the respective arrays
 		for (Card c : dealtCards) {
-			if (c.getCardType() == CardType.PERSON && !seen.contains(c)) people.add(c);
+			boolean addCard = true;
+			for (int i = 0; i < hand.size(); i++) {
+				if (c.getCardName().equals(hand.get(i).getCardName())) {
+					addCard = false; //Card has same name as a card revealed to the player, so it won't be added.
+				}
+			}
+			if (addCard) {
+				//Adds card to correct array list based on type.
+				switch(c.getCardType()) {
+				case PERSON: people.add(c); break;
+				case WEAPON: weapons.add(c); break;
+				case ROOM: break;
+				}
+			}
 		}
+
 		//Randomly chooses an unseen person
 		Random rand = new Random();
 		suggestion.person = people.get(rand.nextInt(people.size())).getCardName();
-		
-		//Choose a weapon
-		ArrayList<Card> weapons = new ArrayList<Card>();
-		//Adds unseen weapons to the array
-		for (Card c : dealtCards) {
-			if (c.getCardType() == CardType.WEAPON && !seen.contains(c)) weapons.add(c);
-		}
 		//Randomly chooses a person
 		suggestion.weapon = weapons.get(rand.nextInt(weapons.size())).getCardName();
-		
-		suggestion.room = board.getLegend().get(location.getInitial());
-		
+
+		char i = location.getInitial();
+		switch(i) {
+		case 'A': suggestion.room = "Art Room"; break;
+		case 'B': suggestion.room = "Ballroom"; break;
+		case 'C': suggestion.room = "Conservatory"; break;
+		case 'K': suggestion.room = "Kitchen"; break;
+		case 'L': suggestion.room = "Library"; break;
+		case 'M': suggestion.room = "Master Bedrom"; break;
+		case 'Q': suggestion.room = "Servant Quarters"; break;
+		case 'R': suggestion.room = "Trophy Room"; break;
+		case 'T': suggestion.room = "Theatre"; break;
+		}
+
 		return suggestion;		
 	}
 
