@@ -233,6 +233,29 @@ public class gameSetupTests {
 	}
 	
 	//TODO Test creating a suggestion (Computer Player)
+	@Test
+	public void testCreateSuggestion() {
+		ComputerPlayer player = new ComputerPlayer();
+		//Give player cards, these should not be suggested.
+		player.addCard(new Card("Miss Scarlett", CardType.PERSON));
+		player.addCard(new Card("Knife", CardType.WEAPON));
+		player.addCard(new Card("Mrs. Peacock", CardType.PERSON));
+		player.addCard(new Card("Pipe", CardType.WEAPON));
+		
+		Set<Card> dealtCards = new HashSet<Card>(); //Total collection of cards in play
+		dealtCards.add(new Card("Miss Scarlett", CardType.PERSON));
+		dealtCards.add(new Card("Knife", CardType.WEAPON));
+		dealtCards.add(new Card("Mrs. Peacock", CardType.PERSON));
+		dealtCards.add(new Card("Pipe", CardType.WEAPON));
+		//Add other cards the player will not have seen.
+		dealtCards.add(new Card("Mr. Green", CardType.PERSON));
+		dealtCards.add(new Card("Revolver", CardType.WEAPON));
+		
+		Solution suggestion = player.createSuggestion(board, board.getCellAt(0, 19), dealtCards);
+		assertEquals("Mr. Green", suggestion.person);
+		assertEquals("Revolver", suggestion.weapon);
+		assertEquals("Ballroom", suggestion.room);
+	}
 
 	//TODO Test disproving a suggestion (Player)
 
