@@ -54,6 +54,7 @@ public class ComputerPlayer extends Player {
 				//If the target is a room, determine if the CP just left that room
 				if (!(cell.getColumn() == lastRoom.getColumn() && cell.getRow() == lastRoom.getRow())) {
 					lastRoom = cell; //Stores the new last visit room.
+					System.out.println("New Room: " + lastRoom.getRow() + ", " + lastRoom.getColumn());;
 					return cell; //Returns the target if it is a new room.
 				}
 			}
