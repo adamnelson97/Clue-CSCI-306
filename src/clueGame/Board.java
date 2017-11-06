@@ -272,6 +272,7 @@ public class Board {
 				// If the path is length 1, OR the cell is a properly oriented doorway, add the cell to targets.
 				if(pathLength == 1 || c.isDoorway()) {
 					targets.add(c);
+					//System.out.println("Adding target: " + c.getRow() + ", " + c.getColumn()); //Used for debugging
 				}
 				// Otherwise, add the adjacent cell to visited, call the function from that cell with a shorter pathLength.
 				// Then, after that has completed, remove the cell from visited.
