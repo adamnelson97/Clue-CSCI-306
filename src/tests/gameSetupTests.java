@@ -15,6 +15,8 @@ import clueGame.BoardCell;
 import clueGame.Card;
 import clueGame.ComputerPlayer;
 import clueGame.Player;
+import clueGame.Solution;
+import clueGame.Card.CardType;
 
 /*
  * Authors: Adam Nelson and Youjun Lee
@@ -113,7 +115,7 @@ public class gameSetupTests {
 		assertEquals(21, num_doubles);
 	}
 
-	//TODO Test selecting a target location (Computer Player)
+	//Test selecting a target location (Computer Player)
 	@Test
 	public void testTargetRandomSelection() {
 		ComputerPlayer player = new ComputerPlayer();
@@ -211,8 +213,25 @@ public class gameSetupTests {
 		assertTrue(loc_20_17);
 	}
 
-	//TODO Test checking an accusation (Board)
-
+	//Test checking an accusation (Board)
+	@Test
+	public void testAccusation() {
+		board.setSolution(new Solution("Miss Scarlett", "Knife", "Library"));
+		
+		//Check correct accusation
+		boolean correctAccusation = board.checkAccusation(new Solution("Miss Scarlett", "Knife", "Library"));
+		assertTrue(correctAccusation);
+		//Check incorrect person
+		boolean wrongPerson = board.checkAccusation(new Solution("Mrs. Peacock", "Knife", "Library"));
+		assertFalse(wrongPerson);
+		//Check incorrect weapon
+		boolean wrongWeapon = board.checkAccusation(new Solution("Miss Scarlett", "Pipe", "Library"));
+		assertFalse(wrongWeapon);
+		//Check incorrect room
+		boolean wrongRoom = board.checkAccusation(new Solution("Miss Scarlett", "Knife", "Theatre"));
+		assertFalse(wrongRoom);		
+	}
+	
 	//TODO Test creating a suggestion (Computer Player)
 
 	//TODO Test disproving a suggestion (Player)
