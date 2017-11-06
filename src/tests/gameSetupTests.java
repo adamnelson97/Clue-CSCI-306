@@ -11,7 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.BoardCell;
 import clueGame.Card;
+import clueGame.ComputerPlayer;
 import clueGame.Player;
 
 /*
@@ -93,14 +95,14 @@ public class gameSetupTests {
 		assertEquals(3, board.getPlayers().get("Colonel Mustard").getHand().size());
 		assertEquals(3, board.getPlayers().get("Mrs. White").getHand().size());
 	}
-	
+
 	//Double check cards have not been dealt twice
 	@Test
 	public void doubleCheckDealing() {
 		Map<String, Card> cards = board.getDeck();
 		assertEquals(21, board.getDeck().size());
 		int num_doubles = 0;
-		
+
 		for (String x : cards.keySet()) {
 			for (String y : cards.keySet()) {
 				if (cards.get(x).equals(cards.get(y))) {
@@ -112,6 +114,65 @@ public class gameSetupTests {
 	}
 
 	//TODO Test selecting a target location (Computer Player)
+	@Test
+	public void testTargetRandomSelection() {
+		ComputerPlayer player = new ComputerPlayer();
+		//Location has 3 targets
+		board.calcTargets(18, 4, 1);
+		boolean loc_17_4 = false;
+		boolean loc_19_4 = false;
+		boolean loc_18_5 = false;
+		// Run the test a large number of times
+		for (int i=0; i<50; i++) {
+			BoardCell selected = player.pickLocation(board.getTargets());
+			if (selected == board.getCellAt(17, 17))
+				loc_17_4 = true;
+			else if (selected == board.getCellAt(16, 18))
+				loc_19_4 = true;
+			else if (selected == board.getCellAt(18, 18))
+				loc_18_5 = true;
+			else
+				fail("Invalid target selected");
+		}
+		// Ensure each target was selected at least once
+		assertTrue(loc_17_4);
+		assertTrue(loc_19_4);
+		assertTrue(loc_18_5);
+
+		//Location has 5 targets plus a room
+		board.calcTargets(19, 17, 3);
+		boolean loc_17_17 = false;
+		boolean loc_18_16 = false;
+		boolean loc_18_18 = false;
+		boolean loc_19_15 = false;
+		boolean loc_19_19 = false;
+		boolean loc_20_17 = false;
+		// Run the test a large number of times
+		for (int i=0; i<100; i++) {
+			BoardCell selected = player.pickLocation(board.getTargets());
+			if (selected == board.getCellAt(17, 17))
+				loc_17_17 = true;
+			else if (selected == board.getCellAt(18, 16))
+				loc_18_16 = true;
+			else if (selected == board.getCellAt(18, 18))
+				loc_18_18 = true;
+			else if (selected == board.getCellAt(19, 15))
+				loc_19_15 = true;
+			else if (selected == board.getCellAt(19, 19))
+				loc_19_19 = true;
+			else if (selected == board.getCellAt(20, 17))
+				loc_20_17 = true;
+			else
+				fail("Invalid target selected");
+		}
+		// Ensure each target was selected at least once
+		assertTrue(loc_17_17);
+		assertTrue(loc_18_16);
+		assertTrue(loc_18_18);
+		assertTrue(loc_19_15);
+		assertTrue(loc_19_19);
+		assertTrue(loc_20_17);
+	}
 
 	//TODO Test checking an accusation (Board)
 
