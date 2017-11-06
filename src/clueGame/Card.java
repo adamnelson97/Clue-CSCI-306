@@ -52,4 +52,11 @@ public class Card {
 		return cardType;
 	}
 
+	@Override
+	public String toString() {
+		return "Card [cardName=" + cardName + ", cardType=" + cardType + "]";
+	}
+	
+	
+
 }
