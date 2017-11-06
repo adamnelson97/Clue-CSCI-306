@@ -232,10 +232,10 @@ public class gameSetupTests {
 		assertFalse(wrongRoom);		
 	}
 	
-	//TODO Test creating a suggestion (Computer Player)
+	//Test creating a suggestion (Computer Player)
 	@Test
 	public void testCreateSuggestion() {
-		ComputerPlayer player = new ComputerPlayer("Adam", Color.YELLOW, 0, 0);
+		ComputerPlayer player = new ComputerPlayer();
 		//Give player cards, these should not be suggested.
 		player.addCard(new Card("Miss Scarlett", CardType.PERSON));
 		player.addCard(new Card("Knife", CardType.WEAPON));
@@ -251,7 +251,7 @@ public class gameSetupTests {
 		dealtCards.add(new Card("Mr. Green", CardType.PERSON));
 		dealtCards.add(new Card("Revolver", CardType.WEAPON));
 		
-		Solution suggestion = player.createSuggestion(board.getCellAt(0, 19), dealtCards);
+		Solution suggestion = player.createSuggestion(board, board.getCellAt(0, 19), dealtCards);
 		assertEquals("Mr. Green", suggestion.person);
 		assertEquals("Revolver", suggestion.weapon);
 		assertEquals("Ballroom", suggestion.room);

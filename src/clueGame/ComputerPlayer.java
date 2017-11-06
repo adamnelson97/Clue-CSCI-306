@@ -84,7 +84,7 @@ public class ComputerPlayer extends Player {
 	 * The computer randomly makes a suggestion based off the cards it has
 	 * in its hand and cards that it has already seen.
 	 */
-	public Solution createSuggestion(BoardCell location, Set<Card> dealtCards) {
+	public Solution createSuggestion(Board board, BoardCell location, Set<Card> dealtCards) {
 		Solution suggestion = new Solution();
 
 		ArrayList<Card> people = new ArrayList<Card>();
@@ -113,19 +113,8 @@ public class ComputerPlayer extends Player {
 		suggestion.person = people.get(rand.nextInt(people.size())).getCardName();
 		//Randomly chooses a person
 		suggestion.weapon = weapons.get(rand.nextInt(weapons.size())).getCardName();
-
-		char i = location.getInitial();
-		switch(i) {
-		case 'A': suggestion.room = "Art Room"; break;
-		case 'B': suggestion.room = "Ballroom"; break;
-		case 'C': suggestion.room = "Conservatory"; break;
-		case 'K': suggestion.room = "Kitchen"; break;
-		case 'L': suggestion.room = "Library"; break;
-		case 'M': suggestion.room = "Master Bedrom"; break;
-		case 'Q': suggestion.room = "Servant Quarters"; break;
-		case 'R': suggestion.room = "Trophy Room"; break;
-		case 'T': suggestion.room = "Theatre"; break;
-		}
+		//Gets the room from the legend according to the initial of the current cell.
+		suggestion.room = board.getLegend().get(location.getInitial());
 
 		return suggestion;		
 	}
