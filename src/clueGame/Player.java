@@ -29,7 +29,8 @@ public class Player {
 	 * Default constructor.
 	 */
 	public Player() {
-		
+		this.hand = new ArrayList<Card>();
+		this.seen = new HashSet<Card>();
 	}
 	/**
 	 * Parameterized Constructor that creates a new player from a data file, and

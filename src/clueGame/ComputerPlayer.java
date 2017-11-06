@@ -1,8 +1,12 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+
+import clueGame.Card.CardType;
 
 /**
  * <h1>ComputerPlayer</h1>
@@ -17,14 +21,15 @@ import java.util.Set;
 public class ComputerPlayer extends Player {
 
 	//Variables
-	private BoardCell lastRoom; //Tracks the last room the CP visited for targeting purposes
-
+	private BoardCell lastRoom; //Tracks the last room the CP visited for targeting purposes.
+	
 	//Constructors
 
 	/**
 	 * Default constructor.
 	 */
 	public ComputerPlayer() {
+		super();
 		this.lastRoom = new BoardCell(); //Stores a default cell for the "first room."
 	}
 
@@ -79,9 +84,30 @@ public class ComputerPlayer extends Player {
 	 * The computer randomly makes a suggestion based off the cards it has
 	 * in its hand and cards that it has already seen.
 	 */
-	public void createSuggestion() {
-		//TODO complete createSuggestion method
-		return;
+	public Solution createSuggestion(Board board, BoardCell location, Set<Card> dealtCards) {
+		Solution suggestion = new Solution();
+		//Choose a person
+		ArrayList<Card> people = new ArrayList<Card>();
+		//Adds unseen people to the array
+		for (Card c : dealtCards) {
+			if (c.getCardType() == CardType.PERSON && !seen.contains(c)) people.add(c);
+		}
+		//Randomly chooses an unseen person
+		Random rand = new Random();
+		suggestion.person = people.get(rand.nextInt(people.size())).getCardName();
+		
+		//Choose a weapon
+		ArrayList<Card> weapons = new ArrayList<Card>();
+		//Adds unseen weapons to the array
+		for (Card c : dealtCards) {
+			if (c.getCardType() == CardType.WEAPON && !seen.contains(c)) weapons.add(c);
+		}
+		//Randomly chooses a person
+		suggestion.weapon = weapons.get(rand.nextInt(weapons.size())).getCardName();
+		
+		suggestion.room = board.getLegend().get(location.getInitial());
+		
+		return suggestion;		
 	}
 
 	/**
