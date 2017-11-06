@@ -471,4 +471,8 @@ public class Board {
 	public Map<String, Card> getDeck() {
 		return deck;
 	}
+
+	public void setSolution(Solution solution) {
+		this.solution = solution;
+	}
 }
