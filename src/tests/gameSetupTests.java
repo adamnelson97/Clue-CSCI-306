@@ -125,11 +125,11 @@ public class gameSetupTests {
 		// Run the test a large number of times
 		for (int i=0; i<50; i++) {
 			BoardCell selected = player.pickLocation(board.getTargets());
-			if (selected == board.getCellAt(17, 17))
+			if (selected == board.getCellAt(17, 4))
 				loc_17_4 = true;
-			else if (selected == board.getCellAt(16, 18))
+			else if (selected == board.getCellAt(19, 4))
 				loc_19_4 = true;
-			else if (selected == board.getCellAt(18, 18))
+			else if (selected == board.getCellAt(18, 5))
 				loc_18_5 = true;
 			else
 				fail("Invalid target selected");
@@ -166,11 +166,11 @@ public class gameSetupTests {
 				fail("Invalid target selected");
 		}
 		// Ensure each target was selected at least once
-		assertTrue(loc_17_17);
-		assertTrue(loc_18_16);
-		assertTrue(loc_18_18);
-		assertTrue(loc_19_15);
-		assertTrue(loc_19_19);
+		assertFalse(loc_17_17);
+		assertFalse(loc_18_16);
+		assertFalse(loc_18_18);
+		assertFalse(loc_19_15);
+		assertFalse(loc_19_19);
 		assertTrue(loc_20_17);
 	}
 
