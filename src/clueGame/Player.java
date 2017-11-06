@@ -22,6 +22,9 @@ public class Player {
 	
 	//Constructors
 	
+	/**
+	 * Default constructor.
+	 */
 	public Player() {
 		
 	}

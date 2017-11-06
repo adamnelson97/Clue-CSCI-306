@@ -19,6 +19,9 @@ public class ComputerPlayer extends Player {
 	
 	//Constructors
 	
+	/**
+	 * Default constructor.
+	 */
 	public ComputerPlayer() {
 		
 	}
