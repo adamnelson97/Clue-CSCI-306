@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -46,8 +47,14 @@ public class ComputerPlayer extends Player {
 	 * @return BoardCell The randomly chosen destination.
 	 */
 	public BoardCell pickLocation(Set<BoardCell> targets) {
-		//TODO complete pickLocation method
-		return null;
+		for (BoardCell cell : targets) {
+			if (cell.isDoorway()) return cell; //Always chooses a room if it is an option
+		}
+		
+		//If no rooms are present in the set:
+		BoardCell[] targs = targets.toArray(new BoardCell[targets.size()]); //Puts the contents of the set into an array
+		Random rand = new Random();
+		return targs[rand.nextInt(targs.length)]; //Randomly returns a cell from the array
 	}
 	
 	/**
