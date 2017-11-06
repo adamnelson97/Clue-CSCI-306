@@ -111,7 +111,7 @@ public class BoardCell {
 		return door != DoorDirection.NONE;
 	}
 
-	
+
 
 	//Getters & Setters
 
@@ -126,7 +126,7 @@ public class BoardCell {
 	public char getInitial() {
 		return initial;
 	}
-	
+
 	public DoorDirection getDoorDirection() {
 		return door;
 	}
