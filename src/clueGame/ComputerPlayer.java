@@ -83,7 +83,7 @@ public class ComputerPlayer extends Player {
 		//TODO complete createSuggestion method
 		return;
 	}
-	
+
 	/**
 	 * Resets the last visited room for testing purposes only.
 	 */

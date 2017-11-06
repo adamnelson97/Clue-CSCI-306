@@ -177,12 +177,12 @@ public class gameSetupTests {
 
 		//Location has 5 targets plus a room that HAS just been visited
 		board.calcTargets(19, 17, 2);
-		 loc_17_17 = false;
-		 loc_18_16 = false;
-		 loc_18_18 = false;
-		 loc_19_15 = false;
-		 loc_19_19 = false;
-		 loc_20_17 = false;
+		loc_17_17 = false;
+		loc_18_16 = false;
+		loc_18_18 = false;
+		loc_19_15 = false;
+		loc_19_19 = false;
+		loc_20_17 = false;
 		// Run the test a large number of times
 		for (int i=0; i<100; i++) {
 			BoardCell selected = player.pickLocation(board.getTargets());
