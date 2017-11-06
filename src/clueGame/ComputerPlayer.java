@@ -27,6 +27,14 @@ public class ComputerPlayer extends Player {
 	public ComputerPlayer() {
 		this.lastRoom = new BoardCell(); //Stores a default cell for the "first room."
 	}
+	
+	/**
+	 * Constructor that takes in a cell for testing purposes only.
+	 * @param cell The cell to be set as the "last visted room."
+	 */
+	public ComputerPlayer(BoardCell cell) {
+		this.lastRoom = cell;
+	}
 
 	/**
 	 * Generates a ComputerPlayer from a config file.
@@ -54,7 +62,7 @@ public class ComputerPlayer extends Player {
 				//If the target is a room, determine if the CP just left that room
 				if (!(cell.getColumn() == lastRoom.getColumn() && cell.getRow() == lastRoom.getRow())) {
 					lastRoom = cell; //Stores the new last visit room.
-					System.out.println("New Room: " + lastRoom.getRow() + ", " + lastRoom.getColumn());;
+					System.out.println("New Room: " + lastRoom.toString());
 					return cell; //Returns the target if it is a new room.
 				}
 			}
