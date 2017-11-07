@@ -395,7 +395,7 @@ public class Board {
 	 * Sends a suggestion to each player and checks for possible cards.
 	 * @return Card Returns a card within the suggestion, revealing it to the player who guessed.
 	 */
-	public Card handleSuggestion() {
+	public Card handleSuggestion(Player player, Solution solution) {
 		//TODO complete handleSuggestion method
 		return null;
 	}
