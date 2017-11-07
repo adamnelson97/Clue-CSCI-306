@@ -22,7 +22,7 @@ public class Player {
 	private int column;
 	private Color color;
 	protected ArrayList<Card> hand; //All the cards dealt to the player
-	private Set<Card> seen;
+	protected Set<Card> seen;
 
 	//Constructors
 
