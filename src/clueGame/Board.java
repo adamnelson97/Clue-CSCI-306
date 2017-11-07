@@ -398,7 +398,7 @@ public class Board {
 	 * @return Card Returns a card within the suggestion, revealing it to the player who guessed.
 	 */
 	public Card handleSuggestion(Player player, Solution suggestion) {
-		//TODO complete handleSuggestion method
+		//Complete handleSuggestion method
 		ArrayList<String> playerOrder = new ArrayList<String>();
 		String playerName = player.getPlayerName();
 		switch(playerName) {

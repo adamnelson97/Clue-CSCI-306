@@ -291,7 +291,7 @@ public class gameSetupTests {
 		
 	}
 
-	//TODO Test asking players in order to disprove a suggestion (Board)
+	//Test asking players in order to disprove a suggestion (Board)
 	@Test
 	public void testHandleSuggestion() {
 		Solution suggestion = new Solution("Santa Claus", "Candy Cane", "North Pole"); //Solution cannot be disproven as the cards don't exist.
