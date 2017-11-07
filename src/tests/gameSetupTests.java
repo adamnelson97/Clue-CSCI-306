@@ -265,6 +265,10 @@ public class gameSetupTests {
 		ComputerPlayer player2 = new ComputerPlayer(); //This player will have Miss Scarlett.
 		ComputerPlayer player3 = new ComputerPlayer(); //This player will have Knife and Library.
 		
+		player2.addCard(new Card("Miss Scarlett", CardType.PERSON));
+		player3.addCard(new Card("Knife", CardType.WEAPON));
+		player3.addCard(new Card("Library", CardType.ROOM));
+		
 		Card disproveCard = player1.disproveSuggestion(suggestion); //Should return null
 		assertEquals(null, disproveCard);
 		disproveCard = player2.disproveSuggestion(suggestion); //Should return Miss Scarlett
@@ -273,7 +277,7 @@ public class gameSetupTests {
 		//Last player has two possible cards, so a loop will test for both possibilities.
 		boolean weaponCard = false;
 		boolean roomCard = false;
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 100; i++) {
 			disproveCard = player3.disproveSuggestion(suggestion);
 			if (disproveCard.getCardName().equals("Knife")) {
 				weaponCard = true;

@@ -3,6 +3,7 @@ package clueGame;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -24,7 +25,7 @@ public class Player {
 	private Set<Card> seen;
 
 	//Constructors
-	
+
 	/**
 	 * Default constructor.
 	 */
@@ -49,19 +50,30 @@ public class Player {
 		this.hand = new ArrayList<Card>();
 		this.seen = new HashSet<Card>();
 	}
-	
+
 	//Methods
-	
+
 	/**
 	 * Reveals a suggested card to the player making the suggestion.
 	 * @param suggestion The proposed suggestion, e.g. PERSON did it with the WEAPON in the ROOM.
 	 * @return Card A suggested card that the player contains in their hand.
 	 */
 	public Card disproveSuggestion(Solution suggestion) {
-		for (Card c : hand)
+		if (hand.size() == 0) return null; //Returns null for an empty hand.
+		
+		//Checks hand for any matches in a random order.
+		Random rand = new Random();
+		for (int i = 0; i < 100; i++) {
+		int n = rand.nextInt(hand.size());
+		Card c = hand.get(n);
+			if (c.getCardName().equals(suggestion.person)) return c;
+			if (c.getCardName().equals(suggestion.weapon)) return c;
+			if (c.getCardName().equals(suggestion.room)) return c;
+		}
+		//If no matches are found, return null.
 		return null;
 	}
-	
+
 	/**
 	 * Adds a card to the player's hand.
 	 * @param c The card to be added.
@@ -70,7 +82,7 @@ public class Player {
 		hand.add(c);
 		//System.out.println("Adding card " + c.getCardName() + " to hand for " + getPlayerName()); //Debugging statement
 	}
-	
+
 	/**
 	 * Adds a card to a set of seen cards so the player does not
 	 * include it in future suggestions.
@@ -79,9 +91,9 @@ public class Player {
 	public void addSeen(Card c) {
 		seen.add(c);
 	}
-	
+
 	//Getters for Testing
-	
+
 	public Color getColor() {
 		return color;
 	}
@@ -97,7 +109,7 @@ public class Player {
 	public int getColumn() {
 		return column;
 	}
-	
+
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
