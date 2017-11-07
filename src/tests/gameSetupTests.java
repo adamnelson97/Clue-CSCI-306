@@ -315,7 +315,7 @@ public class gameSetupTests {
 		 * Mrs. White
 		 */
 		board.getPlayers().get("Professor Plum").addCard(new Card("Wrench", CardType.WEAPON));
-		board.getPlayers().get("Mrs. Peakcock").addCard(new Card("Kitchen", CardType.ROOM));
+		board.getPlayers().get("Mrs. Peacock").addCard(new Card("Kitchen", CardType.ROOM));
 		disproveCard = board.handleSuggestion(player, suggestion); //Should return Wrench, not Kitchen
 		assertEquals("Wrench", disproveCard.getCardName());
 

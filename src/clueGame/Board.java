@@ -394,12 +394,65 @@ public class Board {
 	/**
 	 * Sends a suggestion to each player and checks for possible cards.
 	 * @param player The player making the suggestion.
-	 * @param solution The player's suggestion.
+	 * @param suggestion The player's suggestion.
 	 * @return Card Returns a card within the suggestion, revealing it to the player who guessed.
 	 */
-	public Card handleSuggestion(Player player, Solution solution) {
+	public Card handleSuggestion(Player player, Solution suggestion) {
 		//TODO complete handleSuggestion method
-		return null;
+		ArrayList<String> playerOrder = new ArrayList<String>();
+		String playerName = player.getPlayerName();
+		switch(playerName) {
+		case "Miss Scarlett":
+			playerOrder.add("Professor Plum");
+			playerOrder.add("Mrs. Peacock");
+			playerOrder.add("Mr. Green");
+			playerOrder.add("Colonel Mustard");
+			playerOrder.add("Mrs. White");
+			break;
+		case "Professor Plum":
+			playerOrder.add("Mrs. Peacock");
+			playerOrder.add("Mr. Green");
+			playerOrder.add("Colonel Mustard");
+			playerOrder.add("Mrs. White");
+			playerOrder.add("Miss Scarlett");
+			break;
+		case "Mrs. Peacock":
+			playerOrder.add("Mr. Green");
+			playerOrder.add("Colonel Mustard");
+			playerOrder.add("Mrs. White");
+			playerOrder.add("Miss Scarlett");
+			playerOrder.add("Professor Plum");
+			break;
+		case "Mr. Green":
+			playerOrder.add("Colonel Mustard");
+			playerOrder.add("Mrs. White");
+			playerOrder.add("Miss Scarlett");
+			playerOrder.add("Professor Plum");
+			playerOrder.add("Mrs. Peacock");
+			break;
+		case "Colonel Mustard":
+			playerOrder.add("Mrs. White");
+			playerOrder.add("Miss Scarlett");
+			playerOrder.add("Professor Plum");
+			playerOrder.add("Mrs. Peacock");
+			playerOrder.add("Mr. Green");
+			break;
+		case "Mrs. White":
+			playerOrder.add("Miss Scarlett");
+			playerOrder.add("Professor Plum");
+			playerOrder.add("Mrs. Peacock");
+			playerOrder.add("Mr. Green");
+			playerOrder.add("Colonel Mustard");
+			break;
+		}
+		
+		//Check through players in order to see if they can disprove
+		for (int i = 0; i < playerOrder.size(); i++) {
+			Player tempPlayer = players.get(playerOrder.get(i));
+			Card disproveCard = tempPlayer.disproveSuggestion(suggestion);
+			if (disproveCard != null) return disproveCard;
+		}
+		return null; //Returns null if no player can disprove the suggestion.
 	}
 
 	/**
