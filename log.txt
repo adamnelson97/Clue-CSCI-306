@@ -1,3 +1,267 @@
+commit 1bcdb42cfa4758807374e59e0588a3651e7b5dbc
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:44:45 2017 -0700
+
+    Removed outdated TODOs.
+
+commit 9ee325a047b863c4a7a28d23766cd404447372c0
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:43:55 2017 -0700
+
+    All tests in testHandleSuggestion now pass.
+
+commit f6dc30a7d6a290029300e23484a1c6a2a30c6f9c
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:32:19 2017 -0700
+
+    All tests added for testHandleSuggestion.
+
+commit 88e3475377d027626ac804975e3f15b1b9fa0404
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:21:08 2017 -0700
+
+    Added JavaDoc comments to handleSuggestion.
+
+commit 01e5ceda77267cbd5e3ac2e91f36a2ea77bb6789
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:19:07 2017 -0700
+
+    Updated handleSuggestion method to take parameters of Player and Solution.
+
+commit acfe552f68be6b7255c450dbf19f16097d097ff7
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:11:03 2017 -0700
+
+    Changed visibility of seen set to protected to child classes can access it.
+
+commit 6f6cec8157485288cd0347e6435eaba7ac636b9d
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:07:37 2017 -0700
+
+    testDisproveSuggestion tests now all pass.
+
+commit 2c48cfda16f1b09654fc488508314c95090de798
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 17:49:07 2017 -0700
+
+    Added a set of seen cards so players do not repeatedly suggest the same card once it has been revealed.
+
+commit 683532c77929447505924ccc94ccfa7cd0d93fb5
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 17:40:46 2017 -0700
+
+    Added failing tests to disprove suggestions.
+
+commit 5f3d919965fde54f3b3f96f239bcc4c2b1474fc2
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 12:11:52 2017 -0700
+
+    Fixed indentations.
+
+commit 552154319ae9061bdc9316bc6a1cd3f430908c56
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 12:08:45 2017 -0700
+
+    Updated JavaDoc 2017-11-06.
+
+commit c9612eda375fb2fb63630d8e4c2b349c9d85ac6f
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 12:01:30 2017 -0700
+
+    Refactored createSuggestion to use the board to get the room from the location cell's initial. All tests still pass.
+
+commit e2f614cefe927955bfc9f2d0f1c01f3416579fac
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 11:57:57 2017 -0700
+
+    All tests for testCreateSuggestion now pass.
+
+commit 10d1719cb4d47a19504882f92bd73e895bc7cbc7
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 11:46:42 2017 -0700
+
+    Added toString method for Card class.
+
+commit 2f2de132524b69d61274a7ea0e4014b6e27cec16
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 11:03:45 2017 -0700
+
+    Updated default constructors to initialize sets.
+
+commit 4c55122da7de306d8724c2bee0be61d7c324e42c
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:48:56 2017 -0700
+
+    Modified addCard method to add cards to set of seen cards as well.
+
+commit 3e6526c947314f1344aa7f02300443421722a780
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:45:32 2017 -0700
+
+    Added failing testCreateSuggestion tests.
+
+commit 57f28f888c05ca944c714326a2343d1a59919893
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:17:16 2017 -0700
+
+    Completed makeAccusation method for Board class. testAccusation tests now pass.
+
+commit 813bdd9973b994f64162a7dfeeb7d82d25d85cda
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:14:38 2017 -0700
+
+    Added failing tests for testAccusation.
+
+commit 3ad1dfab5943bb4d9e7c40cab2776226c15a86d4
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:09:23 2017 -0700
+
+    Added parameterized constructor for Solution class.
+
+commit bf920191de07c8e171d5d10df35428d5e6a7cf51
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:06:39 2017 -0700
+
+    Added solution setter for testing purposes.
+
+commit 70389bf845e0e19ecd0b22bcd80549ea63907a59
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 10:02:22 2017 -0700
+
+    Changed makeAccusation return type to a Solution.
+
+commit e69efd0a7d05728d4f9d0350ca61d6168dfc6d9b
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:42:40 2017 -0700
+
+    Minor indentation changes.
+
+commit 5ef4d050868f5d9164e0606d938d8818bff0e5e9
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:41:55 2017 -0700
+
+    Added tests for location with a target room that was just visited. Tests immediately pass.
+
+commit 5e8e147ae143b02844cfb1836de26591cd8c9d46
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:39:38 2017 -0700
+
+    testTargetRandomSelection tests now all pass. Rooms are always chosen if they have not been immediately previously visited.
+
+commit 14cf6166d2cffa39e55ea4eae7f5d1da17769a0a
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:37:37 2017 -0700
+
+    Swapped out constructor for method that resets the room instead.
+
+commit 6ade4eb18ad1af0b036f1bfaaec9f1c25fa806bc
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:34:22 2017 -0700
+
+    Added another constructor for testing purposes.
+
+commit 42a8bc9478dc1a9a544c6e610020c477017afae7
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:33:58 2017 -0700
+
+    Commented out debug statement.
+
+commit e6bfd0582932ad9c02d07e6419640bda0164d798
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:25:36 2017 -0700
+
+    Added debug statement and toString method for BoardCell.
+
+commit 9ee51b6d8b76c4d0977a11eeebe22e6ab4f645ef
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:22:15 2017 -0700
+
+    Modified pickLocation to identify previous rooms. Some tests now fail.
+
+commit 6328104bbe55e1707ad0f9dce27d56751c64810d
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:10:59 2017 -0700
+
+    Tests with no rooms and tests with room now pass. Need to write tests for targets with previously visited room.
+
+commit 3c27a346b5d35ef82042749f78ffbdda95d68fc5
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:09:51 2017 -0700
+
+    Added statement in calcTargets for debugging.
+
+commit 9ef759774baf1c4070c26492d356f9af999c20ec
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 09:03:56 2017 -0700
+
+    Began pickLocation method in ComputerPlayer.
+
+commit d2655afeea4d4485b3cdd496f5f586b867e291db
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 08:52:27 2017 -0700
+
+    Added some tests to testTargetRandomSelection. Tests fail.
+
+commit aa1f5a2b271f34899c2c6df173fc978daec61a9d
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 08:31:18 2017 -0700
+
+    Added JavaDoc comments for default constructor.
+
+commit 10c337716eb3cb2ee0bfb1811a95318811a83933
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 08:30:13 2017 -0700
+
+    Added default constructor for ComputerPlayer.
+
+commit 0eaa938196e478f2f1c15559c4d5b5a1954ae9da
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 08:29:51 2017 -0700
+
+    Added default constructor for Player.
+
+commit 3b06cc35502a3857eb8773046cba0bef09cee926
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 13:05:54 2017 -0600
+
+    Updated JavaDoc 2017-11-04
+
+commit 2f71c9d18943d198cc5a6ac2b744169bb57eb37a
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 13:04:23 2017 -0600
+
+    Added comments to a loadConfigFiles method.
+
+commit 7784b53003dd3e103d6b4b1d514433446380cba2
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 13:00:42 2017 -0600
+
+    Added JavaDoc comments for the Solution constructor.
+
+commit 5e759093fccbf43d57a0f330f8f833bacdd7a6cd
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 12:59:53 2017 -0600
+
+    Added JavaDoc comment for the Card constructor.
+
+commit 8f6422a94aee6c3691b4c9592eebd36d461999f1
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 12:58:43 2017 -0600
+
+    Removed unnecessary TODO statement.
+
+commit c490a9c1c9f5ba17695cece72f3bd910ef31decb
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Sat Nov 4 12:57:55 2017 -0600
+
+    Added JavaDoc comments for Player constructor.
+
+commit e5606e070b6e355735f4199239c7f441ffbf2e20
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Fri Nov 3 17:43:28 2017 -0600
+
+    Added log.txt
+
 commit 779facee353bf599a7cf8453fb49f5db19c6b780
 Author: Adam Nelson <[adamnelson@mines.edu]>
 Date:   Fri Nov 3 17:39:57 2017 -0600
