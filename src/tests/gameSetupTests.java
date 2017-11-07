@@ -30,6 +30,8 @@ public class gameSetupTests {
 
 	private static Board board;
 
+	//Before class sets up a board and initializes it to automatically
+	//load the board, players, rooms, and all other cards.
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
@@ -112,7 +114,7 @@ public class gameSetupTests {
 				}
 			}
 		}
-		assertEquals(21, num_doubles);
+		assertEquals(21, num_doubles); //If this number is less than 21, a card is missing. If it is greater, a card was dealt twice.
 	}
 
 	//Test selecting a target location (Computer Player)
@@ -169,7 +171,7 @@ public class gameSetupTests {
 			else
 				fail("Invalid target selected");
 		}
-		// Ensure each target was selected at least once
+		// Ensure only the room was selected.
 		assertFalse(loc_17_17);
 		assertFalse(loc_18_16);
 		assertFalse(loc_18_18);
