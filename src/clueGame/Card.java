@@ -34,11 +34,14 @@ public class Card {
 
 	/**
 	 * Comparator that determines if two cards are equal.
+	 * @param card The card being compared against.
 	 * @return boolean Whether the two cards are equal.
 	 */
-	public boolean equals() {
-		//TODO complete equals method
-		return false;
+	public boolean equals(Card card) {
+		if (cardName.equals(card.getCardName())) {
+			if (cardType == card.getCardType()) return true;
+		}
+		return false; //Returns false if either of the attributes does not match.
 	}
 
 	
