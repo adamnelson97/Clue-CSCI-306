@@ -257,7 +257,7 @@ public class gameSetupTests {
 		assertEquals("Ballroom", suggestion.room);
 	}
 
-	//TODO Test disproving a suggestion (Player)
+	//Test disproving a suggestion (Player)
 	@Test
 	public void testDisproveSuggestion() {
 		Solution suggestion = new Solution("Miss Scarlett", "Knife", "Library");
@@ -292,5 +292,33 @@ public class gameSetupTests {
 	}
 
 	//TODO Test asking players in order to disprove a suggestion (Board)
+	@Test
+	public void testHandleSuggestion() {
+		Solution suggestion = new Solution("Santa Claus", "Candy Cane", "North Pole"); //Solution cannot be disproven as the cards don't exist.
+		Player player = new Player("Miss Scarlett", Color.RED, 0, 0); //This is the player making the suggestion.
+		Card disproveCard = board.handleSuggestion(player, suggestion); //Should return null because no player has any of those cards
+		assertEquals(null, disproveCard);
+		
+		//Test a suggestion that only the suggesting player can disprove
+		suggestion = new Solution("Colonel Mustard", "Wrench", "Kitchen");
+		disproveCard = board.handleSuggestion(player, suggestion); //Should still return null
+		assertEquals(null, disproveCard);
+		
+		//Test a suggestion that player 1 and 2 can disprove, make sure card comes from player 1
+		/*
+		 * Disprove order:
+		 * Miss Scarlett
+		 * Professor Plum
+		 * Mrs. Peacock
+		 * Mr. Green
+		 * Colonel Mustard
+		 * Mrs. White
+		 */
+		board.getPlayers().get("Professor Plum").addCard(new Card("Wrench", CardType.WEAPON));
+		board.getPlayers().get("Mrs. Peakcock").addCard(new Card("Kitchen", CardType.ROOM));
+		disproveCard = board.handleSuggestion(player, suggestion); //Should return Wrench, not Kitchen
+		assertEquals("Wrench", disproveCard.getCardName());
+
+	}
 
 }
