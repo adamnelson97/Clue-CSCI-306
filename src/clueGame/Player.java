@@ -21,6 +21,7 @@ public class Player {
 	private int column;
 	private Color color;
 	protected ArrayList<Card> hand; //All the cards dealt to the player
+	private Set<Card> seen;
 
 	//Constructors
 	
@@ -29,6 +30,8 @@ public class Player {
 	 */
 	public Player() {
 		this.hand = new ArrayList<Card>();
+		this.seen = new HashSet<Card>();
+
 	}
 	/**
 	 * Parameterized Constructor that creates a new player from a data file, and
@@ -44,6 +47,7 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = new ArrayList<Card>();
+		this.seen = new HashSet<Card>();
 	}
 	
 	//Methods
@@ -54,7 +58,7 @@ public class Player {
 	 * @return Card A suggested card that the player contains in their hand.
 	 */
 	public Card disproveSuggestion(Solution suggestion) {
-		//TODO Complete disproveSuggestion method
+		for (Card c : hand)
 		return null;
 	}
 	
@@ -65,6 +69,15 @@ public class Player {
 	public void addCard(Card c) {
 		hand.add(c);
 		//System.out.println("Adding card " + c.getCardName() + " to hand for " + getPlayerName()); //Debugging statement
+	}
+	
+	/**
+	 * Adds a card to a set of seen cards so the player does not
+	 * include it in future suggestions.
+	 * @param c The card revealed to the player.
+	 */
+	public void addSeen(Card c) {
+		seen.add(c);
 	}
 	
 	//Getters for Testing
