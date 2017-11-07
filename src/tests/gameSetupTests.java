@@ -258,6 +258,34 @@ public class gameSetupTests {
 	}
 
 	//TODO Test disproving a suggestion (Player)
+	@Test
+	public void testDisproveSuggestion() {
+		Solution suggestion = new Solution("Miss Scarlett", "Knife", "Library");
+		ComputerPlayer player1 = new ComputerPlayer(); //This player will not have any of the cards.
+		ComputerPlayer player2 = new ComputerPlayer(); //This player will have Miss Scarlett.
+		ComputerPlayer player3 = new ComputerPlayer(); //This player will have Knife and Library.
+		
+		Card disproveCard = player1.disproveSuggestion(suggestion); //Should return null
+		assertEquals(null, disproveCard);
+		disproveCard = player2.disproveSuggestion(suggestion); //Should return Miss Scarlett
+		assertEquals("Miss Scarlett", disproveCard.getCardName());
+		
+		//Last player has two possible cards, so a loop will test for both possibilities.
+		boolean weaponCard = false;
+		boolean roomCard = false;
+		for (int i = 0; i < 50; i++) {
+			disproveCard = player3.disproveSuggestion(suggestion);
+			if (disproveCard.getCardName().equals("Knife")) {
+				weaponCard = true;
+			}
+			if (disproveCard.getCardName().equals("Library")) {
+				roomCard = true;
+			}
+		}
+		assertTrue(weaponCard);
+		assertTrue(roomCard);
+		
+	}
 
 	//TODO Test asking players in order to disprove a suggestion (Board)
 
