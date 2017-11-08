@@ -1,3 +1,27 @@
+commit 607bcad4d704216b41b4cd4c9ac668e8dd198b5a
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Tue Nov 7 12:16:00 2017 -0700
+
+    Updated JavaDoc 2017-11-07.
+
+commit eba6a23ae94fa1b713205efc62f5e17759d6ecbb
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Tue Nov 7 12:12:18 2017 -0700
+
+    Completed equals method for comparing two Card objects.
+
+commit b8d262764b401911554a1837723219c20f29bd22
+Author: Adam Nelson <adamnelson@mines.edu>
+Date:   Tue Nov 7 12:06:16 2017 -0700
+
+    Added more clarifying comments.
+
+commit a510f06b14e0ae932edcb2af911be42cced796bd
+Author: Adam Nelson <[adamnelson@mines.edu]>
+Date:   Mon Nov 6 18:48:00 2017 -0700
+
+    Updated log.txt.
+
 commit 1bcdb42cfa4758807374e59e0588a3651e7b5dbc
 Author: Adam Nelson <[adamnelson@mines.edu]>
 Date:   Mon Nov 6 18:44:45 2017 -0700
