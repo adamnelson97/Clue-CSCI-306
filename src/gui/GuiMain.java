@@ -11,7 +11,8 @@ import javax.swing.JFrame;
  * @author Adam Nelson, Youjun Lee
  * @since 2017-11-10
  * @see ControlGui
- *
+ * @see BoardGui
+ * 
  */
 public class GuiMain {
 	
@@ -31,7 +32,8 @@ public class GuiMain {
 		
 		//Add the ControlGui
 		frame.add(new ControlGui(), BorderLayout.SOUTH);
-		
+		//Add the BoardGui
+		frame.add(new BoardGui(), BorderLayout.NORTH);
 		
 		
 		//Make window visible
