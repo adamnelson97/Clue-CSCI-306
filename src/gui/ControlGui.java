@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,19 +27,35 @@ public class ControlGui extends JPanel {
 	 */
 	public ControlGui() {
 		//Set GridLayout
-		setLayout(new GridLayout(2,3));
+		setLayout(new GridLayout(2,1));
 		
+		//Create a panel to store the turn indicator and two buttons
+		JPanel topPanel = new JPanel();
+		topPanel.setLayout(new GridLayout(1,3));
 		//Add JLabel and JTextField for "Whose Turn"
-		add(whoseTurn());
+		topPanel.add(whoseTurn());
+		
 		//Add JButton for "Next player"
+		JButton nextPlayerButton = new JButton("Next player");
+		//Add action listener for button here later
+		topPanel.add(nextPlayerButton);
 		
 		//Add JButton for "Make an accusation"
+		JButton accusationButton = new JButton("Make an accusation");
+		//Add action listener for button here later
+		topPanel.add(accusationButton);
 		
 		//Add JLabel Roll with JTextField and border titled "Die"
 		
+		
 		//Add JLabel Guess with JTextField and border titled "Guess"
 		
+		
 		//Add JLabel Response with JTextField and border titled "Guess Result"
+		
+		
+		//Add the two panel sections to the ControlGui panel
+		add(topPanel);
 	}
 	
 	/**
@@ -55,5 +72,7 @@ public class ControlGui extends JPanel {
 		panel.add(playerName, BorderLayout.SOUTH);
 		return panel;		
 	}
+	
+	//Add any necessary action listeners for the GUI below.
 
 }
