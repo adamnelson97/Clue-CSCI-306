@@ -18,7 +18,7 @@ public class GuiMain {
 	/**
 	 * Main method creates a JFrame for the GUI, and adds
 	 * Control GUI and Board GUI panels to the frame.
-	 * @param args
+	 * @param args No arguments used.
 	 */
 	public static void main(String[] args) {
 		//Create JFrame window
