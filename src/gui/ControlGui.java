@@ -22,12 +22,14 @@ import javax.swing.border.TitledBorder;
  *
  */
 public class ControlGui extends JPanel {
-	
+	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
 	 */
 	public ControlGui() {
+		gui = this;
+		
 		//Set GridLayout
 		setLayout(new GridLayout(2,1));
 		
