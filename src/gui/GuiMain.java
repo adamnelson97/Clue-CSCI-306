@@ -13,7 +13,11 @@ import javax.swing.JFrame;
  */
 public class GuiMain {
 	
-	
+	/**
+	 * Main method creates a JFrame for the GUI, and adds
+	 * Control GUI and Board GUI panels to the frame.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//Create JFrame window
 		JFrame frame = new JFrame();
