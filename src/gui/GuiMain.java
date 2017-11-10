@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 /**
@@ -26,6 +28,12 @@ public class GuiMain {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		frame.setTitle("Clue Game");
+		
+		//Add the ControlGui
+		frame.add(new ControlGui(), BorderLayout.SOUTH);
+		
+		
+		
 		//Make window visible
 		frame.setVisible(true);
 	}
