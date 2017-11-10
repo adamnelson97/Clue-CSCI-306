@@ -33,7 +33,7 @@ public class ControlGui extends JPanel {
 		
 		//Create a panel to store the turn indicator and two buttons
 		JPanel topPanel = new JPanel();
-		topPanel.setLayout(new GridLayout(1,3));
+		topPanel.setLayout(new GridLayout(1,0));
 		
 		//Add JLabel and JTextField for "Whose Turn"
 		topPanel.add(whoseTurn());
@@ -50,7 +50,7 @@ public class ControlGui extends JPanel {
 		
 		//Create a panel to store the Die, Guess, and Guess Result boxes
 		JPanel bottomPanel = new JPanel();
-		bottomPanel.setLayout(new GridLayout(1,3));
+		bottomPanel.setLayout(new GridLayout(1,0));
 		
 		//Add JLabel Roll with JTextField and border titled "Die"
 		bottomPanel.add(dieRoll());
@@ -59,7 +59,7 @@ public class ControlGui extends JPanel {
 		bottomPanel.add(playerGuess());
 		
 		//Add JLabel Response with JTextField and border titled "Guess Result"
-		
+		bottomPanel.add(playerGuessResult());
 		
 		//Add the two panel sections to the ControlGui panel
 		add(topPanel);
@@ -108,6 +108,21 @@ public class ControlGui extends JPanel {
 		panel.add(guess, BorderLayout.WEST);
 		panel.add(playerGuess, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));
+		return panel;
+	}
+	
+	/**
+	 * Method to return a panel containing the disproving result of the player's suggestion.
+	 * @return JPanel A panel displaying the name of the revealed Card.
+	 */
+	private JPanel playerGuessResult() {
+		JPanel panel = new JPanel();
+		JLabel response = new JLabel("Response");
+		JTextField responseName = new JTextField(20);
+		responseName.setEditable(false);
+		panel.add(response, BorderLayout.WEST);
+		panel.add(responseName, BorderLayout.EAST);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result"));
 		return panel;
 	}
 	//Add any necessary action listeners for the GUI below.
