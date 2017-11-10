@@ -32,6 +32,7 @@ public class ControlGui extends JPanel {
 		//Create a panel to store the turn indicator and two buttons
 		JPanel topPanel = new JPanel();
 		topPanel.setLayout(new GridLayout(1,3));
+		
 		//Add JLabel and JTextField for "Whose Turn"
 		topPanel.add(whoseTurn());
 		
@@ -45,8 +46,12 @@ public class ControlGui extends JPanel {
 		//Add action listener for button here later
 		topPanel.add(accusationButton);
 		
-		//Add JLabel Roll with JTextField and border titled "Die"
+		//Create a panel to store the Die, Guess, and Guess Result boxes
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setLayout(new GridLayout(1,3));
 		
+		//Add JLabel Roll with JTextField and border titled "Die"
+		bottomPanel.add(dieRoll());
 		
 		//Add JLabel Guess with JTextField and border titled "Guess"
 		
@@ -56,6 +61,7 @@ public class ControlGui extends JPanel {
 		
 		//Add the two panel sections to the ControlGui panel
 		add(topPanel);
+		add(bottomPanel);
 	}
 	
 	/**
@@ -73,6 +79,19 @@ public class ControlGui extends JPanel {
 		return panel;		
 	}
 	
+	/**
+	 * Method to return a panel stating the last roll of the die.
+	 * @return JPanel A panel with the last die roll.
+	 */
+	private JPanel dieRoll() {
+		JPanel panel = new JPanel();
+		JLabel roll = new JLabel("Roll");
+		JTextField rollValue = new JTextField(5);
+		rollValue.setEditable(false);
+		panel.add(roll, BorderLayout.WEST);
+		panel.add(rollValue, BorderLayout.EAST);
+		return panel;
+	}
 	//Add any necessary action listeners for the GUI below.
 
 }
