@@ -92,6 +92,7 @@ public class ControlGui extends JPanel {
 		rollValue.setEditable(false);
 		panel.add(roll, BorderLayout.WEST);
 		panel.add(rollValue, BorderLayout.EAST);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Die"));
 		return panel;
 	}
 	
