@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 /**
  * <h1>ControlGui</h1>
@@ -54,7 +56,7 @@ public class ControlGui extends JPanel {
 		bottomPanel.add(dieRoll());
 		
 		//Add JLabel Guess with JTextField and border titled "Guess"
-		
+		bottomPanel.add(playerGuess());
 		
 		//Add JLabel Response with JTextField and border titled "Guess Result"
 		
@@ -90,6 +92,21 @@ public class ControlGui extends JPanel {
 		rollValue.setEditable(false);
 		panel.add(roll, BorderLayout.WEST);
 		panel.add(rollValue, BorderLayout.EAST);
+		return panel;
+	}
+	
+	/**
+	 * Method to return a panel containing the guess of the current player.
+	 * @return JPanel A panel with the guess of the current player.
+	 */
+	private JPanel playerGuess() {
+		JPanel panel = new JPanel();
+		JLabel guess = new JLabel("Guess");
+		JTextField playerGuess = new JTextField(30);
+		playerGuess.setEditable(false);
+		panel.add(guess, BorderLayout.WEST);
+		panel.add(playerGuess, BorderLayout.EAST);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));
 		return panel;
 	}
 	//Add any necessary action listeners for the GUI below.
