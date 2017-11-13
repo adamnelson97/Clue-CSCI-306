@@ -5,6 +5,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -30,29 +31,29 @@ public class NotesDialog extends JDialog {
 		JPanel panel = new JPanel();
 		setContentPane(panel);
 		setSize(600,600);
-	    setResizable(true);
+		setResizable(true);
 		setTitle("Detective Notes");
 		//Create a panel to store radio buttons and combo boxes on.
 		panel.setLayout(new GridLayout(3,2));
-		
+
 		//Get check boxes for People.
 		panel.add(getCheckPeople());
+		//Get combo box for People.
+		panel.add(getComboPeople());
 		//Get check boxes for Rooms.
 		//panel.add(getCheckRooms());
 		//Get check boxes for Weapons.
 		//panel.add(getCheckWeapons());
-		//Get combo box for People.
-		panel.add(getComboPeople());
 		//Get combo box for Rooms.
 		//panel.add(getComboRooms());
 		//Get combo box for Weapons.
 		//panel.add(getComboWeapons());
-		
+
 		//We want to retain the changes the player makes.
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
-		//setVisible(true);
+		setVisible(true);
 	}
-	
+
 	/**
 	 * Creates a panel with check boxes for each revealed Person card.
 	 * @return JPanel Grid of check boxes for each person.
@@ -70,9 +71,9 @@ public class NotesDialog extends JDialog {
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "People"));
 		return panel;
 	}
-	
+
 	private JPanel getComboPeople() {
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel();		
 		JComboBox<String> people = new JComboBox<String>();
 		people.addItem("Unsure");
 		people.addItem("Miss Scarlett");
@@ -82,6 +83,7 @@ public class NotesDialog extends JDialog {
 		people.addItem("Colonel Mustard");
 		people.addItem("Mrs. White");
 		panel.add(people);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Person Guess"));
 		return panel;
 	}
 }
