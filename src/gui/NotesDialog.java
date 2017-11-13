@@ -41,11 +41,11 @@ public class NotesDialog extends JDialog {
 		//Get combo box for People.
 		panel.add(getComboPeople());
 		//Get check boxes for Rooms.
-		//panel.add(getCheckRooms());
+		panel.add(getCheckRooms());
+		//Get combo box for Rooms.
+		panel.add(getComboRooms());
 		//Get check boxes for Weapons.
 		//panel.add(getCheckWeapons());
-		//Get combo box for Rooms.
-		//panel.add(getComboRooms());
 		//Get combo box for Weapons.
 		//panel.add(getComboWeapons());
 
@@ -72,6 +72,11 @@ public class NotesDialog extends JDialog {
 		return panel;
 	}
 
+	/**
+	 * Creates a panel with a combo box for the player to store
+	 * their best guess of who did it.
+	 * @return JPanel Combo box of people.
+	 */
 	private JPanel getComboPeople() {
 		JPanel panel = new JPanel();		
 		JComboBox<String> people = new JComboBox<String>();
@@ -86,4 +91,48 @@ public class NotesDialog extends JDialog {
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Person Guess"));
 		return panel;
 	}
-}
+
+	/**
+	 * Creates a panel with check boxes for each revealed Room card.
+	 * @return JPanel Grid of check boxes for each room.
+	 */
+	private JPanel getCheckRooms() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(5,2));
+		//Add the people to the panel.
+		panel.add(new JCheckBox("Art Room"));
+		panel.add(new JCheckBox("Ballroom"));
+		panel.add(new JCheckBox("Conservatory"));
+		panel.add(new JCheckBox("Kitchen"));
+		panel.add(new JCheckBox("Library"));
+		panel.add(new JCheckBox("Master Bedroom"));
+		panel.add(new JCheckBox("Servant Quarters"));
+		panel.add(new JCheckBox("Trophy Room"));
+		panel.add(new JCheckBox("Theatre"));
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "People"));
+		return panel;
+	}
+
+	/**
+	 * Creates a panel with a combo box for the player to store
+	 * their best guess of where it happened.
+	 * @return JPanel Combo box of rooms.
+	 */
+	private JPanel getComboRooms() {
+		JPanel panel = new JPanel();		
+		JComboBox<String> rooms = new JComboBox<String>();
+		rooms.addItem("Unsure");
+		rooms.addItem("Art Room");
+		rooms.addItem("Ballroom");
+		rooms.addItem("Conservatory");
+		rooms.addItem("Kitchen");
+		rooms.addItem("Library");
+		rooms.addItem("Master Bedroom");
+		rooms.addItem("Servant Quarters");
+		rooms.addItem("Trophy Room");
+		rooms.addItem("Theatre");
+		panel.add(rooms);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Room Guess"));
+		return panel;
+	}
+} //End of Class
