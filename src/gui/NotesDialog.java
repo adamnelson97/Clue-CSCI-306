@@ -1,11 +1,10 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -51,7 +50,7 @@ public class NotesDialog extends JDialog {
 
 		//We want to retain the changes the player makes.
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
-		setVisible(true);
+		//setVisible(true);
 	}
 
 	/**
@@ -151,6 +150,26 @@ public class NotesDialog extends JDialog {
 		panel.add(new JCheckBox("Rope"));
 		panel.add(new JCheckBox("Wrench"));
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Weapons"));
+		return panel;
+	}
+	
+	/**
+	 * Creates a panel with a combo box for the player to store
+	 * their best guess of what it was done with.
+	 * @return JPanel Combo box of weapons.
+	 */
+	private JPanel getComboWeapons() {
+		JPanel panel = new JPanel();		
+		JComboBox<String> weapons = new JComboBox<String>();
+		weapons.addItem("Unsure");
+		weapons.addItem("Candlestick");
+		weapons.addItem("Knife");
+		weapons.addItem("Pipe");
+		weapons.addItem("Revolver");
+		weapons.addItem("Rope");
+		weapons.addItem("Wrench");
+		panel.add(weapons, BorderLayout.CENTER);
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Weapon Guess"));
 		return panel;
 	}
 	
