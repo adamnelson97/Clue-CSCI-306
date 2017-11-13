@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
  */
 public class GuiMain extends JFrame {
 	private GuiMain gui; //Self referencing frame.
-	private NotesDialog notes; //Detective notes custom dialog.
+	private static NotesDialog notes; //Detective notes custom dialog.
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
@@ -45,32 +45,40 @@ public class GuiMain extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		menuBar.add(detectiveMenu());
-		
+
 	}
-	
+
 	//List the MenuBar menus here.
 	private JMenu detectiveMenu() {
 		JMenu detective = new JMenu("Detective Notes");
 		//Add items to the menu.
-		detective.add(detectiveNotesItem());
+		detective.add(detectiveNotesItem(notes));
 		return detective;
 	}
-	
+
 	//List the menu items here.
-	private JMenuItem detectiveNotesItem() {
-		JMenuItem notes = new JMenuItem("Notes");
+	private JMenuItem detectiveNotesItem(NotesDialog note) {
+		JMenuItem notesItem = new JMenuItem("Notes");
 		//TODO Create the listener.
-		class NotesItemListener implements ActionListener {
-			public void actionPerformed(ActionEvent e) {
-				//Create custom dialog to store notes here
-				notes.setVisible(true);
-			}
-		}
-		
-		notes.addActionListener(new NotesItemListener());
-		return notes;
+
+		notesItem.addActionListener(new NotesItemListener(notes));
+		return notesItem;
 	}
-	
+
+	//Listeners go here.
+	class NotesItemListener implements ActionListener {
+		//Have to create instance variable so listener can access the dialog.
+		private NotesDialog note;
+		
+		public NotesItemListener(NotesDialog note) {
+			this.note = note;
+		}
+		public void actionPerformed(ActionEvent e) {
+			//Create custom dialog to store notes here
+			note.setVisible(true);
+		}
+	}
+
 	/**
 	 * Main creates a new GuiMain object and opens the window. 
 	 * @param args No arguments used.
