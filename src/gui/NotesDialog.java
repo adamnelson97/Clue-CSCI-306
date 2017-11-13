@@ -45,9 +45,9 @@ public class NotesDialog extends JDialog {
 		//Get combo box for Rooms.
 		panel.add(getComboRooms());
 		//Get check boxes for Weapons.
-		//panel.add(getCheckWeapons());
+		panel.add(getCheckWeapons());
 		//Get combo box for Weapons.
-		//panel.add(getComboWeapons());
+		panel.add(getComboWeapons());
 
 		//We want to retain the changes the player makes.
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -99,7 +99,7 @@ public class NotesDialog extends JDialog {
 	private JPanel getCheckRooms() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(5,2));
-		//Add the people to the panel.
+		//Add the rooms to the panel.
 		panel.add(new JCheckBox("Art Room"));
 		panel.add(new JCheckBox("Ballroom"));
 		panel.add(new JCheckBox("Conservatory"));
@@ -135,4 +135,23 @@ public class NotesDialog extends JDialog {
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Room Guess"));
 		return panel;
 	}
+	
+	/**
+	 * Creates a panel with check boxes for each revealed Weapon card.
+	 * @return JPanel Grid of check boxes for each weapon.
+	 */
+	private JPanel getCheckWeapons() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(3,2));
+		//Add the weapons to the panel.
+		panel.add(new JCheckBox("Candlestick"));
+		panel.add(new JCheckBox("Knife"));
+		panel.add(new JCheckBox("Pipe"));
+		panel.add(new JCheckBox("Revolver"));
+		panel.add(new JCheckBox("Rope"));
+		panel.add(new JCheckBox("Wrench"));
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Weapons"));
+		return panel;
+	}
+	
 } //End of Class
