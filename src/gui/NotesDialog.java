@@ -1,8 +1,8 @@
 package gui;
 
 import java.awt.GridLayout;
-
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,12 +25,15 @@ public class NotesDialog extends JDialog {
 	 * @param parent The frame the dialog is displayed on.
 	 * @param title The string in the dialog's title bar.
 	 */
-	public NotesDialog(JFrame parent, String title) {
-		super(parent, title);
-		//Create a panel to store radio buttons and combo boxes on.
+	public NotesDialog() {
+		super();
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(3,2));
+		setContentPane(panel);
 		setSize(600,600);
+	    setResizable(true);
+		setTitle("Detective Notes");
+		//Create a panel to store radio buttons and combo boxes on.
+		panel.setLayout(new GridLayout(3,2));
 		
 		//Get check boxes for People.
 		panel.add(getCheckPeople());
@@ -39,7 +42,7 @@ public class NotesDialog extends JDialog {
 		//Get check boxes for Weapons.
 		//panel.add(getCheckWeapons());
 		//Get combo box for People.
-		//panel.add(getComboPeople());
+		panel.add(getComboPeople());
 		//Get combo box for Rooms.
 		//panel.add(getComboRooms());
 		//Get combo box for Weapons.
@@ -47,6 +50,7 @@ public class NotesDialog extends JDialog {
 		
 		//We want to retain the changes the player makes.
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
+		//setVisible(true);
 	}
 	
 	/**
@@ -64,6 +68,20 @@ public class NotesDialog extends JDialog {
 		panel.add(new JCheckBox("Colonel Mustard"));
 		panel.add(new JCheckBox("Mrs. White"));
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "People"));
+		return panel;
+	}
+	
+	private JPanel getComboPeople() {
+		JPanel panel = new JPanel();
+		JComboBox<String> people = new JComboBox<String>();
+		people.addItem("Unsure");
+		people.addItem("Miss Scarlett");
+		people.addItem("Professor Plum");
+		people.addItem("Mrs. Peacock");
+		people.addItem("Mr. Green");
+		people.addItem("Colonel Mustard");
+		people.addItem("Mrs. White");
+		panel.add(people);
 		return panel;
 	}
 }
