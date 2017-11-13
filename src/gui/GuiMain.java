@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
  */
 public class GuiMain extends JFrame {
 	private GuiMain gui; //Self referencing frame.
-	private static NotesDialog notes; //Detective notes custom dialog.
+	private NotesDialog notes; //Detective notes custom dialog.
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
@@ -29,7 +29,7 @@ public class GuiMain extends JFrame {
 	 */
 	public GuiMain() {
 		gui = this;
-		notes = new NotesDialog(gui, "Detective Notes");
+		notes = new NotesDialog();
 		//Set size and default close operation.
 		setSize(800, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
