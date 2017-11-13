@@ -29,7 +29,7 @@ public class GuiMain extends JFrame {
 	 */
 	public GuiMain() {
 		gui = this;
-		notes = new NotesDialog();
+		notes = new NotesDialog(gui, "Detective Notes");
 		//Set size and default close operation.
 		setSize(800, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,6 +63,7 @@ public class GuiMain extends JFrame {
 		class NotesItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				//Create custom dialog to store notes here
+				notes.setVisible(true);
 			}
 		}
 		
