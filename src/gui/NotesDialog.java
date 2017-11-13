@@ -6,6 +6,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 /**
  * <h1>NotesDialog</h1>
@@ -32,15 +34,15 @@ public class NotesDialog extends JDialog {
 		//Get check boxes for People.
 		panel.add(getCheckPeople());
 		//Get check boxes for Rooms.
-		panel.add(getCheckRooms());
+		//panel.add(getCheckRooms());
 		//Get check boxes for Weapons.
-		panel.add(getCheckWeapons());
+		//panel.add(getCheckWeapons());
 		//Get combo box for People.
-		panel.add(getComboPeople());
+		//panel.add(getComboPeople());
 		//Get combo box for Rooms.
-		panel.add(getComboRooms());
+		//panel.add(getComboRooms());
 		//Get combo box for Weapons.
-		panel.add(getComboWeapons());
+		//panel.add(getComboWeapons());
 		
 		//We want to retain the changes the player makes.
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -54,6 +56,13 @@ public class NotesDialog extends JDialog {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,2));
 		//Add the people to the panel.
-		JCheckBox person = new JCheckBox("Miss Scarlett");
+		panel.add(new JCheckBox("Miss Scarlett"));
+		panel.add(new JCheckBox("Professor Plum"));
+		panel.add(new JCheckBox("Mrs. Peacock"));
+		panel.add(new JCheckBox("Mr. Green"));
+		panel.add(new JCheckBox("Colonel Mustard"));
+		panel.add(new JCheckBox("Mrs. White"));
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "People"));
+		return panel;
 	}
 }
