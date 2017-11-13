@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 
 /**
  * <h1>GuiMain</h1>
@@ -14,29 +15,38 @@ import javax.swing.JFrame;
  * @see BoardGui
  * 
  */
-public class GuiMain {
-	
+public class GuiMain extends JFrame {
+	private GuiMain gui; //Self referencing frame
+
 	/**
-	 * Main method creates a JFrame for the GUI, and adds
+	 * Method creates a JFrame for the GUI, and adds
 	 * Control GUI and Board GUI panels to the frame.
+	 */
+	public GuiMain() {
+		gui = this;
+		//Set size and default close operation
+		setSize(800, 800);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//Set name of window
+		setTitle("Clue Game");
+
+		//Add the ControlGui
+		add(new ControlGui(), BorderLayout.SOUTH);
+		//Add the BoardGui
+		add(new BoardGui(), BorderLayout.NORTH);
+
+		//Create the Menu Bar and add a Detective Notes Option
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+	}
+	/**
+	 * Main creates a new GuiMain object and opens the window. 
 	 * @param args No arguments used.
 	 */
 	public static void main(String[] args) {
-		//Create JFrame window
-		JFrame frame = new JFrame();
-		//Set size and default close operation
-		frame.setSize(800, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//Set name of window
-		frame.setTitle("Clue Game");
-		
-		//Add the ControlGui
-		frame.add(new ControlGui(), BorderLayout.SOUTH);
-		//Add the BoardGui
-		frame.add(new BoardGui(), BorderLayout.NORTH);
-		
-		
+		//Create new GuiMain object
+		GuiMain GUI = new GuiMain();
 		//Make window visible
-		frame.setVisible(true);
+		GUI.setVisible(true);
 	}
 } //End of Class
