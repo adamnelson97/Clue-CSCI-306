@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JMenuBar;
  * 
  */
 public class GuiMain extends JFrame {
-	private GuiMain gui; //Self referencing frame
+	private GuiMain gui; //Self referencing frame.
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
@@ -24,29 +25,39 @@ public class GuiMain extends JFrame {
 	 */
 	public GuiMain() {
 		gui = this;
-		//Set size and default close operation
+		//Set size and default close operation.
 		setSize(800, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		setTitle("Clue Game");
 
-		//Add the ControlGui
+		//Add the ControlGui.
 		add(new ControlGui(), BorderLayout.SOUTH);
-		//Add the BoardGui
+		//Add the BoardGui.
 		add(new BoardGui(), BorderLayout.NORTH);
 
-		//Create the Menu Bar and add a Detective Notes Option
+		//Create the Menu Bar and add a Detective Notes Option.
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		
 	}
+	
+	//List the MenuBar menus here.
+	private JMenu detectiveMenu() {
+		JMenu detective = new JMenu("Detective Notes");
+		//Add items to the menu.
+		detective.add(detectiveNotesItem());
+		return detective;
+	}
+	
 	/**
 	 * Main creates a new GuiMain object and opens the window. 
 	 * @param args No arguments used.
 	 */
 	public static void main(String[] args) {
-		//Create new GuiMain object
+		//Create new GuiMain object.
 		GuiMain GUI = new GuiMain();
-		//Make window visible
+		//Make window visible.
 		GUI.setVisible(true);
 	}
 } //End of Class
