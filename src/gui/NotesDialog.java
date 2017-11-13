@@ -30,6 +30,7 @@ public class NotesDialog extends JDialog {
 		//Create a panel to store radio buttons and combo boxes on.
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,2));
+		setSize(600,600);
 		
 		//Get check boxes for People.
 		panel.add(getCheckPeople());
