@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  * <h1>GuiMain</h1>
@@ -48,6 +51,20 @@ public class GuiMain extends JFrame {
 		//Add items to the menu.
 		detective.add(detectiveNotesItem());
 		return detective;
+	}
+	
+	//List the menu items here.
+	private JMenuItem detectiveNotesItem() {
+		JMenuItem notes = new JMenuItem("Notes");
+		//TODO Create the listener.
+		class NotesItemListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				//Create custom dialog to store notes here
+			}
+		}
+		
+		notes.addActionListener(new NotesItemListener());
+		return notes;
 	}
 	
 	/**
