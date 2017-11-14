@@ -22,8 +22,6 @@ public class NotesDialog extends JDialog {
 	//https://examples.javacodegeeks.com/desktop-java/swing/jdialog/java-jdialog-example/
 	/**
 	 * Default constructor.
-	 * @param parent The frame the dialog is displayed on.
-	 * @param title The string in the dialog's title bar.
 	 */
 	public NotesDialog() {
 		super();
