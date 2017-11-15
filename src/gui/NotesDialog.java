@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
  * @since 2017-11-13
  *
  */
+@SuppressWarnings("serial")
 public class NotesDialog extends JDialog {
 
 	//https://examples.javacodegeeks.com/desktop-java/swing/jdialog/java-jdialog-example/

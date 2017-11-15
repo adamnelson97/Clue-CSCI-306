@@ -11,6 +11,7 @@ import javax.swing.JPanel;
  * @since 2017-11-10
  *
  */
+@SuppressWarnings("serial")
 public class BoardGui extends JPanel {
 
 	public BoardGui() {

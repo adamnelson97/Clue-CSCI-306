@@ -21,6 +21,7 @@ import javax.swing.border.TitledBorder;
  * @since 2017-11-10
  *
  */
+@SuppressWarnings("serial")
 public class ControlGui extends JPanel {
 	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
 	/**

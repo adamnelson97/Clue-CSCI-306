@@ -9,6 +9,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import clueGame.Board;
+
 /**
  * <h1>GuiMain</h1>
  * This class creates a JFrame, calls constructors
@@ -19,9 +21,11 @@ import javax.swing.JMenuItem;
  * @see BoardGui
  * 
  */
+@SuppressWarnings("serial")
 public class GuiMain extends JFrame {
 	private GuiMain gui; //Self referencing frame.
 	private NotesDialog notes; //Detective notes custom dialog.
+	private static Board board; //The game board
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
