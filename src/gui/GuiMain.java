@@ -45,9 +45,9 @@ public class GuiMain extends JFrame {
 		setTitle("Clue Game");
 
 		//Add the ControlGui.
-		add(new ControlGui(), BorderLayout.SOUTH);
+		add(new ControlGui(board), BorderLayout.SOUTH);
 		//Add the BoardGui.
-		add(new BoardGui(), BorderLayout.NORTH);
+		add(new BoardGui(board), BorderLayout.NORTH);
 
 		//Create the Menu Bar and add a Detective Notes Option.
 		JMenuBar menuBar = new JMenuBar();
