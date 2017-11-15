@@ -34,6 +34,10 @@ public class GuiMain extends JFrame {
 	public GuiMain() {
 		gui = this;
 		notes = new NotesDialog();
+		
+		//Set up the game board.
+		setUp();
+		
 		//Set size and default close operation.
 		setSize(800, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,6 +85,19 @@ public class GuiMain extends JFrame {
 			//Create custom dialog to store notes here
 			note.setVisible(true);
 		}
+	}
+	
+	//Other Class Methods
+	/**
+	 * Initializes the game board.
+	 */
+	public static void setUp() {
+		// Board is singleton, get the only instance
+		board = Board.getInstance();
+		// set the file names to use my config files
+		board.setConfigFiles("ClueGameLayout.csv", "ClueGameLegend.txt");		
+		// Initialize will load BOTH config files 
+		board.initialize();
 	}
 
 	/**
