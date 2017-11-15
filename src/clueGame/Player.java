@@ -23,6 +23,7 @@ public class Player {
 	private Color color;
 	protected ArrayList<Card> hand; //All the cards dealt to the player
 	protected Set<Card> seen;
+	private boolean human; //Indicates if the player is the human user.
 
 	//Constructors
 
@@ -117,5 +118,11 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player [playerName=" + playerName + ", row=" + row + ", column=" + column + ", color=" + color + "]";
+	}
+	public boolean isHuman() {
+		return human;
+	}
+	public void setHuman(boolean human) {
+		this.human = human;
 	}
 }
