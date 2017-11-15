@@ -108,6 +108,7 @@ public class Board {
 	 * 
 	 * @throws BadConfigFormatException Throws various formatting exceptions
 	 */
+	@SuppressWarnings("resource")
 	public void loadRoomConfig() throws BadConfigFormatException {
 		FileReader roomCfg = null;
 		legend.clear();
@@ -145,6 +146,7 @@ public class Board {
 	 * 
 	 * @throws BadConfigFormatException Throws various formatting exceptions
 	 */
+	@SuppressWarnings("resource")
 	public void loadBoardConfig() throws BadConfigFormatException {
 		FileReader boardCfg = null;
 
@@ -291,6 +293,7 @@ public class Board {
 	/**
 	 * Loads the Players, and Weapons configuration files.
 	 */
+	@SuppressWarnings("resource")
 	public void loadConfigFiles() {
 		//Load the players
 		FileReader playerCfg = null;
