@@ -27,4 +27,6 @@ public class BoardGui extends JPanel {
 		this.board = board; //Passes the game board from GuiMain into the BoardGui.
 	}
 
+	//TODO Create panel with board display.
+	//TODO Create panel with player's hand.
 }

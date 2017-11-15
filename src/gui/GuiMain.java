@@ -54,6 +54,7 @@ public class GuiMain extends JFrame {
 		setJMenuBar(menuBar);
 		menuBar.add(detectiveMenu());
 
+		//TODO Have the user select which player they want to be.
 	}
 
 	//List the MenuBar menus here.
