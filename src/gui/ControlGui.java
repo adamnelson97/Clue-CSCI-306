@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import clueGame.Board;
+
 /**
  * <h1>ControlGui</h1>
  * ControlGui is the lower section of the main GUI
@@ -24,13 +26,15 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class ControlGui extends JPanel {
 	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
+	private static Board board; //The game board.
+	
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
 	 */
-	public ControlGui() {
+	public ControlGui(Board board) {
 		gui = this;
-		
+		this.board = board; //Passes the game board from GuiMain ino the ControlGui.
 		//Set GridLayout
 		setLayout(new GridLayout(2,1));
 		

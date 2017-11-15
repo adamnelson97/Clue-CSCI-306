@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JPanel;
 
+import clueGame.Board;
+
 /**
  * <h1>BoardGui</h1>
  * BoardGui is the upper section of the main GUI
@@ -13,9 +15,16 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class BoardGui extends JPanel {
-
-	public BoardGui() {
-		// TODO Auto-generated constructor stub
+	private BoardGui gui; //Self referencing object.
+	private static Board board; //The game board
+	
+	/**
+	 * Default Constructor for BoardGui.
+	 * When this is called, it automatically adds all subpanels.
+	 */	
+	public BoardGui(Board board) {
+		gui = this;
+		this.board = board; //Passes the game board from GuiMain into the BoardGui.
 	}
 
 }
