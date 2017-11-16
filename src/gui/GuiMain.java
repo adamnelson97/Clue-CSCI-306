@@ -71,19 +71,26 @@ public class GuiMain extends JFrame {
 	
 	//List the MenuBar menus here.
 	private JMenu fileMenu() {
-		JMenu detective = new JMenu("File");
+		JMenu file = new JMenu("File");
 		//Add items to the menu.
-		detective.add(detectiveNotesItem(notes));
-		return detective;
+		file.add(detectiveNotesItem(notes));
+		file.add(exitItem());
+		return file;
 	}
 
 	//List the menu items here.
 	private JMenuItem detectiveNotesItem(NotesDialog note) {
-		JMenuItem notesItem = new JMenuItem("Notes");
+		JMenuItem notesItem = new JMenuItem("Detective Notes");
 		//Create the listener.
 
 		notesItem.addActionListener(new NotesItemListener(notes));
 		return notesItem;
+	}
+	
+	private JMenuItem exitItem() {
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.addActionListener(new ExitItemListener());
+		return exitItem;
 	}
 
 	//Listeners go here.
@@ -97,6 +104,12 @@ public class GuiMain extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			//Create custom dialog to store notes here
 			note.setVisible(true);
+		}
+	}
+	
+	class ExitItemListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
 		}
 	}
 
