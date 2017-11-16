@@ -47,7 +47,7 @@ public class GuiMain extends JFrame {
 		setUp();
 
 		//Set size and default close operation.
-		setSize(800, 600);
+		setSize(700, 700);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window

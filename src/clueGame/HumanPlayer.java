@@ -15,6 +15,10 @@ public class HumanPlayer extends Player {
 
 	/**
 	 * Default constructor.
+	 * @param playerName The name of the character.
+	 * @param color The character's color.
+	 * @param row The character's starting row.
+	 * @param column The character's starting column.
 	 */
 	public HumanPlayer(String playerName, Color color, int row, int column) {
 		super(playerName, color, row, column);

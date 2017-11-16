@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import clueGame.Board;
+import clueGame.BoardCell;
 
 /**
  * <h1>BoardGui</h1>
@@ -22,13 +23,15 @@ public class BoardGui extends JPanel {
 	/**
 	 * Default Constructor for BoardGui.
 	 * When this is called, it automatically adds all subpanels.
-	 * @param board The game board.;lk
+	 * @param theBoard The game board.
 	 */	
 	public BoardGui(Board theBoard) {
 		gui = this;
 		board = theBoard; //Passes the game board from GuiMain into the BoardGui.
 		setLayout(new GridLayout(1,2));
 		add(board);
+		setSize(board.getNumColumns() * BoardCell.getWidth(), board.getNumRows() * BoardCell.getHeight());
+		board.repaint();
 	}
 	
 }

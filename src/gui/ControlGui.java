@@ -31,6 +31,7 @@ public class ControlGui extends JPanel {
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
+	 * @param board The game board.
 	 */
 	public ControlGui(Board board) {
 		gui = this;
