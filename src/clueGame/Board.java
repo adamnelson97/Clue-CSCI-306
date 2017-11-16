@@ -10,10 +10,13 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.util.*;
+
+import javax.swing.JPanel;
 
 import clueGame.Card.CardType;
 
@@ -27,7 +30,8 @@ import clueGame.Card.CardType;
  * @since 2017-10-09
  *
  */
-public class Board {
+@SuppressWarnings("serial")
+public class Board extends JPanel {
 	//Variables
 	private int numRows; //The dimensions of the game board
 	private int numColumns;
@@ -486,7 +490,10 @@ public class Board {
 		return true;
 	}
 
-
+	public void paintComponent(Graphics g) {
+		//TODO fill in paintComponent method
+	}
+	
 	//Getters and Setters
 
 	// This method returns the only Board.
