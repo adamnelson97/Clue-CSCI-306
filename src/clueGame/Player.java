@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -24,7 +25,7 @@ public class Player {
 	protected ArrayList<Card> hand; //All the cards dealt to the player
 	protected Set<Card> seen;
 	private boolean human; //Indicates if the player is the human user.
-
+	private final static int RADIUS = BoardCell.getWidth();
 	//Constructors
 
 	/**
@@ -61,12 +62,12 @@ public class Player {
 	 */
 	public Card disproveSuggestion(Solution suggestion) {
 		if (hand.size() == 0) return null; //Returns null for an empty hand.
-		
+
 		//Checks hand for any matches in a random order.
 		Random rand = new Random();
 		for (int i = 0; i < 100; i++) {
-		int n = rand.nextInt(hand.size());
-		Card c = hand.get(n);
+			int n = rand.nextInt(hand.size());
+			Card c = hand.get(n);
 			if (c.getCardName().equals(suggestion.person)) return c;
 			if (c.getCardName().equals(suggestion.weapon)) return c;
 			if (c.getCardName().equals(suggestion.room)) return c;
@@ -93,6 +94,15 @@ public class Player {
 		seen.add(c);
 	}
 
+
+	public void draw(Graphics g) {
+		g.setColor(color);
+		g.fillOval(column * BoardCell.getWidth(), row * BoardCell.getHeight(), RADIUS, RADIUS);
+		g.setColor(Color.BLACK);
+		g.drawOval(column * BoardCell.getWidth(), row * BoardCell.getHeight(), RADIUS, RADIUS);
+	}
+
+
 	//Getters for Testing
 
 	public Color getColor() {
@@ -114,7 +124,7 @@ public class Player {
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
-	
+
 	public void setHand(ArrayList<Card> deck) {
 		hand = deck;
 	}

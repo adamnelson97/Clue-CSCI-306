@@ -501,6 +501,10 @@ public class Board extends JPanel {
 				board[i][j].draw(g, legend);
 			}
 		}
+		
+		for (Player p : players.values()) {
+			p.draw(g);
+		}
 	}
 
 	//Getters and Setters
