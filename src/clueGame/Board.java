@@ -552,4 +552,8 @@ public class Board {
 	public void setSolution(Solution solution) {
 		this.solution = solution;
 	}
+
+	public HumanPlayer getHuman() {
+		return human;
+	}
 }
