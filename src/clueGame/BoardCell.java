@@ -28,9 +28,9 @@ public class BoardCell {
 	private int column;
 	private char initial;
 	private DoorDirection door;
-	
-	private final static int WIDTH = 22;
-	private final static int HEIGHT = 22;
+
+	private final static int WIDTH = 23;
+	private final static int HEIGHT = 23;
 
 	//Constructors
 
@@ -117,14 +117,34 @@ public class BoardCell {
 	public boolean isDoorway() {
 		return door != DoorDirection.NONE;
 	}
-  
+
 	public void draw(Graphics g, Map<Character, String> rooms) {
 		if (this.isRoom()) {
 			g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
-		} 
+			//Check to see if the cell is a door
+			if (this.isDoorway()) {
+				g.setColor(Color.BLUE);
+				switch (this.getDoorDirection()) {
+				case UP:
+					g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT / 5); break;
+				case DOWN:
+					g.fillRect(column * WIDTH, (row + 1) * HEIGHT - HEIGHT / 5, WIDTH, HEIGHT / 5); break;
+				case LEFT:
+					g.fillRect(column * WIDTH, row * HEIGHT, WIDTH / 5, HEIGHT); break;
+				case RIGHT:
+					g.fillRect((column + 1) * WIDTH - WIDTH / 5, row * HEIGHT, WIDTH / 5, HEIGHT); break;
+				case NAME:
+					g.setColor(Color.BLUE);
+					g.drawString(rooms.get(this.getInitial()).toUpperCase(), column * (WIDTH), row * HEIGHT);
+					break;
+				case NONE:
+					break;
+				}
+			}
+		}
 		else if (!this.isWalkway()) {
-			g.setColor(Color.BLACK);
+			g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 		}
 		else {
