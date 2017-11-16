@@ -33,7 +33,6 @@ public class GuiMain extends JFrame {
 	private GuiMain gui; //Self referencing frame.
 	private NotesDialog notes; //Detective notes custom dialog.
 	private static Board board; //The game board.
-	private String playerCharacter; //The player the user decides to be.
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
@@ -52,7 +51,6 @@ public class GuiMain extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		setTitle("Clue Game");
-
 		
 		//Add the BoardGui.
 		add(new BoardGui(board), BorderLayout.NORTH);
@@ -62,15 +60,14 @@ public class GuiMain extends JFrame {
 		add(new ControlGui(board), BorderLayout.SOUTH);
 
 
-
 		//Create the Menu Bar and add a Detective Notes Option.
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		menuBar.add(detectiveMenu());
-
-
 	}
 
+	//Methods for adding features to the Gui
+	
 	//List the MenuBar menus here.
 	private JMenu detectiveMenu() {
 		JMenu detective = new JMenu("Detective Notes");
