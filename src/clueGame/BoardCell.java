@@ -153,4 +153,14 @@ public class BoardCell {
 	public String toString() {
 		return "BoardCell [row=" + row + ", column=" + column + "]";
 	}
+
+
+	public static int getWidth() {
+		return WIDTH;
+	}
+
+
+	public static int getHeight() {
+		return HEIGHT;
+	}
 }
