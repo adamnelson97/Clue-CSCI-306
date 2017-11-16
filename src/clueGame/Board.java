@@ -50,7 +50,7 @@ public class Board {
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 	private Map<String, Card> deck; //The entire deck of playing cards
 
-	private Solution solution;
+	private Solution solution; //The solution to the game.
 
 
 	// Variable used for the singleton pattern
@@ -299,6 +299,7 @@ public class Board {
 		//Load the players
 		FileReader playerCfg = null;
 		players.clear();
+		boolean madeHuman = false; //Tracks if a human player has been made yet.
 
 		try {
 			playerCfg = new FileReader(playerConfigFile);
@@ -315,11 +316,19 @@ public class Board {
 			temp = in.nextLine(); //Takes in entire line, e.g. Mrs. White,WHITE,6,1
 			line = temp.split(","); //Splits line by the commas
 			color = convertColor(line[1]);
-			Player x = new Player(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
-			//System.out.println(x.toString());
-			players.put(line[0], x); //Puts players into map of players
-			playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
-			deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into master deck
+			if (!madeHuman) {
+				human = new HumanPlayer(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
+				players.put(line[0], human); //Puts players into map of players
+				playerCards.put(line[0], new Card(human.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
+				deck.put(line[0], new Card(human.getPlayerName(), CardType.PERSON)); //Puts player into master deck
+			}
+			else {
+				ComputerPlayer x = new ComputerPlayer(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
+				//System.out.println(x.toString());
+				players.put(line[0], x); //Puts players into map of players
+				playerCards.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
+				deck.put(line[0], new Card(x.getPlayerName(), CardType.PERSON)); //Puts player into master deck
+			}
 		}
 
 		//Load the weapons
@@ -362,10 +371,15 @@ public class Board {
 	 * Randomly selects a solution of one Room, Weapon, and Person.
 	 */
 	public void dealer() {
-		List<Card> roomCards = new ArrayList<Card>(rooms.values());
-		List<Card> peopleCards = new ArrayList<Card>(playerCards.values());
-		List<Card> weaponCards = new ArrayList<Card>(weapons.values());
+		ArrayList<Card> roomCards = new ArrayList<Card>(rooms.values());
+		ArrayList<Card> peopleCards = new ArrayList<Card>(playerCards.values());
+		ArrayList<Card> weaponCards = new ArrayList<Card>(weapons.values());
 		Map<String, Card> needsDealt = new HashMap<String, Card>();
+		
+		//Shuffle the decks
+		Collections.shuffle(roomCards);
+		Collections.shuffle(peopleCards);
+		Collections.shuffle(weaponCards);
 
 		//Draw three cards for a solution to the game
 		solution.person = peopleCards.get(0).getCardName(); //Takes the first randomly selected person card and stores it in the solution
@@ -449,7 +463,7 @@ public class Board {
 			playerOrder.add("Colonel Mustard");
 			break;
 		}
-		
+
 		//Check through players in order to see if they can disprove
 		for (int i = 0; i < playerOrder.size(); i++) {
 			Player tempPlayer = players.get(playerOrder.get(i));
@@ -471,7 +485,7 @@ public class Board {
 		if (!accusation.room.equals(solution.room)) return false;
 		return true;
 	}
-	
+
 	//TODO Write method for user to select which player they want to be. Convert other players to computer players.
 
 	//Getters and Setters
