@@ -96,7 +96,8 @@ public class CR_FileInitTests {
 				if (cell.isDoorway())
 					numDoors++;
 			}
-		Assert.assertEquals(16, numDoors);
+		Assert.assertEquals(25, numDoors);
+		//Changed from 16 to 25 because N is now a valid door direction for NAME
 	}
 
 	// Test a few room cells to ensure the room initial is correct.
