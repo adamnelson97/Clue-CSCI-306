@@ -25,7 +25,7 @@ public class PlayerChoiceDialog extends JDialog {
 	/**
 	 * Default constructor.
 	 */
-	public PlayerChoiceDialog(String playerChoice) {
+	public PlayerChoiceDialog() {
 		super();
 		JPanel panel = new JPanel();
 		setContentPane(panel);
