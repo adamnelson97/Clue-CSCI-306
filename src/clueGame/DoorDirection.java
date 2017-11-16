@@ -21,7 +21,7 @@ package clueGame;
  */
 public enum DoorDirection {
 	/**
-	 * There are four possible directions specifying how the player
+	 * There are five possible directions specifying how the player
 	 * is adjacent to a door.
 	 */
 	UP, DOWN, LEFT, RIGHT, NAME, NONE;
