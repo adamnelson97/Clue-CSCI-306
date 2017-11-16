@@ -110,9 +110,9 @@ public class ControlGui extends JPanel {
 	private JPanel playerGuess() {
 		JPanel panel = new JPanel();
 		JLabel guess = new JLabel("Guess");
-		JTextField playerGuess = new JTextField(30);
+		JTextField playerGuess = new JTextField(15);
 		playerGuess.setEditable(false);
-		panel.add(guess, BorderLayout.WEST);
+		panel.add(guess, BorderLayout.NORTH);
 		panel.add(playerGuess, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));
 		return panel;
@@ -125,9 +125,9 @@ public class ControlGui extends JPanel {
 	private JPanel playerGuessResult() {
 		JPanel panel = new JPanel();
 		JLabel response = new JLabel("Response");
-		JTextField responseName = new JTextField(20);
+		JTextField responseName = new JTextField(15);
 		responseName.setEditable(false);
-		panel.add(response, BorderLayout.WEST);
+		panel.add(response, BorderLayout.NORTH);
 		panel.add(responseName, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result"));
 		return panel;
