@@ -114,6 +114,10 @@ public class Player {
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
+	
+	public void setHand(ArrayList<Card> deck) {
+		hand = deck;
+	}
 
 	@Override
 	public String toString() {
