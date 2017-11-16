@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -302,7 +303,9 @@ public class gameSetupTests {
 		assertEquals(null, disproveCard);
 		
 		//Test a suggestion that only the suggesting player can disprove
-		suggestion = new Solution("Colonel Mustard", "Wrench", "Kitchen");
+		player.addCard(new Card("Santa Claus", CardType.PERSON));
+		player.addCard(new Card("Candy Cane", CardType.WEAPON));
+		player.addCard(new Card("North Pool", CardType.ROOM));
 		disproveCard = board.handleSuggestion(player, suggestion); //Should still return null
 		assertEquals(null, disproveCard);
 		
@@ -316,7 +319,16 @@ public class gameSetupTests {
 		 * Colonel Mustard
 		 * Mrs. White
 		 */
+		
+		suggestion = new Solution("Colonel Mustard", "Wrench", "Kitchen");
 		board.getPlayers().get("Professor Plum").addCard(new Card("Wrench", CardType.WEAPON));
+		//Ensure that if Professor Plum is randomly given the Kitchen card it is removed for the purpose of this test.
+		Card c = new Card("Kitchen", CardType.ROOM);
+		if (board.getPlayers().get("Professor Plum").getHand().contains(c)) {
+			ArrayList<Card> hand = board.getPlayers().get("Professor Plum").getHand();
+			hand.remove(c);
+			board.getPlayers().get("Professor Plum").setHand(hand);
+		}
 		board.getPlayers().get("Mrs. Peacock").addCard(new Card("Kitchen", CardType.ROOM));
 		disproveCard = board.handleSuggestion(player, suggestion); //Should return Wrench, not Kitchen
 		assertEquals("Wrench", disproveCard.getCardName());
