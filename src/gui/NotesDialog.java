@@ -28,7 +28,7 @@ public class NotesDialog extends JDialog {
 		super();
 		JPanel panel = new JPanel();
 		setContentPane(panel);
-		setSize(600,600);
+		setSize(550,450);
 		setResizable(true);
 		setTitle("Detective Notes");
 		//Create a panel to store radio buttons and combo boxes on.
