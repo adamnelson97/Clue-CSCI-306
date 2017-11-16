@@ -53,7 +53,8 @@ public class GuiMain extends JFrame {
 		setTitle("Clue Game");
 		
 		//Add the BoardGui.
-		add(new BoardGui(board), BorderLayout.NORTH);
+		//add(new BoardGui(board), BorderLayout.NORTH);
+		add(board, BorderLayout.CENTER);
 		//Add the player's current hand.
 		add(humanHand(), BorderLayout.EAST);
 		//Add the ControlGui.
@@ -64,6 +65,7 @@ public class GuiMain extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		menuBar.add(detectiveMenu());
+		board.repaint();
 	}
 
 	//Methods for adding features to the Gui
