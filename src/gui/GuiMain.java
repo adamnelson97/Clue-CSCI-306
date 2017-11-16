@@ -68,7 +68,7 @@ public class GuiMain extends JFrame {
 	//List the menu items here.
 	private JMenuItem detectiveNotesItem(NotesDialog note) {
 		JMenuItem notesItem = new JMenuItem("Notes");
-		//TODO Create the listener.
+		//Create the listener.
 
 		notesItem.addActionListener(new NotesItemListener(notes));
 		return notesItem;
