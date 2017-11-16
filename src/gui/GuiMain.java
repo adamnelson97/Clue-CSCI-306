@@ -46,14 +46,13 @@ public class GuiMain extends JFrame {
 		setUp();
 
 		//Set size and default close operation.
-		setSize(700, 700);
+		setSize(650, 750);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		setTitle("Clue Game");
 		
 		//Add the BoardGui.
-		//add(new BoardGui(board), BorderLayout.NORTH);
 		add(board, BorderLayout.CENTER);
 		//Add the player's current hand.
 		add(humanHand(), BorderLayout.EAST);

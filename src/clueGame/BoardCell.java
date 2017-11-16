@@ -29,8 +29,8 @@ public class BoardCell {
 	private char initial;
 	private DoorDirection door;
 	
-	private final static int WIDTH = 25;
-	private final static int HEIGHT = 25;
+	private final static int WIDTH = 22;
+	private final static int HEIGHT = 22;
 
 	//Constructors
 
