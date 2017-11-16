@@ -122,7 +122,12 @@ public class BoardCell {
 		if (this.isRoom()) {
 			g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
-		} else {
+		} 
+		else if (!this.isWalkway()) {
+			g.setColor(Color.BLACK);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+		}
+		else {
 			g.setColor(Color.ORANGE);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 			g.setColor(Color.BLACK);
