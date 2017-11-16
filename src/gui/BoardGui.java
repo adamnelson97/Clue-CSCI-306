@@ -34,9 +34,8 @@ public class BoardGui extends JPanel {
 		gui = this;
 		this.board = board; //Passes the game board from GuiMain into the BoardGui.
 		add(humanHand(), BorderLayout.EAST);
+		add(board, BorderLayout.CENTER);
 	}
-
-	//TODO Create panel with board display.
 	
 	/**
 	 * Creates a panel showing what cards the user has in their hand.
@@ -71,7 +70,7 @@ public class BoardGui extends JPanel {
 			if (c.getCardType() == type) displayText += c.getCardName() + "\n";
 		}
 		cards.setText(displayText);
-		
+		cards.setEditable(false);
 		//Add the display field to the panel
 		panel.add(cards);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), name));
