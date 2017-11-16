@@ -17,6 +17,8 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 import clueGame.Card.CardType;
 
@@ -78,6 +80,7 @@ public class Board extends JPanel {
 		playerCards = new HashMap<String, Card>();
 		deck = new HashMap<String, Card>();
 		solution = new Solution();
+		setSize(getNumColumns(), getNumRows());
 	}
 
 	//Methods
