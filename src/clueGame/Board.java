@@ -379,7 +379,7 @@ public class Board extends JPanel {
 		ArrayList<Card> peopleCards = new ArrayList<Card>(playerCards.values());
 		ArrayList<Card> weaponCards = new ArrayList<Card>(weapons.values());
 		Map<String, Card> needsDealt = new HashMap<String, Card>();
-		
+
 		//Shuffle the decks
 		Collections.shuffle(roomCards);
 		Collections.shuffle(peopleCards);
@@ -492,8 +492,14 @@ public class Board extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		//TODO fill in paintComponent method
+		super.paintComponent(g);
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numColumns; j++) {
+				board[i][j].draw(g, legend);
+			}
+		}
 	}
-	
+
 	//Getters and Setters
 
 	// This method returns the only Board.
