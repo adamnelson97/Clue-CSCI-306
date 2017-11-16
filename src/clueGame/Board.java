@@ -44,6 +44,7 @@ public class Board {
 	private String weaponConfigFile = "WeaponsLegend.txt";
 
 	private Map<String, Player> players; //Set of all 6 players in the game
+	private HumanPlayer human; //The user.
 	private Map<String, Card> playerCards;
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game

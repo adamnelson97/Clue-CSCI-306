@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import clueGame.Board;
 
 /**
@@ -25,7 +24,8 @@ import clueGame.Board;
 public class GuiMain extends JFrame {
 	private GuiMain gui; //Self referencing frame.
 	private NotesDialog notes; //Detective notes custom dialog.
-	private static Board board; //The game board
+	private static Board board; //The game board.
+	private String playerCharacter; //The player the user decides to be.
 
 	/**
 	 * Method creates a JFrame for the GUI, and adds
@@ -39,7 +39,7 @@ public class GuiMain extends JFrame {
 		setUp();
 		
 		//Set size and default close operation.
-		setSize(800, 800);
+		setSize(700, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		setTitle("Clue Game");
@@ -54,7 +54,7 @@ public class GuiMain extends JFrame {
 		setJMenuBar(menuBar);
 		menuBar.add(detectiveMenu());
 
-		//TODO Have the user select which player they want to be.
+		
 	}
 
 	//List the MenuBar menus here.

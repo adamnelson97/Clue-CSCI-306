@@ -34,7 +34,7 @@ public class ControlGui extends JPanel {
 	 */
 	public ControlGui(Board board) {
 		gui = this;
-		this.board = board; //Passes the game board from GuiMain ino the ControlGui.
+		this.board = board; //Passes the game board from GuiMain into the ControlGui.
 		//Set GridLayout
 		setLayout(new GridLayout(2,1));
 		
