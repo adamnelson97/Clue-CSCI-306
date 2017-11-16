@@ -486,7 +486,6 @@ public class Board {
 		return true;
 	}
 
-	//TODO Write method for user to select which player they want to be. Convert other players to computer players.
 
 	//Getters and Setters
 

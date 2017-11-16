@@ -74,7 +74,7 @@ public class ComputerPlayer extends Player {
 	 * @return Solution The computer player's accusation.
 	 */
 	public Solution makeAccusation() {
-		//TODO complete makeAccusation method
+		
 		return null;
 	}
 
