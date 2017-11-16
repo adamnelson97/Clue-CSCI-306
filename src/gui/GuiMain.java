@@ -63,15 +63,15 @@ public class GuiMain extends JFrame {
 		//Create the Menu Bar and add a Detective Notes Option.
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		menuBar.add(detectiveMenu());
+		menuBar.add(fileMenu());
 		board.repaint();
 	}
 
 	//Methods for adding features to the Gui
 	
 	//List the MenuBar menus here.
-	private JMenu detectiveMenu() {
-		JMenu detective = new JMenu("Detective Notes");
+	private JMenu fileMenu() {
+		JMenu detective = new JMenu("File");
 		//Add items to the menu.
 		detective.add(detectiveNotesItem(notes));
 		return detective;
