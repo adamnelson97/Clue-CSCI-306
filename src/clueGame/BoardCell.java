@@ -9,6 +9,10 @@
 
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Map;
+
 /**
  * <h1>BoardCell</h1>
  * This class stores the location of a cell, the type of space
@@ -24,6 +28,9 @@ public class BoardCell {
 	private int column;
 	private char initial;
 	private DoorDirection door;
+	
+	private final static int WIDTH = 25;
+	private final static int HEIGHT = 25;
 
 	//Constructors
 
@@ -110,8 +117,18 @@ public class BoardCell {
 	public boolean isDoorway() {
 		return door != DoorDirection.NONE;
 	}
-
-
+  
+	public void draw(Graphics g, Map<Character, String> rooms) {
+		if (this.isRoom()) {
+			g.setColor(Color.GRAY);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+		} else {
+			g.setColor(Color.ORANGE);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+			g.setColor(Color.BLACK);
+			g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
+		}
+	}
 
 	//Getters & Setters
 
