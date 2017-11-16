@@ -80,7 +80,7 @@ public class Board extends JPanel {
 		playerCards = new HashMap<String, Card>();
 		deck = new HashMap<String, Card>();
 		solution = new Solution();
-		setSize(getNumColumns(), getNumRows());
+		setSize(getNumColumns() * BoardCell.getWidth(), getNumRows() * BoardCell.getHeight());
 	}
 
 	//Methods
