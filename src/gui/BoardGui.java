@@ -28,7 +28,6 @@ public class BoardGui extends JPanel {
 		gui = this;
 		board = theBoard; //Passes the game board from GuiMain into the BoardGui.
 		setLayout(new GridLayout(1,2));
-		setSize(10000,50000);
 		add(board);
 	}
 	

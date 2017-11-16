@@ -48,14 +48,16 @@ public class GuiMain extends JFrame {
 
 		//Set size and default close operation.
 		setSize(800, 600);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Set name of window
 		setTitle("Clue Game");
 
+		
+		//Add the BoardGui.
+		add(new BoardGui(board), BorderLayout.NORTH);
 		//Add the player's current hand.
 		add(humanHand(), BorderLayout.EAST);
-		//Add the BoardGui.
-		add(new BoardGui(board), BorderLayout.CENTER);
 		//Add the ControlGui.
 		add(new ControlGui(board), BorderLayout.SOUTH);
 
@@ -111,7 +113,7 @@ public class GuiMain extends JFrame {
 		JPanel people = this.cardPanel("People", CardType.PERSON);
 		JPanel rooms = this.cardPanel("Rooms", CardType.ROOM);
 		JPanel weapons = this.cardPanel("Weapons", CardType.WEAPON);
-		setLayout(new GridLayout(0,1));
+		masterPanel.setLayout(new GridLayout(0,1));
 		masterPanel.add(people);
 		masterPanel.add(rooms);
 		masterPanel.add(weapons);
@@ -127,7 +129,7 @@ public class GuiMain extends JFrame {
 	 */
 	private JPanel cardPanel(String name, CardType type) {
 		JPanel panel = new JPanel();
-		JTextArea cards = new JTextArea(3,15); //The player has a maximum of 3 cards.
+		JTextArea cards = new JTextArea(3,10); //The player has a maximum of 3 cards.
 		String displayText = "";
 		for (Card c : board.getHuman().getHand()) {
 			if (c.getCardType() == type) displayText += c.getCardName() + "\n";

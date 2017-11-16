@@ -57,7 +57,6 @@ public class ControlGui extends JPanel {
 		
 		//Create a panel to store the Die, Guess, and Guess Result boxes
 		JPanel bottomPanel = new JPanel();
-		bottomPanel.setLayout(new GridLayout(1,0));
 		
 		//Add JLabel Roll with JTextField and border titled "Die"
 		bottomPanel.add(dieRoll());
@@ -95,7 +94,7 @@ public class ControlGui extends JPanel {
 	private JPanel dieRoll() {
 		JPanel panel = new JPanel();
 		JLabel roll = new JLabel("Roll");
-		JTextField rollValue = new JTextField(5);
+		JTextField rollValue = new JTextField(3);
 		rollValue.setEditable(false);
 		panel.add(roll, BorderLayout.WEST);
 		panel.add(rollValue, BorderLayout.EAST);
@@ -110,7 +109,7 @@ public class ControlGui extends JPanel {
 	private JPanel playerGuess() {
 		JPanel panel = new JPanel();
 		JLabel guess = new JLabel("Guess");
-		JTextField playerGuess = new JTextField(15);
+		JTextField playerGuess = new JTextField(20);
 		playerGuess.setEditable(false);
 		panel.add(guess, BorderLayout.NORTH);
 		panel.add(playerGuess, BorderLayout.EAST);
@@ -125,7 +124,7 @@ public class ControlGui extends JPanel {
 	private JPanel playerGuessResult() {
 		JPanel panel = new JPanel();
 		JLabel response = new JLabel("Response");
-		JTextField responseName = new JTextField(15);
+		JTextField responseName = new JTextField(10);
 		responseName.setEditable(false);
 		panel.add(response, BorderLayout.NORTH);
 		panel.add(responseName, BorderLayout.EAST);
