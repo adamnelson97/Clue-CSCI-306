@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
@@ -65,6 +66,13 @@ public class GuiMain extends JFrame {
 		setJMenuBar(menuBar);
 		menuBar.add(fileMenu());
 		board.repaint();
+		
+		//Make the frame visible first
+		setVisible(true);
+		
+		//Show start up message
+		JOptionPane.showMessageDialog(gui, "You are " + board.getHuman().getPlayerName() + ", press Next Player to begin play.",
+				"Welcome to Clue", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	//Methods for adding features to the Gui
