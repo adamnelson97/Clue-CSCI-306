@@ -328,6 +328,7 @@ public class Board extends JPanel {
 				players.put(line[0], human); //Puts players into map of players
 				playerCards.put(line[0], new Card(human.getPlayerName(), CardType.PERSON)); //Puts player into map of cards
 				deck.put(line[0], new Card(human.getPlayerName(), CardType.PERSON)); //Puts player into master deck
+				madeHuman = true;
 			}
 			else {
 				ComputerPlayer x = new ComputerPlayer(line[0], color, Integer.parseInt(line[2]), Integer.parseInt(line[3]));
