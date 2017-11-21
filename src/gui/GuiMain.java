@@ -53,7 +53,7 @@ public class GuiMain extends JFrame {
 		//Set name of window
 		setTitle("Clue Game");
 		
-		//Add the BoardGui.
+		//Add the Board.
 		add(board, BorderLayout.CENTER);
 		//Add the player's current hand.
 		add(humanHand(), BorderLayout.EAST);
