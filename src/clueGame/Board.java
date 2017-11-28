@@ -58,7 +58,6 @@ public class Board extends JPanel {
 
 	private Solution solution; //The solution to the game.
 
-
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
 
@@ -495,7 +494,6 @@ public class Board extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
-		//TODO fill in paintComponent method
 		super.paintComponent(g);
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
