@@ -144,12 +144,15 @@ public class ControlGui extends JPanel {
 	}
 	//Add any necessary action listeners for the GUI below.
 	class NextPlayerListener implements ActionListener {
+		private JPanel turnP;
+		private JPanel rollP;
+		
 		public NextPlayerListener(JPanel turn, JPanel roll) {
-
+			turnP = turn;
+			rollP = roll;
 		}
 		public void actionPerformed(ActionEvent e) {
 			String currentPlayer = players.get(turn);
-
 		}
 	}
 
