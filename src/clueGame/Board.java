@@ -57,6 +57,7 @@ public class Board extends JPanel {
 	private Map<String, Card> deck; //The entire deck of playing cards
 
 	private Solution solution; //The solution to the game.
+	private int turn; //Used to store what player has the next turn in the game.
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
@@ -79,6 +80,7 @@ public class Board extends JPanel {
 		playerCards = new HashMap<String, Card>();
 		deck = new HashMap<String, Card>();
 		solution = new Solution();
+		turn = 0;
 		setSize(getNumColumns() * BoardCell.getWidth(), getNumRows() * BoardCell.getHeight());
 	}
 
@@ -500,10 +502,29 @@ public class Board extends JPanel {
 				board[i][j].draw(g, legend);
 			}
 		}
-		
+
 		for (Player p : players.values()) {
 			p.draw(g);
 		}
+	}
+
+	/**
+	 * Returns a string containing which player has the next turn.
+	 * @return String The player with the next turn.
+	 */
+	public String whoseTurn() {
+		String p = "";
+		switch(turn) {
+		case 0: p = "Miss Scarlett";
+		case 1: p = "Professor Plum";
+		case 2: p = "Mrs. Peacock";
+		case 3: p = "Mr. Green";
+		case 4: p = "Colonel Mustard";
+		case 5: p = "Mrs. White";
+		}
+		if (turn == 5) turn = 0; //Resets turn counter back to the beginning.
+		else turn++; //Otherwise increments the turn counter to the next player.
+		return p; //Returns who the current player is.
 	}
 
 	//Getters and Setters
