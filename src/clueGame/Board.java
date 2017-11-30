@@ -529,6 +529,11 @@ public class Board extends JPanel implements MouseListener {
 		return p; //Returns who the current player is.
 	}
 
+	/**
+	 * Moves the current computer player, or has the human player select a new target.
+	 * @param next The name of the next player.
+	 * @param roll The roll the next player got.
+	 */
 	public void nextTurn(String next, int roll) {
 		Player nextPlayer = getPlayers().get(next);
 		//Check to see if the player is a computer or not.
@@ -538,7 +543,7 @@ public class Board extends JPanel implements MouseListener {
 				cell.setTarget(false);
 			}
 			
-			board.calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
+			calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
 			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
 		}
 		//Otherwise, the player is the human player and they must manually select a new destination.
@@ -548,9 +553,19 @@ public class Board extends JPanel implements MouseListener {
 				cell.setTarget(true);
 			}
 			//Indicate user needs to complete their turn.
-			((HumanPlayer) nextPlayer).makeMove();
+			human.setCompletedTurn(false);
 		}
 	}
+	
+	/**
+	 * Returns if the current turn can be advanced, meaning the human player has
+	 * selected a valid target.
+	 * @return boolean Whether the game is allowed to advance to the next computer player.
+	 */
+	public boolean turnOver() {
+		return human.isCompletedTurn();
+	}
+	
 	//Getters and Setters
 
 	// This method returns the only Board.
