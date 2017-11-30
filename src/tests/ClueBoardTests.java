@@ -40,7 +40,7 @@ public class ClueBoardTests {
 		door = board.getCellAt(20, 17); // Master Bedroom door (Up)
 		assertEquals(DoorDirection.UP, door.getDoorDirection());
 		door = board.getCellAt(10, 0); // Cell in Servant's Quarters (None)
-		assertEquals(DoorDirection.NONE, door.getDoorDirection());
+		assertEquals(DoorDirection.NAME, door.getDoorDirection());
 		door = board.getCellAt(11, 19); // Cell in Art Room (None)
 		assertEquals(DoorDirection.NONE, door.getDoorDirection());
 	}
