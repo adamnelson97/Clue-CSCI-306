@@ -11,6 +11,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Field;
@@ -33,7 +35,7 @@ import clueGame.Card.CardType;
  *
  */
 @SuppressWarnings("serial")
-public class Board extends JPanel {
+public class Board extends JPanel implements MouseListener {
 	//Variables
 	private int numRows; //The dimensions of the game board
 	private int numColumns;
@@ -595,4 +597,20 @@ public class Board extends JPanel {
 	public HumanPlayer getHuman() {
 		return human;
 	}
-}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {}
+
+} //End of Class
