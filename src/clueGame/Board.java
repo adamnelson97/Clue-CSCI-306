@@ -564,21 +564,33 @@ public class Board extends JPanel implements MouseListener {
 	}
 
 
-	public void mouseClicked(MouseEvent e)
-	{
-		if (!this.human.isCompletedTurn()) {
-			return;
+	public void mouseClicked(MouseEvent e) {
+		if (this.human.isCompletedTurn()) {
+			return; //Do nothing if it is not currently the user's turn.
 		}
-		if (clicked == null)
-		{
+		
+		//The user clicked a cell. Determine if it is valid or not.
+		BoardCell clickedCell = findClickedCell(e.getX(), e.getY());
+		if (clickedCell == null) {
 			JOptionPane.showMessageDialog(null, "That is not a target");
 		}
-		else
-		{
-			this.human.completeTurn(clicked);
+		else {
+			//The user has selected a valid target, so the turn is over.
+			this.human.completeTurn(clickedCell);
 
 			highlightTargets(false);
 			repaint();
+		}
+	}
+	
+	public BoardCell findClickedCell(int mouseX, int mouseY) {
+		if (this.targets == null) return null; //Returns null for an empty set of targets
+		else {
+			int column = mouseX / BoardCell.getWidth();
+			int row = mouseY / BoardCell.getHeight();
+			BoardCell clicked = this.board[row][column]; //Stores the clicked cell.
+			if (this.targets.contains(clicked)) return clicked; //Returns the cell if it is a target.
+			return null; //If it is not a target, return null so the user must select again.
 		}
 	}
 	

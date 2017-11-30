@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -41,7 +42,7 @@ public class ControlGui extends JPanel {
 	private JTextField turn;
 	private JTextField guess;
 	private JTextField guessResult;
-	
+
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
@@ -74,7 +75,7 @@ public class ControlGui extends JPanel {
 		nextPlayer = new JButton("Next player");
 		//Add action listener for button here later
 		nextPlayer.addActionListener(new NextPlayerListener());
-		
+
 		//Add the different panels all together.
 		topPanel.add(whoseTurnPanel);
 		topPanel.add(nextPlayer);
@@ -153,19 +154,24 @@ public class ControlGui extends JPanel {
 	//Add any necessary action listeners for the GUI below.
 	class NextPlayerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Random die = new Random();
-			int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
-			ControlGui.this.setRollText(roll); //Updates the roll text field.
-			
-			String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
-			ControlGui.this.setTurnText(next); //Updates the turn text field.
-			//Call the board function to make the current player move.
-			board.nextTurn(next, roll); //Retrieves that player object.
-			
+			if (board.turnOver()) {
+				Random die = new Random();
+				int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
+				ControlGui.this.setRollText(roll); //Updates the roll text field.
+
+				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
+				ControlGui.this.setTurnText(next); //Updates the turn text field.
+				//Call the board function to make the current player move.
+				board.nextTurn(next, roll); //Retrieves that player object.
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "You need to finish your turn");
+				return;
+			}
 			board.repaint(); //Updates the game board with new player locations.
 		}
 	}
-	
+
 	/**
 	 * Updates the JTextField showing the current player's roll.
 	 * @param roll The number the player rolled.
@@ -173,7 +179,7 @@ public class ControlGui extends JPanel {
 	public void setRollText(int roll) {
 		this.roll.setText(Integer.toString(roll));
 	}
-	
+
 	/**
 	 * Updates the JTextField showing the current player.
 	 * @param next The name of the current player.
@@ -181,6 +187,6 @@ public class ControlGui extends JPanel {
 	public void setTurnText(String next) {
 		this.turn.setText(next);
 	}
-	
+
 
 }

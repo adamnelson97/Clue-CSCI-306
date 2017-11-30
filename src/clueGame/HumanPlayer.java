@@ -24,6 +24,7 @@ public class HumanPlayer extends Player {
 	 */
 	public HumanPlayer(String playerName, Color color, int row, int column) {
 		super(playerName, color, row, column);
+		completedTurn = true; //Initially true so the game can begin.
 	}
 
 	public boolean isCompletedTurn() {
