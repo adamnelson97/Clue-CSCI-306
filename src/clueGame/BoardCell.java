@@ -31,6 +31,7 @@ public class BoardCell {
 
 	private final static int WIDTH = 25;
 	private final static int HEIGHT = 25;
+	protected boolean target; //Whether or not the cell is a possible target for the human player.
 
 	//Constructors
 
@@ -143,12 +144,13 @@ public class BoardCell {
 				}
 			}
 		}
-		else if (!this.isWalkway()) {
+		else if (!this.isWalkway()) { //For the closet.
 			g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 		}
-		else {
-			g.setColor(Color.ORANGE);
+		else { //These are all walkway spaces.
+			if (this.target) g.setColor(Color.GREEN); //Changes the color of the cell if it is a target destination.
+			else g.setColor(Color.ORANGE);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 			g.setColor(Color.BLACK);
 			g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
