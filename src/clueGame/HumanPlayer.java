@@ -13,6 +13,8 @@ import java.awt.Color;
  */
 public class HumanPlayer extends Player {
 
+	private boolean completedTurn; //Tracks whether the user has completed their turn.
+	
 	/**
 	 * Default constructor.
 	 * @param playerName The name of the character.
@@ -22,5 +24,13 @@ public class HumanPlayer extends Player {
 	 */
 	public HumanPlayer(String playerName, Color color, int row, int column) {
 		super(playerName, color, row, column);
+	}
+	
+	public void makeMove() {
+		completedTurn = false; //The user has begun their turn, so this becomes false.
+	}
+
+	public boolean isCompletedTurn() {
+		return completedTurn;
 	}
 }
