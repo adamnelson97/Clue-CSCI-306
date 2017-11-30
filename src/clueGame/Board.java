@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -539,24 +540,20 @@ public class Board extends JPanel implements MouseListener {
 		//Check to see if the player is a computer or not.
 		if (nextPlayer instanceof ComputerPlayer) {
 			//If cells have been previously highlighted, reset them.
-			for (BoardCell cell : getTargets()) {
-				cell.setTarget(false);
-			}
-			
+			highlightTargets(false);
+
 			calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
 			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
 		}
 		//Otherwise, the player is the human player and they must manually select a new destination.
 		else {
 			//Highlight target cells for user.
-			for (BoardCell cell : getTargets()) {
-				cell.setTarget(true);
-			}
+			highlightTargets(true);
 			//Indicate user needs to complete their turn.
 			human.setCompletedTurn(false);
 		}
 	}
-	
+
 	/**
 	 * Returns if the current turn can be advanced, meaning the human player has
 	 * selected a valid target.
@@ -565,7 +562,36 @@ public class Board extends JPanel implements MouseListener {
 	public boolean turnOver() {
 		return human.isCompletedTurn();
 	}
+
+
+	public void mouseClicked(MouseEvent e)
+	{
+		if (!this.human.isCompletedTurn()) {
+			return;
+		}
+		if (clicked == null)
+		{
+			JOptionPane.showMessageDialog(null, "That is not a target");
+		}
+		else
+		{
+			this.human.completeTurn(clicked);
+
+			highlightTargets(false);
+			repaint();
+		}
+	}
 	
+	/**
+	 * Simply turns highlights for target cells on or off.
+	 * @param highlight If the cells should be highlighted or not.
+	 */
+	public void highlightTargets(boolean highlight) {
+		for (BoardCell cell : getTargets()) {
+			cell.setTarget(highlight);
+		}
+	}
+
 	//Getters and Setters
 
 	// This method returns the only Board.
@@ -634,9 +660,6 @@ public class Board extends JPanel implements MouseListener {
 	public HumanPlayer getHuman() {
 		return human;
 	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {	}
