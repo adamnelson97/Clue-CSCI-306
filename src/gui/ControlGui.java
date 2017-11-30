@@ -30,8 +30,6 @@ import clueGame.Board;
 public class ControlGui extends JPanel {
 	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
 	private static Board board; //The game board.
-	private ArrayList<String> players; //An ordered list of the players.
-	private int turn; //Integer tracks which player is currently up.
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
@@ -40,8 +38,6 @@ public class ControlGui extends JPanel {
 	public ControlGui(Board theBoard) {
 		gui = this;
 		board = theBoard; //Passes the game board from GuiMain into the ControlGui.
-		players = new ArrayList<String>(board.getPlayers().keySet()); //Enters all the players into the list.
-		turn = 0;
 		//Set GridLayout
 		setLayout(new GridLayout(2,1));
 
@@ -152,7 +148,6 @@ public class ControlGui extends JPanel {
 			rollP = roll;
 		}
 		public void actionPerformed(ActionEvent e) {
-			String currentPlayer = players.get(turn);
 		}
 	}
 
