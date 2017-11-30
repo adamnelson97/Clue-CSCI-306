@@ -33,4 +33,8 @@ public class HumanPlayer extends Player {
 	public boolean isCompletedTurn() {
 		return completedTurn;
 	}
+
+	public void setCompletedTurn(boolean completedTurn) {
+		this.completedTurn = completedTurn;
+	}
 }
