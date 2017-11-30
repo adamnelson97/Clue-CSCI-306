@@ -156,6 +156,7 @@ public class ControlGui extends JPanel {
 			ControlGui.this.setRollText(roll); //Updates the roll text field.
 			
 			String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
+			ControlGui.this.setTurnText(next); //Updates the turn text field.
 			Player nextPlayer = board.getPlayers().get(next); //Retrieves that player object.
 			
 			//Check to see if the player is a computer or not.
@@ -167,8 +168,21 @@ public class ControlGui extends JPanel {
 		}
 	}
 	
+	/**
+	 * Updates the JTextField showing the current player's roll.
+	 * @param roll The number the player rolled.
+	 */
 	public void setRollText(int roll) {
 		this.roll.setText(Integer.toString(roll));
 	}
+	
+	/**
+	 * Updates the JTextField showing the current player.
+	 * @param next The name of the current player.
+	 */
+	public void setTurnText(String next) {
+		this.turn.setText(next);
+	}
+	
 
 }
