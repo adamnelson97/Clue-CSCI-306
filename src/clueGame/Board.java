@@ -537,12 +537,13 @@ public class Board extends JPanel implements MouseListener {
 	 */
 	public void nextTurn(String next, int roll) {
 		Player nextPlayer = getPlayers().get(next);
+		calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
+
 		//Check to see if the player is a computer or not.
 		if (nextPlayer instanceof ComputerPlayer) {
 			//If cells have been previously highlighted, reset them.
 			highlightTargets(false);
 
-			calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
 			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
 		}
 		//Otherwise, the player is the human player and they must manually select a new destination.
@@ -552,6 +553,7 @@ public class Board extends JPanel implements MouseListener {
 			//Indicate user needs to complete their turn.
 			human.setCompletedTurn(false);
 		}
+		repaint();
 	}
 
 	/**
@@ -577,7 +579,6 @@ public class Board extends JPanel implements MouseListener {
 		else {
 			//The user has selected a valid target, so the turn is over.
 			this.human.completeTurn(clickedCell);
-
 			highlightTargets(false);
 			repaint();
 		}
