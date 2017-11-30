@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import clueGame.Board;
+import clueGame.ComputerPlayer;
+import clueGame.Player;
 
 /**
  * <h1>ControlGui</h1>
@@ -61,7 +64,8 @@ public class ControlGui extends JPanel {
 		//Add JButton for "Next player"
 		JButton nextPlayerButton = new JButton("Next player");
 		//Add action listener for button here later
-
+		nextPlayerButton.addActionListener(new NextPlayerListener());
+		
 		//Add the different panels all together.
 		topPanel.add(whoseTurnPanel);
 		topPanel.add(nextPlayerButton);
@@ -140,14 +144,19 @@ public class ControlGui extends JPanel {
 	}
 	//Add any necessary action listeners for the GUI below.
 	class NextPlayerListener implements ActionListener {
-		private JPanel turnP;
-		private JPanel rollP;
-		
-		public NextPlayerListener(JPanel turn, JPanel roll) {
-			turnP = turn;
-			rollP = roll;
-		}
 		public void actionPerformed(ActionEvent e) {
+			Random die = new Random();
+			int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
+			
+			String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
+			Player nextPlayer = board.getPlayers().get(next); //Retrieves that player object.
+			
+			//Check to see if the player is a computer or not.
+			if (nextPlayer instanceof ComputerPlayer) {
+				board.calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
+				((ComputerPlayer) nextPlayer).makeMove(board.getTargets()); //CP randomly chooses new location.
+			}
+			board.repaint(); //Updates the game board with new player locations.
 		}
 	}
 
