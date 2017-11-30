@@ -529,6 +529,28 @@ public class Board extends JPanel implements MouseListener {
 		return p; //Returns who the current player is.
 	}
 
+	public void nextTurn(String next, int roll) {
+		Player nextPlayer = getPlayers().get(next);
+		//Check to see if the player is a computer or not.
+		if (nextPlayer instanceof ComputerPlayer) {
+			//If cells have been previously highlighted, reset them.
+			for (BoardCell cell : getTargets()) {
+				cell.setTarget(false);
+			}
+			
+			board.calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
+			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
+		}
+		//Otherwise, the player is the human player and they must manually select a new destination.
+		else {
+			//Highlight target cells for user.
+			for (BoardCell cell : getTargets()) {
+				cell.setTarget(true);
+			}
+			//Indicate user needs to complete their turn.
+			((HumanPlayer) nextPlayer).makeMove();
+		}
+	}
 	//Getters and Setters
 
 	// This method returns the only Board.

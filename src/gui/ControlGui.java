@@ -15,7 +15,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import clueGame.Board;
+import clueGame.BoardCell;
 import clueGame.ComputerPlayer;
+import clueGame.HumanPlayer;
 import clueGame.Player;
 
 /**
@@ -157,13 +159,9 @@ public class ControlGui extends JPanel {
 			
 			String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
 			ControlGui.this.setTurnText(next); //Updates the turn text field.
-			Player nextPlayer = board.getPlayers().get(next); //Retrieves that player object.
+			//Call the board function to make the current player move.
+			board.nextTurn(next, roll); //Retrieves that player object.
 			
-			//Check to see if the player is a computer or not.
-			if (nextPlayer instanceof ComputerPlayer) {
-				board.calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
-				((ComputerPlayer) nextPlayer).makeMove(board.getTargets()); //CP randomly chooses new location.
-			}
 			board.repaint(); //Updates the game board with new player locations.
 		}
 	}
