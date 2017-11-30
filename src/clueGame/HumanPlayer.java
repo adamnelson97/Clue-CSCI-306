@@ -33,4 +33,13 @@ public class HumanPlayer extends Player {
 	public void setCompletedTurn(boolean completedTurn) {
 		this.completedTurn = completedTurn;
 	}
+	
+	/**
+	 * Updates the player's location and ends their turn.
+	 * @param cell The cell with the player's new location.
+	 */
+	public void completeTurn(BoardCell cell) {
+		this.setCompletedTurn(true);
+		this.setLoc(cell);
+	}
 }
