@@ -74,7 +74,7 @@ public class ClueBoardTests {
 				if (cell.isDoorway()) numDoors++;
 			}
 		}
-		assertEquals(17, numDoors); //Tests that the number of doors is correct after each cell has been checked
+		assertEquals(26, numDoors); //Tests that the number of doors is correct after each cell has been checked
 	}
 	
 	@Test

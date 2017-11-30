@@ -112,6 +112,9 @@ public class Board extends JPanel implements MouseListener {
 
 		loadConfigFiles(); //Populates players and weapons sets
 		dealer(); //Creates a solution and deals cards to the players
+		
+		//Add the mouse listener to the board.
+		addMouseListener(this);
 	}
 
 	/**
