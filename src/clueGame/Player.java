@@ -139,10 +139,8 @@ public class Player {
 	public void setHuman(boolean human) {
 		this.human = human;
 	}
-	public void setRow(int row) {
-		this.row = row;
-	}
-	public void setColumn(int column) {
-		this.column = column;
+	public void setLoc(BoardCell newLoc) {
+		this.column = newLoc.getColumn();
+		this.row =newLoc.getRow();
 	}
 }
