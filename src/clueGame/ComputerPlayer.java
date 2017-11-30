@@ -69,6 +69,16 @@ public class ComputerPlayer extends Player {
 	}
 
 	/**
+	 * Randomly selects a new location for the player and moves them to that spot.
+	 * @param targets The set of all possible destinations.
+	 */
+	public void makeMove(Set<BoardCell> targets) {
+		//Randomly choose a new location for the CP and set it.
+		this.setLoc(pickLocation(targets));
+		
+	}
+	
+	/**
 	 * The computer randomly makes an accusation based off the cards it has
 	 * in its hand and cards that it has already seen.
 	 * @return Solution The computer player's accusation.
