@@ -190,4 +190,9 @@ public class BoardCell {
 	public static int getHeight() {
 		return HEIGHT;
 	}
+
+
+	public void setTarget(boolean target) {
+		this.target = target;
+	}
 }
