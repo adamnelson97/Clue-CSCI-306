@@ -515,12 +515,12 @@ public class Board extends JPanel {
 	public String whoseTurn() {
 		String p = "";
 		switch(turn) {
-		case 0: p = "Miss Scarlett";
-		case 1: p = "Professor Plum";
-		case 2: p = "Mrs. Peacock";
-		case 3: p = "Mr. Green";
-		case 4: p = "Colonel Mustard";
-		case 5: p = "Mrs. White";
+		case 0: p = "Miss Scarlett"; break;
+		case 1: p = "Professor Plum"; break;
+		case 2: p = "Mrs. Peacock"; break;
+		case 3: p = "Mr. Green"; break;
+		case 4: p = "Colonel Mustard"; break;
+		case 5: p = "Mrs. White"; break;
 		}
 		if (turn == 5) turn = 0; //Resets turn counter back to the beginning.
 		else turn++; //Otherwise increments the turn counter to the next player.
