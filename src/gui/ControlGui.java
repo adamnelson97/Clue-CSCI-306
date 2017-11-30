@@ -97,11 +97,10 @@ public class ControlGui extends JPanel {
 	private JPanel whoseTurn() {
 		JPanel panel = new JPanel();
 		JLabel currentPlayer = new JLabel("Whose turn?");
-		JTextField playerName = new JTextField(20);
-		//The text field only displays information and will not be edited by the player.
-		playerName.setEditable(false);
+		this.turn = new JTextField(20);
+		this.turn.setEditable(false);
 		panel.add(currentPlayer, BorderLayout.NORTH);
-		panel.add(playerName, BorderLayout.SOUTH);
+		panel.add(this.turn, BorderLayout.SOUTH);
 		return panel;		
 	}
 
@@ -111,11 +110,11 @@ public class ControlGui extends JPanel {
 	 */
 	private JPanel dieRoll() {
 		JPanel panel = new JPanel();
-		JLabel roll = new JLabel("Roll");
-		JTextField rollValue = new JTextField(3);
-		rollValue.setEditable(false);
-		panel.add(roll, BorderLayout.WEST);
-		panel.add(rollValue, BorderLayout.EAST);
+		JLabel rollLabel = new JLabel("Roll");
+		this.roll = new JTextField(3);
+		this.roll.setEditable(false);
+		panel.add(rollLabel, BorderLayout.WEST);
+		panel.add(this.roll, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Die"));
 		return panel;
 	}
@@ -154,6 +153,7 @@ public class ControlGui extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			Random die = new Random();
 			int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
+			ControlGui.this.setRollText(roll); //Updates the roll text field.
 			
 			String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
 			Player nextPlayer = board.getPlayers().get(next); //Retrieves that player object.
@@ -165,6 +165,10 @@ public class ControlGui extends JPanel {
 			}
 			board.repaint(); //Updates the game board with new player locations.
 		}
+	}
+	
+	public void setRollText(int roll) {
+		this.roll.setText(Integer.toString(roll));
 	}
 
 }
