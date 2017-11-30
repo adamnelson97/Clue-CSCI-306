@@ -33,6 +33,13 @@ import clueGame.Player;
 public class ControlGui extends JPanel {
 	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
 	private static Board board; //The game board.
+	private JButton accusation;
+	private JButton nextPlayer;
+	private JTextField roll;
+	private JTextField turn;
+	private JTextField guess;
+	private JTextField guessResult;
+	
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
@@ -52,7 +59,7 @@ public class ControlGui extends JPanel {
 		JPanel whoseTurnPanel = whoseTurn();
 
 		//Add JButton for "Make an accusation"
-		JButton accusationButton = new JButton("Make an accusation");
+		accusation = new JButton("Make an accusation");
 		//Add action listener for button here later
 
 		//Create a panel to store the Die, Guess, and Guess Result boxes
@@ -62,14 +69,14 @@ public class ControlGui extends JPanel {
 		JPanel dieRollPanel = dieRoll();
 
 		//Add JButton for "Next player"
-		JButton nextPlayerButton = new JButton("Next player");
+		nextPlayer = new JButton("Next player");
 		//Add action listener for button here later
-		nextPlayerButton.addActionListener(new NextPlayerListener());
+		nextPlayer.addActionListener(new NextPlayerListener());
 		
 		//Add the different panels all together.
 		topPanel.add(whoseTurnPanel);
-		topPanel.add(nextPlayerButton);
-		topPanel.add(accusationButton);
+		topPanel.add(nextPlayer);
+		topPanel.add(accusation);
 		bottomPanel.add(dieRollPanel);
 
 		//Add JLabel Guess with JTextField and border titled "Guess"
