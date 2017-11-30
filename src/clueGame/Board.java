@@ -587,6 +587,13 @@ public class Board extends JPanel implements MouseListener {
 		}
 	}
 	
+	/**
+	 * Gets the information for a cell from a mouse click event, and returns if it is
+	 * a valid target or not.
+	 * @param mouseX The x location of the cell.
+	 * @param mouseY The y location of the cell.
+	 * @return BoardCell Returns a valid cell, or null if the selection is invalid.
+	 */
 	public BoardCell findClickedCell(int mouseX, int mouseY) {
 		if (this.targets == null) return null; //Returns null for an empty set of targets
 		else {

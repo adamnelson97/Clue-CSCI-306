@@ -26,7 +26,6 @@ import clueGame.Card.CardType;
  * @author Adam Nelson, Youjun Lee
  * @since 2017-11-10
  * @see ControlGui
- * @see BoardGui
  * 
  */
 @SuppressWarnings("serial")
