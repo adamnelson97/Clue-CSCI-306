@@ -57,7 +57,7 @@ public class SuggestionDialog extends JDialog {
 		panel.add(new JLabel("Weapon"));
 		
 		//Add combo box to select the weapon.
-		JComboBox weapon = new JComboBox();
+		JComboBox<String> weapon = weaponBox();
 		panel.add(weapon);
 		
 		//Add button to submit suggestion.
@@ -86,7 +86,14 @@ public class SuggestionDialog extends JDialog {
 	 * @return JComboBox The combo box.
 	 */
 	private JComboBox<String> weaponBox() {
-		
+		JComboBox<String> weapon = new JComboBox<String>();
+		weapon.addItem("Candlestick");
+		weapon.addItem("Knife");
+		weapon.addItem("Pipe");
+		weapon.addItem("Revolver");
+		weapon.addItem("Rope");
+		weapon.addItem("Wrench");
+		return weapon;
 	}
 
 }
