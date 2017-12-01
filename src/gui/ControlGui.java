@@ -30,6 +30,7 @@ import clueGame.Player;
  * a player has guessed.
  * @author Adam Nelson, Youjun Lee
  * @since 2017-11-10
+ * @see JPanel
  *
  */
 @SuppressWarnings("serial")

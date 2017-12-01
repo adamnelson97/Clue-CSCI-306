@@ -15,6 +15,7 @@ import javax.swing.border.TitledBorder;
  * the player's best guess.
  * @author Adam Nelson, Youjun Lee
  * @since 2017-11-13
+ * @see JDialog
  *
  */
 @SuppressWarnings("serial")
