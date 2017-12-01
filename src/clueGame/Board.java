@@ -581,7 +581,7 @@ public class Board extends JPanel implements MouseListener {
 		}
 		else {
 			//The user has selected a valid target, so the turn is over.
-			this.human.completeTurn(clickedCell);
+			this.human.completeTurn(clickedCell, this);
 			highlightTargets(false);
 			repaint();
 		}
