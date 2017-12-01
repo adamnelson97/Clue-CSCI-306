@@ -1,7 +1,10 @@
 package gui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -30,7 +33,7 @@ public class SuggestionDialog extends JDialog {
 		super();
 		JPanel panel = new JPanel();
 		setContentPane(panel);
-		setSize(400, 450);
+		setSize(300, 350);
 		setResizable(true);
 		setTitle("Make a guess");
 		
@@ -61,9 +64,21 @@ public class SuggestionDialog extends JDialog {
 		panel.add(weapon);
 		
 		//Add button to submit suggestion.
+		JButton submit = new JButton("Submit");
+		panel.add(submit);
 		
 		//Add button to cancel.
+		JButton cancel = new JButton("Cancel");
+		cancel.addActionListener(new CancelButtonListener(this));
+		panel.add(cancel);
 		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		/*
+		 * Make the dialog visible after creation, since it is specifically called
+		 * from the HumanPlayer class.
+		 */
+		setVisible(true);
 	}
 	
 	/**
@@ -96,4 +111,15 @@ public class SuggestionDialog extends JDialog {
 		return weapon;
 	}
 
+	class CancelButtonListener implements ActionListener {
+		SuggestionDialog dialog;
+		public CancelButtonListener(SuggestionDialog dialog) {
+			this.dialog = dialog;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			dialog.dispose();
+			
+		}
+		
+	}
 }
