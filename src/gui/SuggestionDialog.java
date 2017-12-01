@@ -45,7 +45,12 @@ public class SuggestionDialog extends JDialog {
 		setContentPane(panel);
 		setSize(300, 350);
 		setResizable(true);
-		setTitle("Make a guess");
+		/*
+		 * setModal prohibits the program from continuing until the dialog window
+		 * is closed by either the submit or cancel button.
+		 */
+		setModal(true);
+		setTitle("Make a Guess");
 		
 		panel.setLayout(new GridLayout(4,2));
 		
@@ -76,7 +81,7 @@ public class SuggestionDialog extends JDialog {
 		
 		//Add button to submit suggestion.
 		JButton submit = new JButton("Submit");
-		submit.addActionListener(new SubmitButtonListener());
+		submit.addActionListener(new SubmitButtonListener(this));
 		panel.add(submit);
 		
 		//Add button to cancel.
@@ -138,9 +143,13 @@ public class SuggestionDialog extends JDialog {
 	}
 	
 	private class SubmitButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		SuggestionDialog dialog;
+		public SubmitButtonListener(SuggestionDialog dialog) {
+			this.dialog = dialog;
+		}public void actionPerformed(ActionEvent e) {
 			suggestion.person = (String) person.getSelectedItem();
 			suggestion.weapon = (String) weapon.getSelectedItem();
+			dialog.dispose();
 		}
 	}
 
