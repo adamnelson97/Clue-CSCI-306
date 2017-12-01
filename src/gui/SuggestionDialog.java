@@ -3,6 +3,8 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,9 +25,12 @@ import clueGame.Solution;
  * @see JDialog
  *
  */
+@SuppressWarnings("serial")
 public class SuggestionDialog extends JDialog {
 	
 	private Solution suggestion; //The player's suggestion to be returned.
+	private JComboBox<String> person;
+	private JComboBox<String> weapon;
 	
 	/**
 	 * Default constructor.
@@ -59,14 +64,16 @@ public class SuggestionDialog extends JDialog {
 		panel.add(new JLabel("Person"));
 		
 		//Add combo box to select the person.
-		JComboBox<String> person = personBox();
+		person = personBox();
+		person.addActionListener(new PersonListener());
 		panel.add(person);
 		
 		//Add label for the weapon guess.
 		panel.add(new JLabel("Weapon"));
 		
 		//Add combo box to select the weapon.
-		JComboBox<String> weapon = weaponBox();
+		weapon = weaponBox();
+		weapon.addActionListener(new WeaponListener());
 		panel.add(weapon);
 		
 		//Add button to submit suggestion.
@@ -117,6 +124,8 @@ public class SuggestionDialog extends JDialog {
 		return weapon;
 	}
 
+	//Action Listeners
+	
 	class CancelButtonListener implements ActionListener {
 		SuggestionDialog dialog;
 		public CancelButtonListener(SuggestionDialog dialog) {
@@ -125,6 +134,22 @@ public class SuggestionDialog extends JDialog {
 		public void actionPerformed(ActionEvent arg0) {
 			dialog.dispose();
 			
+		}
+		
+	}
+	
+	private class PersonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String personName = (String) person.getSelectedItem();
+			suggestion.person = personName;			
+		}
+		
+	}
+	
+	private class WeaponListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String weaponName = (String) weapon.getSelectedItem();
+			suggestion.weapon = weaponName;			
 		}
 		
 	}
