@@ -65,7 +65,6 @@ public class SuggestionDialog extends JDialog {
 		
 		//Add combo box to select the person.
 		person = personBox();
-		person.addActionListener(new PersonListener());
 		panel.add(person);
 		
 		//Add label for the weapon guess.
@@ -73,11 +72,11 @@ public class SuggestionDialog extends JDialog {
 		
 		//Add combo box to select the weapon.
 		weapon = weaponBox();
-		weapon.addActionListener(new WeaponListener());
 		panel.add(weapon);
 		
 		//Add button to submit suggestion.
 		JButton submit = new JButton("Submit");
+		submit.addActionListener(new SubmitButtonListener());
 		panel.add(submit);
 		
 		//Add button to cancel.
@@ -126,7 +125,7 @@ public class SuggestionDialog extends JDialog {
 
 	//Action Listeners
 	
-	class CancelButtonListener implements ActionListener {
+	private class CancelButtonListener implements ActionListener {
 		SuggestionDialog dialog;
 		public CancelButtonListener(SuggestionDialog dialog) {
 			this.dialog = dialog;
@@ -138,20 +137,11 @@ public class SuggestionDialog extends JDialog {
 		
 	}
 	
-	private class PersonListener implements ActionListener {
+	private class SubmitButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			String personName = (String) person.getSelectedItem();
-			suggestion.person = personName;			
+			suggestion.person = (String) person.getSelectedItem();
+			suggestion.weapon = (String) weapon.getSelectedItem();
 		}
-		
-	}
-	
-	private class WeaponListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			String weaponName = (String) weapon.getSelectedItem();
-			suggestion.weapon = weaponName;			
-		}
-		
 	}
 
 	public Solution getSuggestion() {
