@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.Solution;
 
 /**
  * <h1>SuggestionDialog</h1>
@@ -24,6 +25,8 @@ import clueGame.BoardCell;
  */
 public class SuggestionDialog extends JDialog {
 	
+	private Solution suggestion; //The player's suggestion to be returned.
+	
 	/**
 	 * Default constructor.
 	 * @param currentLoc The current cell the player is on.
@@ -31,6 +34,8 @@ public class SuggestionDialog extends JDialog {
 	 */
 	public SuggestionDialog(BoardCell currentLoc, Board theBoard) {
 		super();
+		suggestion = new Solution(); //Initialize solution
+		
 		JPanel panel = new JPanel();
 		setContentPane(panel);
 		setSize(300, 350);
@@ -48,6 +53,7 @@ public class SuggestionDialog extends JDialog {
 		//Retrieve the name of the room from the initial of the current cell.
 		room.setText(theBoard.getLegend().get(currentLoc.getInitial()));
 		panel.add(room);
+		suggestion.room = room.getText(); //Stores the current room into the suggestion.
 		
 		//Add label for the person guess.
 		panel.add(new JLabel("Person"));
