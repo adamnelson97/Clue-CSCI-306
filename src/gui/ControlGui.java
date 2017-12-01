@@ -162,7 +162,7 @@ public class ControlGui extends JPanel {
 				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
 				ControlGui.this.setTurnText(next); //Updates the turn text field.
 				//Call the board function to make the current player move.
-				board.nextTurn(next, roll); //Retrieves that player object.
+				board.nextTurn(next, roll);
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "You need to finish your turn");

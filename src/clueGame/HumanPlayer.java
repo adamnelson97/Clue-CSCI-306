@@ -40,7 +40,12 @@ public class HumanPlayer extends Player {
 	 * @param cell The cell with the player's new location.
 	 */
 	public void completeTurn(BoardCell cell) {
-		this.setCompletedTurn(true);
-		this.setLoc(cell);
+		this.setCompletedTurn(true); //Indicates the player has moved to a new cell.
+		this.setLoc(cell); //Actually moves the player to the new cell.
+		
+		/*
+		 * If the player has moved to a room, a dialog needs to open for them to
+		 * make a suggestion, and the board must then disprove it.
+		 */
 	}
 }
