@@ -1,5 +1,7 @@
 package clueGame;
 
+import gui.SuggestionDialog;
+
 import java.awt.Color;
 
 /**
@@ -38,8 +40,9 @@ public class HumanPlayer extends Player {
 	/**
 	 * Updates the player's location and ends their turn.
 	 * @param cell The cell with the player's new location.
+	 * @param theBoard The game board.
 	 */
-	public void completeTurn(BoardCell cell) {
+	public void completeTurn(BoardCell cell, Board theBoard) {
 		this.setCompletedTurn(true); //Indicates the player has moved to a new cell.
 		this.setLoc(cell); //Actually moves the player to the new cell.
 		
@@ -47,5 +50,8 @@ public class HumanPlayer extends Player {
 		 * If the player has moved to a room, a dialog needs to open for them to
 		 * make a suggestion, and the board must then disprove it.
 		 */
+		if (cell.isRoom()) {
+			SuggestionDialog dialog = new SuggestionDialog(cell, theBoard);
+		}
 	}
 }
