@@ -153,4 +153,8 @@ public class SuggestionDialog extends JDialog {
 		}
 		
 	}
+
+	public Solution getSuggestion() {
+		return suggestion;
+	}
 }
