@@ -121,7 +121,8 @@ public class BoardCell {
 
 	public void draw(Graphics g, Map<Character, String> rooms) {
 		if (this.isRoom()) {
-			g.setColor(Color.GRAY);
+			if (this.target) g.setColor(Color.GREEN);
+			else g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 			//Check to see if the cell is a door
 			if (this.isDoorway()) {
