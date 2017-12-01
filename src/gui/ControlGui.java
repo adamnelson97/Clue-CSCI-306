@@ -65,6 +65,7 @@ public class ControlGui extends JPanel {
 		//Add JButton for "Make an accusation"
 		accusation = new JButton("Make an accusation");
 		//Add action listener for button here later
+		//TODO Add functionality to accusation button.
 
 		//Create a panel to store the Die, Guess, and Guess Result boxes
 		JPanel bottomPanel = new JPanel();

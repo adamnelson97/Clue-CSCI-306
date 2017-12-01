@@ -548,6 +548,8 @@ public class Board extends JPanel implements MouseListener {
 			highlightTargets(false);
 
 			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
+			//TODO Add code for CP to make suggestion if they entered a room.
+			//TODO Add code to update control panel after CP makes suggestion.
 		}
 		//Otherwise, the player is the human player and they must manually select a new destination.
 		else {
@@ -583,6 +585,7 @@ public class Board extends JPanel implements MouseListener {
 			//The user has selected a valid target, so the turn is over.
 			this.human.completeTurn(clickedCell, this);
 			highlightTargets(false);
+			//TODO Add code to update control panel after human makes suggestion.
 			repaint();
 		}
 	}
