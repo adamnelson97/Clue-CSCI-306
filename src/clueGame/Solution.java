@@ -35,6 +35,10 @@ public class Solution {
 		this.weapon = weapon;
 		this.room = room;
 	}
-	
-	//Methods
+
+	@Override
+	public String toString() {
+		return "Solution [person=" + person + ", room=" + room + ", weapon="
+				+ weapon + "]";
+	}
 }
