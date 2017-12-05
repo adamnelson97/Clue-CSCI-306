@@ -19,6 +19,7 @@ public class ComputerPlayer extends Player {
 
 	//Variables
 	private BoardCell lastRoom; //Tracks the last room the CP visited for targeting purposes.
+	private boolean makeAccusation; //Tracks whether the CP thinks they should make an accusation or not.
 
 	//Constructors
 
@@ -76,6 +77,20 @@ public class ComputerPlayer extends Player {
 		//Randomly choose a new location for the CP and set it.
 		this.setLoc(pickLocation(targets));
 		
+	}
+	
+	/**
+	 * When a suggestion returns no cards, the computer needs to determine if it should
+	 * make an accusation. If their hand contains none of the cards in their suggestion,
+	 * it sets a flag saying to make an accusation on their next turn.
+	 */
+	public void shouldAccuse() {
+		makeAccusation = true;
+		for (Card c : hand) {
+			if (c.getCardName() == suggestion.person) makeAccusation = false; //The player has this card in their hand, so they should not make an accusation.
+			if (c.getCardName() == suggestion.room) makeAccusation = false;
+			if (c.getCardName() == suggestion.weapon) makeAccusation = false;
+		}
 	}
 	
 	/**
