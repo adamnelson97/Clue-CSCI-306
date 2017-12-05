@@ -59,6 +59,7 @@ public class Board extends JPanel implements MouseListener {
 	private Map<String, Card> rooms; //Set of all 9 rooms in the game
 	private Map<String, Card> weapons; //Set of all 6 weapons in the game
 	private Map<String, Card> deck; //The entire deck of playing cards
+	private Set<Card> cardDeck; //All dealt cards.
 
 	private Solution solution; //The solution to the game.
 	private int turn; //Used to store what player has the next turn in the game.
@@ -423,6 +424,11 @@ public class Board extends JPanel implements MouseListener {
 			players.get("Colonel Mustard").addCard(cards.get(i+4));
 			players.get("Mrs. White").addCard(cards.get(i+5));
 		}
+		
+		//Add the cards into a set to be used by computer players later.
+		for (Card c : cards) {
+			cardDeck.add(c);
+		}
 
 	}
 
@@ -562,7 +568,10 @@ public class Board extends JPanel implements MouseListener {
 				highlightTargets(false);
 
 				((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
-				//TODO Add code for CP to make suggestion if they entered a room.
+				//Have the CP create a suggestion if they entered a room.
+				if (nextPlayer.getLocation().isRoom()) {
+					((ComputerPlayer) nextPlayer).createSuggestion(getInstance(), nextPlayer.getLocation(), dealtCards) 
+				}
 				//TODO Add code to update control panel after CP makes suggestion.
 			}
 			//Otherwise, the player is the human player and they must manually select a new destination.
