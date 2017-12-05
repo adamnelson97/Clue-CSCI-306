@@ -24,6 +24,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import clueGame.Card.CardType;
+import gui.ControlGui;
 
 /**
  * <h1>Board</h1>
@@ -61,6 +62,7 @@ public class Board extends JPanel implements MouseListener {
 
 	private Solution solution; //The solution to the game.
 	private int turn; //Used to store what player has the next turn in the game.
+	private ControlGui control; //Used to display information about the current turn/suggestions.
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
@@ -688,15 +690,23 @@ public class Board extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
+
+	public ControlGui getControl() {
+		return control;
+	}
+
+	public void setControl(ControlGui control) {
+		this.control = control;
+	}
 
 } //End of Class
