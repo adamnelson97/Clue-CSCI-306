@@ -676,20 +676,27 @@ public class Board extends JPanel implements MouseListener {
 			cell.setTarget(highlight);
 		}
 	}
-	
+
 	/**
 	 * Opens a dialog for the user to submit an accusation.
 	 */
 	public void makeAccusation() {
-		AccusationDialog dialog = new AccusationDialog();
-		if (dialog.isSubmitted()) {
-			boolean correctAccusation = checkAccusation(dialog.getAccusation());
-			if (correctAccusation) {
-				JOptionPane.showMessageDialog(null, "Congratulation! You won!");
-				System.exit(0);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "That is incorrect.");
+		if (turnOver()) {
+			JOptionPane.showMessageDialog(null, "It is not your turn!");
+		}
+		else {
+			AccusationDialog dialog = new AccusationDialog();
+			if (dialog.isSubmitted()) {
+				boolean correctAccusation = checkAccusation(dialog.getAccusation());
+				if (correctAccusation) {
+					JOptionPane.showMessageDialog(null, "Congratulation! You won!");
+					System.exit(0);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "That is incorrect.");
+					human.setCompletedTurn(true); //Prevents user from endlessly making accusations.
+					highlightTargets(false);
+				}
 			}
 		}
 	}
