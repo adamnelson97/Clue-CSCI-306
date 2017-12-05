@@ -134,15 +134,22 @@ public class Player {
 	public String toString() {
 		return "Player [playerName=" + playerName + ", row=" + row + ", column=" + column + ", color=" + color + "]";
 	}
+	
 	public boolean isHuman() {
 		return human;
 	}
+	
 	public void setHuman(boolean human) {
 		this.human = human;
 	}
+	
 	public void setLoc(BoardCell newLoc) {
 		this.column = newLoc.getColumn();
 		this.row =newLoc.getRow();
 		this.location = newLoc;
+	}
+	
+	public BoardCell getLocation() {
+		return location;
 	}
 }
