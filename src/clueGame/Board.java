@@ -85,6 +85,7 @@ public class Board extends JPanel implements MouseListener {
 		weapons = new HashMap<String, Card>();
 		playerCards = new HashMap<String, Card>();
 		deck = new HashMap<String, Card>();
+		cardDeck = new HashSet<Card>();
 		solution = new Solution();
 		turn = 0;
 		setSize(getNumColumns() * BoardCell.getWidth(), getNumRows() * BoardCell.getHeight());

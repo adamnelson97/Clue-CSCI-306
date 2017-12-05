@@ -105,8 +105,8 @@ public class ComputerPlayer extends Player {
 		//Adds unseen cards to the respective arrays
 		for (Card c : dealtCards) {
 			boolean addCard = true;
-			for (int i = 0; i < hand.size(); i++) {
-				if (c.getCardName().equals(hand.get(i).getCardName())) {
+			for (int i = 0; i < seen.size(); i++) {
+				if (c.getCardName().equals(seen.get(i).getCardName())) {
 					addCard = false; //Card has same name as a card revealed to the player, so it won't be added.
 				}
 			}

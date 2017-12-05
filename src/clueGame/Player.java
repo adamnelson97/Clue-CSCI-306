@@ -24,7 +24,7 @@ public class Player {
 	private BoardCell location;
 	private Color color;
 	protected ArrayList<Card> hand; //All the cards dealt to the player
-	protected Set<Card> seen;
+	protected ArrayList<Card> seen;
 	private boolean human; //Indicates if the player is the human user.
 	private final static int RADIUS = BoardCell.getWidth();
 	protected Solution suggestion; //Stores the user's guess.
@@ -36,7 +36,7 @@ public class Player {
 	 */
 	public Player() {
 		this.hand = new ArrayList<Card>();
-		this.seen = new HashSet<Card>();
+		this.seen = new ArrayList<Card>();
 
 	}
 	/**
@@ -53,7 +53,7 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = new ArrayList<Card>();
-		this.seen = new HashSet<Card>();
+		this.seen = new ArrayList<Card>();
 	}
 
 	//Methods
@@ -85,6 +85,7 @@ public class Player {
 	 */
 	public void addCard(Card c) {
 		hand.add(c);
+		seen.add(c);
 		//System.out.println("Adding card " + c.getCardName() + " to hand for " + getPlayerName()); //Debugging statement
 	}
 
@@ -159,5 +160,8 @@ public class Player {
 	}
 	public void setSuggestion(Solution suggestion) {
 		this.suggestion = suggestion;
+	}
+	public ArrayList<Card> getSeen() {
+		return seen;
 	}
 }
