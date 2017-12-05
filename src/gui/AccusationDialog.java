@@ -151,7 +151,9 @@ public class AccusationDialog extends JDialog {
 		AccusationDialog dialog;
 		public SubmitButtonListener(AccusationDialog dialog) {
 			this.dialog = dialog;
-		}public void actionPerformed(ActionEvent e) {
+		}
+		public void actionPerformed(ActionEvent e) {
+			accusation.room = (String) room.getSelectedItem();
 			accusation.person = (String) person.getSelectedItem();
 			accusation.weapon = (String) weapon.getSelectedItem();
 			submitted = true;

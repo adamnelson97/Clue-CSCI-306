@@ -405,7 +405,8 @@ public class Board extends JPanel implements MouseListener {
 		solution.person = peopleCards.get(0).getCardName(); //Takes the first randomly selected person card and stores it in the solution
 		solution.room = roomCards.get(0).getCardName(); //Takes the first randomly selected room card and stores it in the solution
 		solution.weapon = weaponCards.get(0).getCardName(); //Takes the first randomly selected weapon card and stores it in the solution
-
+		System.out.println(solution.toString()); //Debugging
+		
 		for (int i = 1; i < 6; i++) { //Starting with index 1 since index 0 is the solution
 			needsDealt.put(roomCards.get(i).getCardName(), roomCards.get(i));
 			needsDealt.put(peopleCards.get(i).getCardName(), peopleCards.get(i));
@@ -505,6 +506,7 @@ public class Board extends JPanel implements MouseListener {
 	 * @return boolean Whether the player accurately guessed the solution.
 	 */
 	public boolean checkAccusation(Solution accusation) {
+		//System.out.println(accusation.toString()); //Debugging
 		if (!accusation.person.equals(solution.person)) return false;
 		if (!accusation.weapon.equals(solution.weapon)) return false;
 		if (!accusation.room.equals(solution.room)) return false;
