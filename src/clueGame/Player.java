@@ -27,6 +27,8 @@ public class Player {
 	protected Set<Card> seen;
 	private boolean human; //Indicates if the player is the human user.
 	private final static int RADIUS = BoardCell.getWidth();
+	protected Solution suggestion; //Stores the user's guess.
+
 	//Constructors
 
 	/**
@@ -151,5 +153,11 @@ public class Player {
 	
 	public BoardCell getLocation() {
 		return location;
+	}
+	public Solution getSuggestion() {
+		return suggestion;
+	}
+	public void setSuggestion(Solution suggestion) {
+		this.suggestion = suggestion;
 	}
 }

@@ -16,7 +16,6 @@ import java.awt.Color;
 public class HumanPlayer extends Player {
 
 	private boolean completedTurn; //Tracks whether the user has completed their turn.
-	private Solution suggestion; //Stores the user's guess.
 	
 	/**
 	 * Default constructor.
@@ -58,7 +57,4 @@ public class HumanPlayer extends Player {
 		}
 	}
 	
-	public Solution getSuggestion() {
-		return suggestion;
-	}
 }
