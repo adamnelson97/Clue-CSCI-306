@@ -151,23 +151,28 @@ public class ControlGui extends JPanel {
 		return panel;
 	}
 	//Add any necessary action listeners for the GUI below.
+//	class NextPlayerListener implements ActionListener {
+//		public void actionPerformed(ActionEvent e) {
+//			if (board.turnOver()) {
+//				Random die = new Random();
+//				int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
+//				ControlGui.this.setRollText(roll); //Updates the roll text field.
+//
+//				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
+//				ControlGui.this.setTurnText(next); //Updates the turn text field.
+//				//Call the board function to make the current player move.
+//				board.nextTurn(next, roll);
+//			}
+//			else {
+//				JOptionPane.showMessageDialog(null, "You need to finish your turn");
+//				return;
+//			}
+//			board.repaint(); //Updates the game board with new player locations.
+//		}
+//	}
 	class NextPlayerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (board.turnOver()) {
-				Random die = new Random();
-				int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
-				ControlGui.this.setRollText(roll); //Updates the roll text field.
-
-				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
-				ControlGui.this.setTurnText(next); //Updates the turn text field.
-				//Call the board function to make the current player move.
-				board.nextTurn(next, roll);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "You need to finish your turn");
-				return;
-			}
-			board.repaint(); //Updates the game board with new player locations.
+			Board.getInstance().nextTurn();
 		}
 	}
 
