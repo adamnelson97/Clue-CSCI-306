@@ -674,6 +674,13 @@ public class Board extends JPanel implements MouseListener {
 			cell.setTarget(highlight);
 		}
 	}
+	
+	/**
+	 * Opens a dialog for the user to submit an accusation.
+	 */
+	public void makeAccusation() {
+		
+	}
 
 	//Getters and Setters
 

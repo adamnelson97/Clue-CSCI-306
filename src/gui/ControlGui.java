@@ -142,7 +142,7 @@ public class ControlGui extends JPanel {
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == nextPlayer) Board.getInstance().nextTurn();
-			//TODO write code for accusation button
+			else Board.getInstance().makeAccusation();
 		}
 	}
 
