@@ -597,6 +597,7 @@ public class Board extends JPanel implements MouseListener {
 							nextPlayer.addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
 						}
 						else ((ComputerPlayer) nextPlayer).shouldAccuse(); //Has the CP determine if they should make an accusation on their next turn.
+						getPlayers().get(nextPlayer.getSuggestion().person).setLoc(nextPlayer.getLocation()); //Moves the suggested player to the CP's location.
 					}
 					else {
 						control.setGuessText("");

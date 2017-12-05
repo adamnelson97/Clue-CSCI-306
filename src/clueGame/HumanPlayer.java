@@ -63,6 +63,7 @@ public class HumanPlayer extends Player {
 					addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
 				}
 				else theBoard.control.setGuessResultText("");
+				theBoard.getPlayers().get(suggestion.person).setLoc(cell); //Moves the suggested player to the human player's location.
 			}
 		}
 	}
