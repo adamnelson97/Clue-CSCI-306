@@ -41,4 +41,12 @@ public class Solution {
 		return "Solution [person=" + person + ", room=" + room + ", weapon="
 				+ weapon + "]";
 	}
+	
+	/**
+	 * Returns a suggestion in a condensed format for displaying on the control panel.
+	 * @return String The suggestion.
+	 */
+	public String text() {
+		return person + ", " + room + ", " + weapon;
+	}
 }
