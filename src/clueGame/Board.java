@@ -114,7 +114,7 @@ public class Board extends JPanel implements MouseListener {
 
 		loadConfigFiles(); //Populates players and weapons sets
 		dealer(); //Creates a solution and deals cards to the players
-		
+
 		//Add the mouse listener to the board.
 		addMouseListener(this);
 	}
@@ -540,27 +540,44 @@ public class Board extends JPanel implements MouseListener {
 	 * @param next The name of the next player.
 	 * @param roll The roll the next player got.
 	 */
-	public void nextTurn(String next, int roll) {
-		Player nextPlayer = getPlayers().get(next);
-		calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
+	public void nextTurn() {
+		//Determine if the the previous turn has ended.
+		if (turnOver()) {
+			//Get the name of the next player;
+			String next = whoseTurn();
+			Player nextPlayer = getPlayers().get(next);
+			//'Roll' the die.
+			Random die = new Random();
+			int roll = die.nextInt(6) + 1;
+			//Determine what the viable targets are for the player this turn.
+			calcTargets(nextPlayer.getRow(), nextPlayer.getColumn(), roll); //Updates target destinations for the player.
 
-		//Check to see if the player is a computer or not.
-		if (nextPlayer instanceof ComputerPlayer) {
-			//If cells have been previously highlighted, reset them.
-			highlightTargets(false);
+			//Update the ControlGui display
+			control.setRollText(roll);
+			control.setTurnText(next);
+			
+			//Check to see if the player is a computer or not.
+			if (nextPlayer instanceof ComputerPlayer) {
+				//If cells have been previously highlighted, reset them.
+				highlightTargets(false);
 
-			((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
-			//TODO Add code for CP to make suggestion if they entered a room.
-			//TODO Add code to update control panel after CP makes suggestion.
+				((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
+				//TODO Add code for CP to make suggestion if they entered a room.
+				//TODO Add code to update control panel after CP makes suggestion.
+			}
+			//Otherwise, the player is the human player and they must manually select a new destination.
+			else {
+				//Highlight target cells for user.
+				highlightTargets(true);
+				//Indicate user needs to complete their turn.
+				human.setCompletedTurn(false);
+			}
+			repaint();
 		}
-		//Otherwise, the player is the human player and they must manually select a new destination.
-		else {
-			//Highlight target cells for user.
-			highlightTargets(true);
-			//Indicate user needs to complete their turn.
-			human.setCompletedTurn(false);
+		else { //If it is still currently the player's turn:
+			JOptionPane.showMessageDialog(null, "You need to finish your turn");
+			return;
 		}
-		repaint();
 	}
 
 	/**
@@ -577,7 +594,7 @@ public class Board extends JPanel implements MouseListener {
 		if (this.human.isCompletedTurn()) {
 			return; //Do nothing if it is not currently the user's turn.
 		}
-		
+
 		//The user clicked a cell. Determine if it is valid or not.
 		BoardCell clickedCell = findClickedCell(e.getX(), e.getY());
 		if (clickedCell == null) {
@@ -591,7 +608,7 @@ public class Board extends JPanel implements MouseListener {
 			repaint();
 		}
 	}
-	
+
 	/**
 	 * Gets the information for a cell from a mouse click event, and returns if it is
 	 * a valid target or not.
@@ -609,7 +626,7 @@ public class Board extends JPanel implements MouseListener {
 			return null; //If it is not a target, return null so the user must select again.
 		}
 	}
-	
+
 	/**
 	 * Simply turns highlights for target cells on or off.
 	 * @param highlight If the cells should be highlighted or not.
