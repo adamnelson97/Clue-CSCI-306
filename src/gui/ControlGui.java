@@ -115,11 +115,11 @@ public class ControlGui extends JPanel {
 	 */
 	private JPanel playerGuess() {
 		JPanel panel = new JPanel();
-		JLabel guess = new JLabel("Guess");
-		JTextField playerGuess = new JTextField(20);
-		playerGuess.setEditable(false);
-		panel.add(guess, BorderLayout.NORTH);
-		panel.add(playerGuess, BorderLayout.EAST);
+		JLabel guessLabel = new JLabel("Guess");
+		this.guess = new JTextField(20);
+		this.guess.setEditable(false);
+		panel.add(guessLabel, BorderLayout.NORTH);
+		panel.add(this.guess, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess"));
 		return panel;
 	}
@@ -131,10 +131,10 @@ public class ControlGui extends JPanel {
 	private JPanel playerGuessResult() {
 		JPanel panel = new JPanel();
 		JLabel response = new JLabel("Response");
-		JTextField responseName = new JTextField(10);
-		responseName.setEditable(false);
+		this.guessResult = new JTextField(10);
+		this.guessResult.setEditable(false);
 		panel.add(response, BorderLayout.NORTH);
-		panel.add(responseName, BorderLayout.EAST);
+		panel.add(this.guessResult, BorderLayout.EAST);
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result"));
 		return panel;
 	}
@@ -160,6 +160,22 @@ public class ControlGui extends JPanel {
 	 */
 	public void setTurnText(String next) {
 		this.turn.setText(next);
+	}
+	
+	/**
+	 * Updates the JTextField showing the current player's guess.
+	 * @param guess The player's guess.
+	 */
+	public void setGuessText(String guessText) {
+		this.guess.setText(guessText);
+	}
+	
+	/**
+	 * Updates the JTextField showing the revealed card after a guess..
+	 * @param card The revealed card name.
+	 */
+	public void setGuessResultText(String result) {
+		this.guessResult.setText(result);
 	}
 
 
