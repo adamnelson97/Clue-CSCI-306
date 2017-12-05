@@ -36,7 +36,6 @@ import clueGame.Player;
 @SuppressWarnings("serial")
 public class ControlGui extends JPanel {
 	private ControlGui gui; //Self referencing object so action listeners can call the object as a parameter.
-	private static Board board; //The game board.
 	private JButton accusation;
 	private JButton nextPlayer;
 	private JTextField roll;
@@ -47,11 +46,9 @@ public class ControlGui extends JPanel {
 	/**
 	 * Default Constructor for ControlGui.
 	 * When this is called, it automatically adds all subpanels.
-	 * @param theBoard The game board.
 	 */
-	public ControlGui(Board theBoard) {
+	public ControlGui() {
 		gui = this;
-		board = theBoard; //Passes the game board from GuiMain into the ControlGui.
 		//Set GridLayout
 		setLayout(new GridLayout(2,1));
 
