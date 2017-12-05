@@ -570,10 +570,17 @@ public class Board extends JPanel implements MouseListener {
 				((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
 				//Have the CP create a suggestion if they entered a room.
 				if (nextPlayer.getLocation().isRoom()) {
-					((ComputerPlayer) nextPlayer).createSuggestion(getInstance(), nextPlayer.getLocation(), dealtCards) 
+					//The CP will now generate and set its own suggestion
+					nextPlayer.setSuggestion(((ComputerPlayer) nextPlayer).createSuggestion(getInstance(), nextPlayer.getLocation(), cardDeck));
+					
+					//Update the control panel with the suggestion.
+					control.setGuessText(nextPlayer.getSuggestion().text());
+					
+					//Check the suggestion against the other players.
+					Card revealedCard = handleSuggestion(nextPlayer, nextPlayer.getSuggestion());
 				}
-				//TODO Add code to update control panel after CP makes suggestion.
 			}
+			
 			//Otherwise, the player is the human player and they must manually select a new destination.
 			else {
 				//Highlight target cells for user.
