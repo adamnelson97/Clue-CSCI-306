@@ -21,6 +21,7 @@ public class Player {
 	private String playerName;
 	private int row;
 	private int column;
+	private BoardCell location;
 	private Color color;
 	protected ArrayList<Card> hand; //All the cards dealt to the player
 	protected Set<Card> seen;
@@ -142,5 +143,6 @@ public class Player {
 	public void setLoc(BoardCell newLoc) {
 		this.column = newLoc.getColumn();
 		this.row =newLoc.getRow();
+		this.location = newLoc;
 	}
 }
