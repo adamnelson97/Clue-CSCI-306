@@ -58,7 +58,10 @@ public class GuiMain extends JFrame {
 		//Add the player's current hand.
 		add(humanHand(), BorderLayout.EAST);
 		//Add the ControlGui.
-		add(new ControlGui(board), BorderLayout.SOUTH);
+		ControlGui control = new ControlGui();
+		add(control, BorderLayout.SOUTH);
+		//Add the ControlGui to the board.
+		board.setControl(control);
 
 
 		//Create the Menu Bar and add a Detective Notes Option.
