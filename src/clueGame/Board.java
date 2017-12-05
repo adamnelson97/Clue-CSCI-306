@@ -579,6 +579,10 @@ public class Board extends JPanel implements MouseListener {
 					
 					//Check the suggestion against the other players.
 					Card revealedCard = handleSuggestion(nextPlayer, nextPlayer.getSuggestion());
+					if (revealedCard != null) {
+						control.setGuessResultText(revealedCard.getCardName()); //Updates the display with the name of the revealed card.
+						nextPlayer.addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
+					}
 				}
 			}
 			
