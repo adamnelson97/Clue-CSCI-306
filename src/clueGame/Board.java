@@ -545,8 +545,6 @@ public class Board extends JPanel implements MouseListener {
 
 	/**
 	 * Moves the current computer player, or has the human player select a new target.
-	 * @param next The name of the next player.
-	 * @param roll The roll the next player got.
 	 */
 	public void nextTurn() {
 		//Determine if the the previous turn has ended.

@@ -164,7 +164,7 @@ public class ControlGui extends JPanel {
 	
 	/**
 	 * Updates the JTextField showing the current player's guess.
-	 * @param guess The player's guess.
+	 * @param guessText The player's guess.
 	 */
 	public void setGuessText(String guessText) {
 		this.guess.setText(guessText);
@@ -172,7 +172,7 @@ public class ControlGui extends JPanel {
 	
 	/**
 	 * Updates the JTextField showing the revealed card after a guess..
-	 * @param card The revealed card name.
+	 * @param result The revealed card name.
 	 */
 	public void setGuessResultText(String result) {
 		this.guessResult.setText(result);
