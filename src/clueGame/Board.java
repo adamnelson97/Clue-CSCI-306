@@ -24,6 +24,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import clueGame.Card.CardType;
+import gui.AccusationDialog;
 import gui.ControlGui;
 
 /**
@@ -679,7 +680,17 @@ public class Board extends JPanel implements MouseListener {
 	 * Opens a dialog for the user to submit an accusation.
 	 */
 	public void makeAccusation() {
-		
+		AccusationDialog dialog = new AccusationDialog();
+		if (dialog.isSubmitted()) {
+			boolean correctAccusation = checkAccusation(dialog.getAccusation());
+			if (correctAccusation) {
+				JOptionPane.showMessageDialog(null, "Congratulation! You won!");
+				System.exit(0);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "That is incorrect.");
+			}
+		}
 	}
 
 	//Getters and Setters
