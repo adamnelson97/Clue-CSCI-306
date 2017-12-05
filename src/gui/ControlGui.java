@@ -56,35 +56,23 @@ public class ControlGui extends JPanel {
 		JPanel topPanel = new JPanel();
 		topPanel.setLayout(new GridLayout(1,0));
 
-		//Add JLabel and JTextField for "Whose Turn"
 		JPanel whoseTurnPanel = whoseTurn();
-
-		//Add JButton for "Make an accusation"
-		accusation = new JButton("Make an accusation");
-		//Add action listener for button here later
-		//TODO Add functionality to accusation button.
-
-		//Create a panel to store the Die, Guess, and Guess Result boxes
-		JPanel bottomPanel = new JPanel();
-
-		//Add JLabel Roll with JTextField and border titled "Die"
-		JPanel dieRollPanel = dieRoll();
-
-		//Add JButton for "Next player"
 		nextPlayer = new JButton("Next player");
-		//Add action listener for button here later
-		nextPlayer.addActionListener(new NextPlayerListener());
+		accusation = new JButton("Make an accusation");
+		ButtonListener buttonListener = new ButtonListener();
+		nextPlayer.addActionListener(buttonListener);
+		accusation.addActionListener(buttonListener);
 
-		//Add the different panels all together.
+		//Add components to the top panel
 		topPanel.add(whoseTurnPanel);
 		topPanel.add(nextPlayer);
 		topPanel.add(accusation);
+		
+		//Create a panel to store the Die, Guess, and Guess Result boxes
+		JPanel bottomPanel = new JPanel();
+		JPanel dieRollPanel = dieRoll();
 		bottomPanel.add(dieRollPanel);
-
-		//Add JLabel Guess with JTextField and border titled "Guess"
 		bottomPanel.add(playerGuess());
-
-		//Add JLabel Response with JTextField and border titled "Guess Result"
 		bottomPanel.add(playerGuessResult());
 
 		//Add the two panel sections to the ControlGui panel
@@ -151,28 +139,29 @@ public class ControlGui extends JPanel {
 		return panel;
 	}
 	//Add any necessary action listeners for the GUI below.
-//	class NextPlayerListener implements ActionListener {
-//		public void actionPerformed(ActionEvent e) {
-//			if (board.turnOver()) {
-//				Random die = new Random();
-//				int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
-//				ControlGui.this.setRollText(roll); //Updates the roll text field.
-//
-//				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
-//				ControlGui.this.setTurnText(next); //Updates the turn text field.
-//				//Call the board function to make the current player move.
-//				board.nextTurn(next, roll);
-//			}
-//			else {
-//				JOptionPane.showMessageDialog(null, "You need to finish your turn");
-//				return;
-//			}
-//			board.repaint(); //Updates the game board with new player locations.
-//		}
-//	}
-	class NextPlayerListener implements ActionListener {
+	//	class NextPlayerListener implements ActionListener {
+	//		public void actionPerformed(ActionEvent e) {
+	//			if (board.turnOver()) {
+	//				Random die = new Random();
+	//				int roll = die.nextInt(6) + 1; //Randomly chooses a die roll between 1 and 6.
+	//				ControlGui.this.setRollText(roll); //Updates the roll text field.
+	//
+	//				String next = board.whoseTurn(); //Retrieves the name of the player who has the next turn.
+	//				ControlGui.this.setTurnText(next); //Updates the turn text field.
+	//				//Call the board function to make the current player move.
+	//				board.nextTurn(next, roll);
+	//			}
+	//			else {
+	//				JOptionPane.showMessageDialog(null, "You need to finish your turn");
+	//				return;
+	//			}
+	//			board.repaint(); //Updates the game board with new player locations.
+	//		}
+	//	}
+	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Board.getInstance().nextTurn();
+			if (e.getSource() == nextPlayer) Board.getInstance().nextTurn();
+			//TODO write code for accusation button
 		}
 	}
 
