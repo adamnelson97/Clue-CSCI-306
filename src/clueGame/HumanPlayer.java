@@ -16,7 +16,7 @@ import java.awt.Color;
 public class HumanPlayer extends Player {
 
 	private boolean completedTurn; //Tracks whether the user has completed their turn.
-	
+
 	/**
 	 * Default constructor.
 	 * @param playerName The name of the character.
@@ -36,7 +36,7 @@ public class HumanPlayer extends Player {
 	public void setCompletedTurn(boolean completedTurn) {
 		this.completedTurn = completedTurn;
 	}
-	
+
 	/**
 	 * Updates the player's location and ends their turn.
 	 * @param cell The cell with the player's new location.
@@ -45,18 +45,26 @@ public class HumanPlayer extends Player {
 	public void completeTurn(BoardCell cell, Board theBoard) {
 		this.setCompletedTurn(true); //Indicates the player has moved to a new cell.
 		this.setLoc(cell); //Actually moves the player to the new cell.
-		
+
 		/*
 		 * If the player has moved to a room, a dialog needs to open for them to
 		 * make a suggestion, and the board must then disprove it.
 		 */
 		if (cell.isRoom()) {
 			SuggestionDialog dialog = new SuggestionDialog(cell, theBoard);
-			suggestion = dialog.getSuggestion(); //Stores the user's suggestion.
-			//System.out.println(suggestion.toString()); //Debugging
-			//Update control panel after human makes suggestion.
-			theBoard.control.setGuessText(getSuggestion().text());
+			if (dialog.isSubmitted()) { //If the player actually submitted a suggestion:
+				suggestion = dialog.getSuggestion(); //Stores the user's suggestion.
+				//System.out.println(suggestion.toString()); //Debugging
+				//Update control panel after human makes suggestion.
+				theBoard.control.setGuessText(getSuggestion().text());
+				Card revealedCard = theBoard.handleSuggestion(this, suggestion);
+				if (revealedCard != null) {
+					theBoard.control.setGuessResultText(revealedCard.getCardName()); //Updates the display with the name of the revealed card.
+					addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
+				}
+				else theBoard.control.setGuessResultText("");
+			}
 		}
 	}
-	
+
 }
