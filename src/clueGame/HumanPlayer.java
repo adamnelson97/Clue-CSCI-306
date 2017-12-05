@@ -54,6 +54,8 @@ public class HumanPlayer extends Player {
 			SuggestionDialog dialog = new SuggestionDialog(cell, theBoard);
 			suggestion = dialog.getSuggestion(); //Stores the user's suggestion.
 			//System.out.println(suggestion.toString()); //Debugging
+			//Update control panel after human makes suggestion.
+			theBoard.control.setGuessText(getSuggestion().text());
 		}
 	}
 	

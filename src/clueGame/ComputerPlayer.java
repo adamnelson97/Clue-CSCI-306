@@ -99,8 +99,7 @@ public class ComputerPlayer extends Player {
 	 * @return Solution The computer player's accusation.
 	 */
 	public Solution makeAccusation() {
-		
-		return null;
+		return suggestion;
 	}
 
 	/**
@@ -151,5 +150,13 @@ public class ComputerPlayer extends Player {
 	 */
 	public void resetRoom() {
 		lastRoom = new BoardCell();
+	}
+
+	public boolean isMakeAccusation() {
+		return makeAccusation;
+	}
+
+	public void setMakeAccusation(boolean makeAccusation) {
+		this.makeAccusation = makeAccusation;
 	}
 }

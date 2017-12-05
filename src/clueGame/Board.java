@@ -63,7 +63,7 @@ public class Board extends JPanel implements MouseListener {
 
 	private Solution solution; //The solution to the game.
 	private int turn; //Used to store what player has the next turn in the game.
-	private ControlGui control; //Used to display information about the current turn/suggestions.
+	ControlGui control; //Used to display information about the current turn/suggestions.
 
 	// Variable used for the singleton pattern
 	private static Board theInstance = new Board();
@@ -425,7 +425,7 @@ public class Board extends JPanel implements MouseListener {
 			players.get("Colonel Mustard").addCard(cards.get(i+4));
 			players.get("Mrs. White").addCard(cards.get(i+5));
 		}
-		
+
 		//Add the cards into a set to be used by computer players later.
 		for (Card c : cards) {
 			cardDeck.add(c);
@@ -562,30 +562,48 @@ public class Board extends JPanel implements MouseListener {
 			//Update the ControlGui display
 			control.setRollText(roll);
 			control.setTurnText(next);
-			
+
 			//Check to see if the player is a computer or not.
 			if (nextPlayer instanceof ComputerPlayer) {
 				//If cells have been previously highlighted, reset them.
 				highlightTargets(false);
 
-				((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
-				//Have the CP create a suggestion if they entered a room.
-				if (nextPlayer.getLocation().isRoom()) {
-					//The CP will now generate and set its own suggestion
-					nextPlayer.setSuggestion(((ComputerPlayer) nextPlayer).createSuggestion(getInstance(), nextPlayer.getLocation(), cardDeck));
-					
-					//Update the control panel with the suggestion.
-					control.setGuessText(nextPlayer.getSuggestion().text());
-					
-					//Check the suggestion against the other players.
-					Card revealedCard = handleSuggestion(nextPlayer, nextPlayer.getSuggestion());
-					if (revealedCard != null) {
-						control.setGuessResultText(revealedCard.getCardName()); //Updates the display with the name of the revealed card.
-						nextPlayer.addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
+				if (((ComputerPlayer) nextPlayer).isMakeAccusation()) {
+					boolean correctAccusation = checkAccusation(((ComputerPlayer) nextPlayer).makeAccusation());
+					if (correctAccusation) {
+						JOptionPane.showMessageDialog(null, nextPlayer.getPlayerName() + " has won! The answer was: " + ((ComputerPlayer) nextPlayer).getSuggestion().text());
+						System.exit(0); //Closes the window since the CP has won.
+					}
+					else {
+						JOptionPane.showMessageDialog(null, nextPlayer.getPlayerName() + " has incorrectly guessed: " + ((ComputerPlayer) nextPlayer).getSuggestion().text());
+						((ComputerPlayer) nextPlayer).setMakeAccusation(false); //Tells the CP not to accuse again so they move to a different location next turn.
+					}
+				}
+				else {
+					((ComputerPlayer) nextPlayer).makeMove(getTargets()); //CP randomly chooses new location.
+					//Have the CP create a suggestion if they entered a room.
+					if (nextPlayer.getLocation().isRoom()) {
+						//The CP will now generate and set its own suggestion
+						nextPlayer.setSuggestion(((ComputerPlayer) nextPlayer).createSuggestion(getInstance(), nextPlayer.getLocation(), cardDeck));
+
+						//Update the control panel with the suggestion.
+						control.setGuessText(nextPlayer.getSuggestion().text());
+
+						//Check the suggestion against the other players.
+						Card revealedCard = handleSuggestion(nextPlayer, nextPlayer.getSuggestion());
+						if (revealedCard != null) {
+							control.setGuessResultText(revealedCard.getCardName()); //Updates the display with the name of the revealed card.
+							nextPlayer.addSeen(revealedCard); //Adds the revealed card to the list of seen cards for that player.
+						}
+						else ((ComputerPlayer) nextPlayer).shouldAccuse(); //Has the CP determine if they should make an accusation on their next turn.
+					}
+					else {
+						control.setGuessText("");
+						control.setGuessResultText("");
 					}
 				}
 			}
-			
+
 			//Otherwise, the player is the human player and they must manually select a new destination.
 			else {
 				//Highlight target cells for user.
@@ -625,8 +643,6 @@ public class Board extends JPanel implements MouseListener {
 			//The user has selected a valid target, so the turn is over.
 			this.human.completeTurn(clickedCell, this);
 			highlightTargets(false);
-			//Update control panel after human makes suggestion.
-			control.setGuessText(human.getSuggestion().text());
 			repaint();
 		}
 	}

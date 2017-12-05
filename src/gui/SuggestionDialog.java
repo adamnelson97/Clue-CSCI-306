@@ -31,6 +31,7 @@ public class SuggestionDialog extends JDialog {
 	private Solution suggestion; //The player's suggestion to be returned.
 	private JComboBox<String> person;
 	private JComboBox<String> weapon;
+	private boolean submitted; //Tracks whether the player hit submit or cancel, so the computer knows whether to handle the suggestion.
 	
 	/**
 	 * Default constructor.
@@ -136,6 +137,7 @@ public class SuggestionDialog extends JDialog {
 			this.dialog = dialog;
 		}
 		public void actionPerformed(ActionEvent arg0) {
+			submitted = false;
 			dialog.dispose();
 			
 		}
@@ -149,6 +151,7 @@ public class SuggestionDialog extends JDialog {
 		}public void actionPerformed(ActionEvent e) {
 			suggestion.person = (String) person.getSelectedItem();
 			suggestion.weapon = (String) weapon.getSelectedItem();
+			submitted = true;
 			dialog.dispose();
 		}
 	}
@@ -156,4 +159,9 @@ public class SuggestionDialog extends JDialog {
 	public Solution getSuggestion() {
 		return suggestion;
 	}
+
+	public boolean isSubmitted() {
+		return submitted;
+	}
+	
 }
