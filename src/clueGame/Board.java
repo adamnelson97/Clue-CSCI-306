@@ -604,7 +604,8 @@ public class Board extends JPanel implements MouseListener {
 			//The user has selected a valid target, so the turn is over.
 			this.human.completeTurn(clickedCell, this);
 			highlightTargets(false);
-			//TODO Add code to update control panel after human makes suggestion.
+			//Update control panel after human makes suggestion.
+			control.setGuessText(human.getSuggestion().text());
 			repaint();
 		}
 	}

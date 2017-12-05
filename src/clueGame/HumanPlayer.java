@@ -54,7 +54,7 @@ public class HumanPlayer extends Player {
 		if (cell.isRoom()) {
 			SuggestionDialog dialog = new SuggestionDialog(cell, theBoard);
 			suggestion = dialog.getSuggestion(); //Stores the user's suggestion.
-			System.out.println(suggestion.toString()); //Debugging
+			//System.out.println(suggestion.toString()); //Debugging
 		}
 	}
 	
